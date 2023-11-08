@@ -1,0 +1,40 @@
+// Vars
+
+:root {
+  // base
+  --base-font-family: "Poppins", sans-serif;
+
+  // PAW Brand Colors
+  $paw-yellow: #f8b102;
+  $paw-brown: #171219;
+  $paw-turquoise: #225560;
+  $paw-bordeaux: #310d20;
+  $paw-lilac: #d0cfec;
+  $paw-black: #000000;
+  --paw-yellow: #{$paw-yellow};
+  --paw-brown: #{$paw-brown};
+  --paw-turquoise: #{$paw-turquoise};
+  --paw-bordeaux: #{$paw-bordeaux};
+  --paw-lilac: #{$paw-lilac};
+  --paw-black: #{$paw-black};
+
+  // app header
+  --app-header-height: 60px;
+  --app-header-txt-color: #fff;
+  --app-header-title-font-size: 1.6em;
+
+  // shoelace tokens
+  // full list here:
+  // https://github.com/shoelace-style/shoelace/blob/current/src/styles/base.scss
+  --sl-color-primary-50: #f4f4f4;
+  --sl-color-primary-100: #{lighten($paw-yellow, 40%)};
+  --sl-color-primary-200: #{lighten($paw-yellow, 30%)};
+  --sl-color-primary-300: #{lighten($paw-yellow, 20%)};
+  --sl-color-primary-400: #{lighten($paw-yellow, 10%)};
+  --sl-color-primary-500: #{$paw-yellow};
+  --sl-color-primary-600: #{darken($paw-yellow, 10%)};
+  --sl-color-primary-700: #{darken($paw-yellow, 20%)};
+  --sl-color-primary-800: #{darken($paw-yellow, 30%)};
+  --sl-color-primary-900: #{darken($paw-yellow, 40%)};
+  --sl-focus-ring-color-primary: #{rgba($paw-yellow, 0.1)};
+}

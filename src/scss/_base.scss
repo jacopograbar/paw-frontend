@@ -1,0 +1,377 @@
+// PAW Brand Colors
+$paw-yellow: #f8b102;
+$paw-brown: #171219;
+$paw-turquoise: #225560;
+$paw-bordeaux: #310d20;
+$paw-lilac: #d0cfec;
+
+// SCSS reusable mixins
+@mixin paw-oval($width: 100px, $height: 120px, $background-color: black) {
+  border: solid 10px $paw-yellow;
+  width: $width;
+  height: $height;
+  background-color: $background-color;
+  border-radius: 70%;
+}
+
+@mixin flex-row($justify-content: space-around, $align-items: center) {
+  display: flex;
+  flex-direction: row;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+
+@mixin flex-column($justify-content: space-around, $align-items: center) {
+  display: flex;
+  flex-direction: column;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+
+@mixin overlay-style() {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.525);
+}
+
+// **************************** Base *********************************** //
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: var(--base-font-family);
+  font-weight: 300;
+  height: 100vh;
+}
+
+#root {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+a {
+  color: $paw-yellow;
+  font-weight: 500;
+  text-decoration: none;
+  transition: 0.5s ease-in-out;
+
+  &:hover {
+    transform: scale(1.03);
+  }
+}
+
+// ************************************ Headings *********************************** //
+h1,
+h2,
+h3 {
+  margin: 0 0 0.5em;
+}
+
+h1 {
+  font-weight: 600;
+}
+
+h2 {
+  font-weight: 500;
+}
+
+h3 {
+  font-weight: 400;
+}
+
+// ************************************ Background PAWS Styling *********************************** //
+
+.paw-main {
+  @include paw-oval(490px, 430px, $paw-yellow);
+  border-color: black;
+  position: absolute;
+  bottom: -130px;
+  left: -120px;
+  transform: rotateZ(25deg);
+  overflow: hidden;
+}
+
+.paw-top-right {
+  @include paw-oval(590px, 470px, $paw-yellow);
+  border-color: white;
+  position: absolute;
+  top: -150px;
+  right: -150px;
+  transform: rotateZ(25deg);
+}
+
+.paw-div {
+  position: absolute;
+}
+
+#paw-1 {
+  @include paw-oval(170px, 190px, black);
+  bottom: 330px;
+  left: -60px;
+  transform: rotateZ(-15deg);
+}
+
+#paw-2 {
+  @include paw-oval(190px, 220px, $paw-bordeaux);
+  bottom: 320px;
+  left: 180px;
+  transform: rotateZ(24deg);
+}
+
+#paw-3 {
+  @include paw-oval(170px, 190px, black);
+  bottom: 175px;
+  left: 370px;
+  transform: rotateZ(53deg);
+}
+
+#paw-4 {
+  @include paw-oval(190px, 220px, $paw-bordeaux);
+  bottom: -60px;
+  left: 440px;
+  transform: rotateZ(95deg);
+}
+
+// ************************************ LANDING PAGE *********************************** //
+
+.landing-page {
+  width: 100%;
+  height: 100%;
+  background-color: $paw-turquoise;
+  position: relative;
+  @include flex-column(flex-end, flex-end);
+  padding: 0 10% 13% 0;
+  overflow: hidden;
+
+  .landing-buttons {
+    width: 30%;
+    height: fit-content;
+    @include flex-column(center, center);
+    gap: 20px;
+    z-index: 5;
+
+    .landing-button {
+      width: 100%;
+      transition: 0.5s ease-in-out;
+
+      &:hover {
+        transform: scale(1.02);
+      }
+
+      &:nth-child(2)::part(base) {
+        background-color: black;
+        color: white;
+        border: 0;
+        box-shadow: 0 2px 10px #0002;
+
+        &:hover {
+          color: $paw-yellow;
+        }
+      }
+    }
+  }
+}
+
+// ************************************ SIGNUP PAGES *********************************** //
+
+.signup-page {
+  width: 100%;
+  height: 100%;
+  background-color: $paw-turquoise;
+  position: relative;
+  @include flex-row(center, center);
+  overflow: hidden;
+
+  h1 {
+    font-size: 2.5em;
+    color: white;
+    font-weight: 400;
+  }
+
+  .overlay {
+    @include flex-column(center, center);
+    @include overlay-style();
+    gap: 5vh;
+
+    .picker-container {
+      width: 100%;
+      gap: 10vw;
+      @include flex-row(center, center);
+    }
+
+    #shelter {
+      background-color: $paw-turquoise;
+      border: solid 1vw white;
+      h2 {
+        color: white;
+      }
+    }
+
+    #seeker {
+      background-color: white;
+      border: solid 1vw $paw-yellow;
+      color: black;
+    }
+
+    .user-type-picker {
+      width: 27vw;
+      height: 27vw;
+      border-radius: 20%;
+      @include flex-column(center, center);
+      gap: 6%;
+      transition: 0.5s ease-in-out;
+      cursor: pointer;
+
+      h2 {
+        font-size: 2.2em;
+      }
+
+      &:hover {
+        transform: scale(1.03);
+      }
+
+      img {
+        width: 12vw;
+      }
+    }
+  }
+
+  .signup-overlay {
+    @include overlay-style();
+    @include flex-column(center, center);
+    gap: 5vh;
+
+    p {
+      color: white;
+      text-align: center;
+    }
+
+    .signup-form {
+      width: 100%;
+      height: 50%;
+      @include flex-row(center, center);
+      gap: 10vw;
+      padding: 0 5vw;
+
+      sl-input::part(form-control),
+      sl-textarea::part(form-control),
+      sl-select::part(form-control) {
+        color: white;
+        font-weight: 500;
+      }
+
+      .signup-column {
+        width: 40%;
+        height: 100%;
+        min-height: fit-content;
+        @include flex-column(flex-start, center);
+        gap: 20px;
+
+        .input-group {
+          width: 100%;
+        }
+
+        .signup-submit-area {
+          width: 100%;
+          text-align: right;
+
+          sl-button {
+            width: 50%;
+            margin-top: 23px;
+            &::part(base) {
+              color: black;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// ************************************ LOGIN PAGE *********************************** //
+
+.login-page {
+  width: 100%;
+  height: 100%;
+  background-color: $paw-turquoise;
+  position: relative;
+  @include flex-column(flex-end, flex-end);
+  padding: 0 8% 5% 0;
+  overflow: hidden;
+
+  p {
+    color: white;
+    text-align: center;
+    width: 30%;
+  }
+
+  #form-signin {
+    width: 30%;
+    height: fit-content;
+    z-index: 5;
+
+    .signin-input {
+      margin-bottom: 10px;
+    }
+
+    sl-input::part(form-control) {
+      color: white;
+    }
+
+    sl-button {
+      width: 100%;
+      margin-top: 20px;
+
+      &::part(base) {
+        background-color: black;
+        color: white;
+        border: 0;
+        box-shadow: 0 2px 10px #0002;
+        transition: 0.5s ease-in-out;
+
+        &:hover {
+          transform: scale(1.02);
+          color: $paw-yellow;
+        }
+      }
+    }
+  }
+}
+
+// ************************************ DASHBOARD PAGES *********************************** //
+
+.dashboard-view {
+  width: 100%;
+  height: 300vh;
+  position: relative;
+  overflow: hidden;
+
+  .dashboard-section {
+    height: 100vh;
+    width: 100%;
+  }
+
+  .dashboard-second {
+    background-color: black;
+  }
+
+  .dashboard-third {
+    background-color: $paw-lilac;
+  }
+}
+
+.shelter {
+  background-color: $paw-bordeaux;
+}
+
+.seeker {
+  background-color: $paw-turquoise;
+}
