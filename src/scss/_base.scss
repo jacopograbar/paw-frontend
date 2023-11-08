@@ -68,6 +68,32 @@ a {
   }
 }
 
+.avatar-button {
+  --size: 17vw;
+  border: solid 1vw $paw-yellow;
+  border-radius: 50%;
+  cursor: pointer;
+
+  &::part(base) {
+    background-color: black;
+  }
+
+  &:hover {
+    transition: 0.5s ease-in-out;
+    transform: scale(1.03);
+  }
+}
+
+.avatar-main {
+  --size: 23vw;
+  border: solid 1vw black;
+  border-radius: 50%;
+
+  &::part(base) {
+    background-color: $paw-yellow;
+  }
+}
+
 // ************************************ Headings *********************************** //
 h1,
 h2,
@@ -357,21 +383,108 @@ h3 {
   .dashboard-section {
     height: 100vh;
     width: 100%;
+    position: relative;
+
+    #first-background-img,
+    #second-background-img,
+    #third-background-img {
+      position: absolute;
+      z-index: 0;
+      opacity: 0.05;
+      height: 110%;
+    }
+
+    #first-background-img {
+      left: -3%;
+      bottom: -10%;
+    }
+
+    #second-background-img {
+      right: -3%;
+      bottom: -5%;
+    }
+
+    #third-background-img {
+      left: -3%;
+      bottom: -15%;
+    }
+
+    &:nth-child(1) {
+      @include flex-row(space-around, center);
+      .section-column {
+        width: 33.3%;
+        height: 100%;
+        @include flex-column(flex-end, center);
+        gap: 5%;
+        padding-bottom: 10vh;
+        color: white;
+        z-index: 1;
+
+        h2 {
+          font-size: 2em;
+        }
+
+        &:nth-child(2) {
+          justify-content: flex-start;
+          padding-bottom: 0;
+          padding-top: 10vh;
+        }
+      }
+    }
+
+    &:nth-child(2) {
+      background-color: black;
+      @include flex-row(flex-end, center);
+      gap: 5%;
+
+      sl-carousel {
+        width: 70%;
+        height: 80%;
+      }
+
+      sl-icon {
+        color: white;
+      }
+    }
+
+    &:nth-child(3) {
+      background-color: $paw-lilac;
+    }
   }
 
-  .dashboard-second {
-    background-color: black;
-  }
-
-  .dashboard-third {
-    background-color: $paw-lilac;
+  #avatar-paw {
+    width: 60%;
   }
 }
 
+// Shelter Dashboard styling
 .shelter {
   background-color: $paw-bordeaux;
+
+  #avatar-image {
+    max-height: 100%;
+  }
+
+  .shelter-info {
+    @include flex-column(flex-start, center);
+    gap: 2%;
+    sl-button {
+      margin-top: 5%;
+
+      &::part(base) {
+        background-color: $paw-lilac;
+        color: black;
+        transition: 0.3s ease-in-out;
+
+        &:hover {
+          transform: scale(1.02);
+        }
+      }
+    }
+  }
 }
 
+// Seeker Dashboard styling
 .seeker {
   background-color: $paw-turquoise;
 }
