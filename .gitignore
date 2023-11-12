@@ -1,5 +1,6 @@
 /.cache
 /node-modules
+/dist
 
 # Logs and databases #
 ######################
@@ -17,3 +18,4 @@
 ehthumbs.db
 Thumbs.db.cache
 node-modules
+dist
