@@ -31,7 +31,7 @@ class SeekerDashboardView {
             <sl-avatar class="avatar-button" label="Browse cats">
               <img slot="icon" src="../images/cat-white.png" />
             </sl-avatar>
-            <h2>Our Pets</h2>
+            <h2>Cats</h2>
           </div>
           <div class="section-column" id="seeker-central-column">
             <h1>I am looking for...</h1>
@@ -52,7 +52,7 @@ class SeekerDashboardView {
                 src="../images/dog-white.png"
               />
             </sl-avatar>
-            <h2>Applications</h2>
+            <h2>Dogs</h2>
           </div>
           <img id="first-background-img" src="../images/pawprint-white.png" />
         </section>
