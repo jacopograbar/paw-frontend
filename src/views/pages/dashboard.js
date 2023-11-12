@@ -10,6 +10,7 @@ class DashboardView {
     // dummy access level set to 1 for shelter view rendering
     this.accessLevel = 1;
     this.pets = Utils.createDummyPetObjects();
+    this.applications = Utils.createDummyApplicationObjects();
     this.render();
     Utils.pageIntroAnim();
   }
@@ -67,41 +68,81 @@ class DashboardView {
         <!-- Second Section -->
         <section class="dashboard-section">
           <img id="second-background-img" src="../images/pawprint-white.png" />
-          <sl-avatar class="avatar-button" label="Add more">
-            <sl-icon slot="icon" name="plus"></sl-icon>
-          </sl-avatar>
-          <sl-carousel
-            id="carousel"
-            navigation
-            mouse-dragging
-            slides-per-page= "${this.pets.length === 0 ? 1 : 2.3}"
-            slides-per-move="1"
-          >
-            ${this.pets.length === 0
-              ? html` <sl-spinner style="font-size: 7vw; --stroke-width: 1vw;"></sl-spinner> `
-              : html`
-                  ${this.pets.map(
-                    (pet) => html`
-                      <sl-carousel-item>
-                        <paw-petcard
-                          id="${pet._id}"
-                          name="${pet.name}"
-                          petType="${pet.petType}"
-                          breed="${pet.breed}"
-                          image="${pet.images[0]}"
-                          gender="${pet.gender}"
-                          age="${pet.age}"
-                        ></paw-petcard>
-                      </sl-carousel-item>
-                    `
-                  )}
-                `}
-            <sl-icon slot="next-icon" name="caret-right-fill"></sl-icon>
-            <sl-icon slot="previous-icon" name="caret-left-fill"></sl-icon>
-          </sl-carousel>
+          <h2 id="dashboard-pets-title">Our pets</h2>
+          <div class="carousel-container">
+            <sl-avatar class="avatar-button" label="Add more">
+              <sl-icon slot="icon" name="plus"></sl-icon>
+            </sl-avatar>
+            <sl-carousel
+              id="carousel"
+              navigation
+              mouse-dragging
+              slides-per-page="${this.pets.length === 0 ? 1 : 2.3}"
+              slides-per-move="1"
+            >
+              ${this.pets.length === 0
+                ? html`
+                    <sl-spinner
+                      style="font-size: 7vw; --stroke-width: 1vw;"
+                    ></sl-spinner>
+                  `
+                : html`
+                    ${this.pets.map(
+                      (pet) => html`
+                        <sl-carousel-item>
+                          <paw-petcard
+                            id="${pet._id}"
+                            name="${pet.name}"
+                            petType="${pet.petType}"
+                            breed="${pet.breed}"
+                            image="${pet.images[0]}"
+                            gender="${pet.gender}"
+                            age="${pet.age}"
+                          ></paw-petcard>
+                        </sl-carousel-item>
+                      `
+                    )}
+                  `}
+              <sl-icon slot="next-icon" name="caret-right-fill"></sl-icon>
+              <sl-icon slot="previous-icon" name="caret-left-fill"></sl-icon>
+            </sl-carousel>
+          </div>
         </section>
         <section class="dashboard-section">
           <img id="third-background-img" src="../images/applications.png" />
+          <h2 id="dashboard-pets-title">Current Applications</h2>
+          <div class="carousel-container">
+            <sl-carousel
+              id="carousel"
+              navigation
+              mouse-dragging
+              slides-per-page="${this.pets.length === 0 ? 1 : 3}"
+              slides-per-move="1"
+            >
+              ${this.applications.length === 0
+                ? html`
+                    <sl-spinner
+                      style="font-size: 7vw; --stroke-width: 1vw;"
+                    ></sl-spinner>
+                  `
+                : html`
+                    ${this.applications.map(
+                      (application) => html`
+                        <sl-carousel-item>
+                          <paw-applicationcard
+                            id="${application._id}"
+                            date="${application.date}"
+                            pet="${JSON.stringify(application.pet)}"
+                            applicant="${JSON.stringify(application.adopter)}"
+                          ></paw-applicationcard>
+                        </sl-carousel-item>
+                      `
+                    )}
+                  `}
+              <sl-icon slot="next-icon" name="caret-right-fill"></sl-icon>
+              <sl-icon slot="previous-icon" name="caret-left-fill"></sl-icon>
+            </sl-carousel>
+          </div>
         </section>
       </div>
     `;

@@ -7280,23 +7280,204 @@ class Utils {
     return pets;
   }
   createDummyApplicationObjects() {
-    const pets = [{
+    const applications = [{
       _id: "01",
-      name: "Rugas",
-      petType: "cat",
-      breed: "Sphynx",
-      age: "2",
-      gender: "M",
-      vaccinated: true,
-      friendliness: "4",
+      status: "2",
+      date: "30/10/2023",
+      pet: {
+        _id: "300",
+        name: "Pelosa",
+        petType: "cat",
+        breed: "Bengal",
+        age: "1",
+        gender: "F",
+        vaccinated: true,
+        friendliness: "3",
+        shelter: {
+          id: "100",
+          name: "This Shelter"
+        },
+        diseases: [],
+        images: ["https://cats.com/wp-content/uploads/2020/10/Bengal-cat-like-a-leopard-sneaks.jpg"],
+        notes: "So stunning"
+      },
       shelter: {
-        id: "100",
+        _id: "100",
         name: "This Shelter"
       },
-      diseases: [],
-      images: ["https://i.ebayimg.com/images/g/LJUAAOSwFcVfHrSa/s-l1200.webp"],
-      notes: "Great pet"
+      adopter: {
+        _id: "1001",
+        name: "Ryan Borges",
+        email: "ryabb@email.com",
+        state: "NSW",
+        bio: "This is Ryan's bio",
+        animals: ["Cats", "Birds"],
+        image: "https://i.pinimg.com/originals/60/66/8a/60668aa7d780b6c19684ccbfa0bf320c.jpg"
+      }
+    }, {
+      _id: "02",
+      status: "2",
+      date: "21/10/2023",
+      pet: {
+        _id: "200",
+        name: "Rugas",
+        petType: "cat",
+        breed: "Sphynx",
+        age: "2",
+        gender: "M",
+        vaccinated: true,
+        friendliness: "4",
+        diseases: [],
+        images: ["https://i.ebayimg.com/images/g/LJUAAOSwFcVfHrSa/s-l1200.webp"],
+        notes: "Great pet"
+      },
+      shelter: {
+        _id: "100",
+        name: "This Shelter"
+      },
+      adopter: {
+        _id: "1000",
+        name: "John Doe",
+        email: "johnd@email.com",
+        state: "NSW",
+        bio: "This is John's bio",
+        animals: ["Cats", "Dogs"],
+        image: "https://images.unsplash.com/photo-1525186402429-b4ff38bedec6?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bm9ybWFsJTIwcGVvcGxlfGVufDB8fDB8fHww"
+      }
+    }, {
+      _id: "03",
+      status: "2",
+      date: "12/09/2023",
+      pet: {
+        _id: "300",
+        name: "Antares",
+        petType: "dog",
+        breed: "Border Collie",
+        age: "5",
+        gender: "M",
+        vaccinated: true,
+        friendliness: "5",
+        shelter: {
+          id: "100",
+          name: "This Shelter"
+        },
+        diseases: [],
+        images: ["https://www.rover.com/blog/wp-content/uploads/border-collie-min-1024x681.jpg"],
+        notes: "Handsome boi"
+      },
+      shelter: {
+        _id: "100",
+        name: "This Shelter"
+      },
+      adopter: {
+        _id: "1000",
+        name: "Coco Wood",
+        email: "poo@email.com",
+        state: "NSW",
+        bio: "This is Coco's bio",
+        animals: ["Cats", "Dogs", "Birds"],
+        image: "https://3.img-dpreview.com/files/p/E~TS250x250~articles/7507411185/Screen_Shot_2014-03-19_at_11.31.27_AM.png"
+      }
+    }, {
+      _id: "01",
+      status: "2",
+      date: "30/10/2023",
+      pet: {
+        _id: "300",
+        name: "Pelosa",
+        petType: "cat",
+        breed: "Bengal",
+        age: "1",
+        gender: "F",
+        vaccinated: true,
+        friendliness: "3",
+        shelter: {
+          id: "100",
+          name: "This Shelter"
+        },
+        diseases: [],
+        images: ["https://cats.com/wp-content/uploads/2020/10/Bengal-cat-like-a-leopard-sneaks.jpg"],
+        notes: "So stunning"
+      },
+      shelter: {
+        _id: "100",
+        name: "This Shelter"
+      },
+      adopter: {
+        _id: "1001",
+        name: "Ryan Borges",
+        email: "ryabb@email.com",
+        state: "NSW",
+        bio: "This is Ryan's bio",
+        animals: ["Cats", "Birds"],
+        image: "https://i.pinimg.com/originals/60/66/8a/60668aa7d780b6c19684ccbfa0bf320c.jpg"
+      }
+    }, {
+      _id: "02",
+      status: "2",
+      date: "21/10/2023",
+      pet: {
+        _id: "200",
+        name: "Rugas",
+        petType: "cat",
+        breed: "Sphynx",
+        age: "2",
+        gender: "M",
+        vaccinated: true,
+        friendliness: "4",
+        diseases: [],
+        images: ["https://i.ebayimg.com/images/g/LJUAAOSwFcVfHrSa/s-l1200.webp"],
+        notes: "Great pet"
+      },
+      shelter: {
+        _id: "100",
+        name: "This Shelter"
+      },
+      adopter: {
+        _id: "1000",
+        name: "John Doe",
+        email: "johnd@email.com",
+        state: "NSW",
+        bio: "This is John's bio",
+        animals: ["Cats", "Dogs"],
+        image: "https://images.unsplash.com/photo-1525186402429-b4ff38bedec6?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bm9ybWFsJTIwcGVvcGxlfGVufDB8fDB8fHww"
+      }
+    }, {
+      _id: "03",
+      status: "2",
+      date: "12/09/2023",
+      pet: {
+        _id: "300",
+        name: "Antares",
+        petType: "dog",
+        breed: "Border Collie",
+        age: "5",
+        gender: "M",
+        vaccinated: true,
+        friendliness: "5",
+        shelter: {
+          id: "100",
+          name: "This Shelter"
+        },
+        diseases: [],
+        images: ["https://www.rover.com/blog/wp-content/uploads/border-collie-min-1024x681.jpg"],
+        notes: "Handsome boi"
+      },
+      shelter: {
+        _id: "100",
+        name: "This Shelter"
+      },
+      adopter: {
+        _id: "1000",
+        name: "Coco Wood",
+        email: "poo@email.com",
+        state: "NSW",
+        bio: "This is Coco's bio",
+        animals: ["Cats", "Dogs", "Birds"],
+        image: "https://3.img-dpreview.com/files/p/E~TS250x250~articles/7507411185/Screen_Shot_2014-03-19_at_11.31.27_AM.png"
+      }
     }];
+    return applications;
   }
 }
 var _default = exports.default = new Utils();
@@ -7442,7 +7623,7 @@ var _litHtml = require("lit-html");
 var _Router = require("../../Router");
 var _Auth = _interopRequireDefault(require("../../Auth"));
 var _Utils = _interopRequireDefault(require("../../Utils"));
-var _templateObject, _templateObject2, _templateObject3, _templateObject4;
+var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6, _templateObject7;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 class DashboardView {
@@ -7451,6 +7632,7 @@ class DashboardView {
     // dummy access level set to 1 for shelter view rendering
     this.accessLevel = 1;
     this.pets = _Utils.default.createDummyPetObjects();
+    this.applications = _Utils.default.createDummyApplicationObjects();
     this.render();
     _Utils.default.pageIntroAnim();
   }
@@ -7458,7 +7640,7 @@ class DashboardView {
     console.log("next");
   }
   render() {
-    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n      <paw-header title=\"Dashboard\"></paw-header>\n      <div\n        class=", "\n      >\n        <!-- First Section -->\n        <section class=\"dashboard-section\">\n          <div class=\"section-column\">\n            <sl-avatar class=\"avatar-button\" label=\"Our Pets\">\n              <img\n                id=\"avatar-paw\"\n                slot=\"icon\"\n                src=\"../images/pawprint-white.png\"\n              />\n            </sl-avatar>\n            <h2>Our Pets</h2>\n          </div>\n          <div class=\"section-column\">\n            <sl-avatar class=\"avatar-main\" label=\"Our Pets\">\n              <img\n                id=\"avatar-image\"\n                slot=\"icon\"\n                src=\"https://cdn.vox-cdn.com/thumbor/v9ksZRhgha_kZsrjZkR0iCD8DB8=/0x0:4189x2608/1200x800/filters:focal(1766x853:2436x1523)/cdn.vox-cdn.com/uploads/chorus_image/image/72548864/GettyImages_1401741294.0.jpg\"\n              />\n            </sl-avatar>\n            <div class=\"shelter-info\">\n              <h2>Shelter's Name</h2>\n              <h3>Shelter's Address</h3>\n              <p>Shelter's description</p>\n              <sl-button>Edit Profile</sl-button>\n            </div>\n          </div>\n          <div class=\"section-column\">\n            <sl-avatar class=\"avatar-button\" label=\"Applications\">\n              <sl-icon slot=\"icon\" name=\"file-text\"></sl-icon>\n            </sl-avatar>\n            <h2>Applications</h2>\n          </div>\n          <img\n            id=\"first-background-img\"\n            src=\"../images/pet-shelter-white.png\"\n          />\n        </section>\n        <!-- Second Section -->\n        <section class=\"dashboard-section\">\n          <img id=\"second-background-img\" src=\"../images/pawprint-white.png\" />\n          <sl-avatar class=\"avatar-button\" label=\"Add more\">\n            <sl-icon slot=\"icon\" name=\"plus\"></sl-icon>\n          </sl-avatar>\n          <sl-carousel\n            id=\"carousel\"\n            navigation\n            mouse-dragging\n            slides-per-page= \"", "\"\n            slides-per-move=\"1\"\n          >\n            ", "\n            <sl-icon slot=\"next-icon\" name=\"caret-right-fill\"></sl-icon>\n            <sl-icon slot=\"previous-icon\" name=\"caret-left-fill\"></sl-icon>\n          </sl-carousel>\n        </section>\n        <section class=\"dashboard-section\">\n          <img id=\"third-background-img\" src=\"../images/applications.png\" />\n        </section>\n      </div>\n    "])), this.accessLevel === 1 ? "shelter dashboard-view" : "seeker dashboard-view", this.pets.length === 0 ? 1 : 2.3, this.pets.length === 0 ? (0, _litHtml.html)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral([" <sl-spinner style=\"font-size: 7vw; --stroke-width: 1vw;\"></sl-spinner> "]))) : (0, _litHtml.html)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n                  ", "\n                "])), this.pets.map(pet => (0, _litHtml.html)(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n                      <sl-carousel-item>\n                        <paw-petcard\n                          id=\"", "\"\n                          name=\"", "\"\n                          petType=\"", "\"\n                          breed=\"", "\"\n                          image=\"", "\"\n                          gender=\"", "\"\n                          age=\"", "\"\n                        ></paw-petcard>\n                      </sl-carousel-item>\n                    "])), pet._id, pet.name, pet.petType, pet.breed, pet.images[0], pet.gender, pet.age))));
+    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n      <paw-header title=\"Dashboard\"></paw-header>\n      <div\n        class=", "\n      >\n        <!-- First Section -->\n        <section class=\"dashboard-section\">\n          <div class=\"section-column\">\n            <sl-avatar class=\"avatar-button\" label=\"Our Pets\">\n              <img\n                id=\"avatar-paw\"\n                slot=\"icon\"\n                src=\"../images/pawprint-white.png\"\n              />\n            </sl-avatar>\n            <h2>Our Pets</h2>\n          </div>\n          <div class=\"section-column\">\n            <sl-avatar class=\"avatar-main\" label=\"Our Pets\">\n              <img\n                id=\"avatar-image\"\n                slot=\"icon\"\n                src=\"https://cdn.vox-cdn.com/thumbor/v9ksZRhgha_kZsrjZkR0iCD8DB8=/0x0:4189x2608/1200x800/filters:focal(1766x853:2436x1523)/cdn.vox-cdn.com/uploads/chorus_image/image/72548864/GettyImages_1401741294.0.jpg\"\n              />\n            </sl-avatar>\n            <div class=\"shelter-info\">\n              <h2>Shelter's Name</h2>\n              <h3>Shelter's Address</h3>\n              <p>Shelter's description</p>\n              <sl-button>Edit Profile</sl-button>\n            </div>\n          </div>\n          <div class=\"section-column\">\n            <sl-avatar class=\"avatar-button\" label=\"Applications\">\n              <sl-icon slot=\"icon\" name=\"file-text\"></sl-icon>\n            </sl-avatar>\n            <h2>Applications</h2>\n          </div>\n          <img\n            id=\"first-background-img\"\n            src=\"../images/pet-shelter-white.png\"\n          />\n        </section>\n        <!-- Second Section -->\n        <section class=\"dashboard-section\">\n          <img id=\"second-background-img\" src=\"../images/pawprint-white.png\" />\n          <h2 id=\"dashboard-pets-title\">Our pets</h2>\n          <div class=\"carousel-container\">\n            <sl-avatar class=\"avatar-button\" label=\"Add more\">\n              <sl-icon slot=\"icon\" name=\"plus\"></sl-icon>\n            </sl-avatar>\n            <sl-carousel\n              id=\"carousel\"\n              navigation\n              mouse-dragging\n              slides-per-page=\"", "\"\n              slides-per-move=\"1\"\n            >\n              ", "\n              <sl-icon slot=\"next-icon\" name=\"caret-right-fill\"></sl-icon>\n              <sl-icon slot=\"previous-icon\" name=\"caret-left-fill\"></sl-icon>\n            </sl-carousel>\n          </div>\n        </section>\n        <section class=\"dashboard-section\">\n          <img id=\"third-background-img\" src=\"../images/applications.png\" />\n          <h2 id=\"dashboard-pets-title\">Current Applications</h2>\n          <div class=\"carousel-container\">\n            <sl-carousel\n              id=\"carousel\"\n              navigation\n              mouse-dragging\n              slides-per-page=\"", "\"\n              slides-per-move=\"1\"\n            >\n              ", "\n              <sl-icon slot=\"next-icon\" name=\"caret-right-fill\"></sl-icon>\n              <sl-icon slot=\"previous-icon\" name=\"caret-left-fill\"></sl-icon>\n            </sl-carousel>\n          </div>\n        </section>\n      </div>\n    "])), this.accessLevel === 1 ? "shelter dashboard-view" : "seeker dashboard-view", this.pets.length === 0 ? 1 : 2.3, this.pets.length === 0 ? (0, _litHtml.html)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n                    <sl-spinner\n                      style=\"font-size: 7vw; --stroke-width: 1vw;\"\n                    ></sl-spinner>\n                  "]))) : (0, _litHtml.html)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n                    ", "\n                  "])), this.pets.map(pet => (0, _litHtml.html)(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n                        <sl-carousel-item>\n                          <paw-petcard\n                            id=\"", "\"\n                            name=\"", "\"\n                            petType=\"", "\"\n                            breed=\"", "\"\n                            image=\"", "\"\n                            gender=\"", "\"\n                            age=\"", "\"\n                          ></paw-petcard>\n                        </sl-carousel-item>\n                      "])), pet._id, pet.name, pet.petType, pet.breed, pet.images[0], pet.gender, pet.age))), this.pets.length === 0 ? 1 : 3, this.applications.length === 0 ? (0, _litHtml.html)(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n                    <sl-spinner\n                      style=\"font-size: 7vw; --stroke-width: 1vw;\"\n                    ></sl-spinner>\n                  "]))) : (0, _litHtml.html)(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["\n                    ", "\n                  "])), this.applications.map(application => (0, _litHtml.html)(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["\n                        <sl-carousel-item>\n                          <paw-applicationcard\n                            id=\"", "\"\n                            date=\"", "\"\n                            pet=\"", "\"\n                            applicant=\"", "\"\n                          ></paw-applicationcard>\n                        </sl-carousel-item>\n                      "])), application._id, application.date, JSON.stringify(application.pet), JSON.stringify(application.adopter)))));
     (0, _litHtml.render)(template, _App.default.rootEl);
   }
 }
@@ -9406,7 +9588,50 @@ customElements.define("paw-petcard", class PetCard extends _litElement.LitElemen
     return (0, _litElement.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n        <style>\n          .pet-card {\n            width: 23vw;\n            height: 70vh;\n            min-height: 600px;\n            background-color: #d0cfec;\n            overflow: hidden;\n            border-radius: 40px;\n            box-shadow: 20px 20px 1px #f8b102;\n          }\n\n          .card-image-wrapper {\n            height: 55%;\n            width: 100%;\n          }\n\n          .card-image-wrapper img {\n            width: 100%;\n            height: 100%;\n            object-fit: cover;\n          }\n\n          .pet-card-body {\n            height: 45%;\n            width: 100%;\n            display: flex;\n            flex-direction: column;\n            justify-content: center;\n            align-items: center;\n            gap: 5%;\n          }\n\n          .pet-card-body p,\n          .badges-row {\n            margin: 0 0 3% 0;\n          }\n          .pet-card-body h2 {\n            margin: 0;\n          }\n\n          .badges-row {\n            display: flex;\n            flex-direction: row;\n            justify-content: center;\n            align-items: center;\n            width: 100%;\n            gap: 10%;\n          }\n\n          sl-avatar {\n            --size: 3.5vw;\n            border: solid 0.3vw black;\n            border-radius: 50%;\n          }\n\n          #first::part(base) {\n            background-color: #f8b102;\n          }\n\n          #second::part(base) {\n            background-color: black;\n          }\n\n          #avatar-pic {\n            width: 2.5vw;\n          }\n\n          sl-button::part(base) {\n            background-color: black;\n            color: white;\n            border: 0;\n            box-shadow: 0 2px 10px #0002;\n          }\n\n          sl-button::part(base):hover {\n            color: #f8b102;\n          }\n        </style>\n        <div class=\"pet-card\">\n          <div class=\"card-image-wrapper\">\n            <img src=\"", "\" alt=\"", "\" />\n          </div>\n          <div class=\"pet-card-body\">\n            <h2>", "</h2>\n            <p>\n              ", " ", " old ", "\n              ", "\n            </p>\n            <div class=\"badges-row\">\n              <sl-avatar id=\"first\" label=\"", "\">\n                <img\n                  slot=\"icon\"\n                  id=\"avatar-pic\"\n                  src=\"", "\"\n                />\n              </sl-avatar>\n              <sl-avatar id=\"second\" label=\"", "\">\n                <img\n                  slot=\"icon\"\n                  id=\"avatar-pic\"\n                  src=\"", "\"\n                />\n              </sl-avatar>\n            </div>\n            <sl-button @click=", "\n              >Meet ", "</sl-button\n            >\n          </div>\n        </div>\n      "])), this.image, this.name, this.name, this.age, this.age == 1 ? "year" : "years", this.breed, this.petType, this.petType, this.petType == "cat" ? this.catImgURL : this.dogImgURL, this.gender, this.gender == "M" ? this.maleURL : this.femaleURL, this.redirectToPetPage.bind(this), this.name);
   }
 });
-},{"@polymer/lit-element":"../node_modules/@polymer/lit-element/lit-element.js","lit-html":"../node_modules/lit-html/lit-html.js","./../Router":"Router.js","./../Auth":"Auth.js","./../App":"App.js","../UserAPI":"UserAPI.js","../Toast":"Toast.js"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{"@polymer/lit-element":"../node_modules/@polymer/lit-element/lit-element.js","lit-html":"../node_modules/lit-html/lit-html.js","./../Router":"Router.js","./../Auth":"Auth.js","./../App":"App.js","../UserAPI":"UserAPI.js","../Toast":"Toast.js"}],"components/paw-applicationcard.js":[function(require,module,exports) {
+"use strict";
+
+var _litElement = require("@polymer/lit-element");
+var _litHtml = require("lit-html");
+var _Router = require("../Router");
+var _Auth = _interopRequireDefault(require("../Auth"));
+var _App = _interopRequireDefault(require("../App"));
+var _UserAPI = _interopRequireDefault(require("../UserAPI"));
+var _Toast = _interopRequireDefault(require("../Toast"));
+var _templateObject;
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+customElements.define("paw-applicationcard", class ApplicationCard extends _litElement.LitElement {
+  constructor() {
+    super();
+  }
+  static get properties() {
+    return {
+      id: {
+        type: String
+      },
+      date: {
+        type: String
+      },
+      pet: {
+        type: Object
+      },
+      applicant: {
+        type: Object
+      }
+    };
+  }
+  firstUpdated() {
+    super.firstUpdated();
+  }
+  redirectToPetPage() {
+    alert("test");
+  }
+  render() {
+    return (0, _litElement.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n        <style>\n          .application-card {\n            width: 22vw;\n            height: 65vh;\n            min-height: 550px;\n            background-color:#f8b102;\n            border-radius: 40px;\n            position: relative;\n          }\n\n          .card-body {\n            height: 95%;\n            width: 100%;\n            display: flex;\n            flex-direction: column;\n            justify-content: flex-end;\n            align-items: center;\n            gap: 2%;\n            padding-bottom: 5%;\n          }\n\n          .card-body p{\n            margin: 0;\n          }\n\n          .card-body h2{\n            margin: 0 0 3% 0;\n          }\n\n\n          .card-image{\n            position: absolute;\n            border-radius: 50%;\n            overflow: hidden;\n            border: solid 1.5vw #f8b102;\n          }\n\n          .card-image img{\n            width: 100%;\n            height: 100%;\n            object-fit: cover;\n          }\n\n          .pet{\n            width: 11vw;\n            height: 11vw;\n            right: -10%;\n            top: 18%;\n          }\n\n          .applicant{\n            width: 18vw;\n            height: 18vw;\n            top: -10%;\n            left: -10%;\n          }\n\n          sl-button::part(base) {\n            background-color: black;\n            color: white;\n            border: 0;\n            box-shadow: 0 2px 10px #0002;\n            margin-top: 30%;\n          }\n\n          sl-button::part(base):hover {\n            color: #f8b102;\n          }\n        </style>\n        <div class=\"application-card\">\n          <div class=\"card-image applicant\">\n            <img src=\"", "\" alt=\"", "\" />\n          </div>\n          <div class=\"card-image pet\">\n            <img src=\"", "\" alt=\"", "\" />\n          </div>\n          <div class=\"card-body\">\n            <h2>Application ID: ", "</h2>\n            <p>", " x ", "</p>\n            <p>Lodged on ", "</p>\n            <sl-button @click=", ">Review</sl-button>\n          </div>\n          </div>\n        </div>\n      "])), this.applicant.image, this.applicant.name, this.pet.images[0], this.pet.name, this.id, this.applicant.name, this.pet.name, this.date, this.redirectToPetPage.bind(this));
+  }
+});
+},{"@polymer/lit-element":"../node_modules/@polymer/lit-element/lit-element.js","lit-html":"../node_modules/lit-html/lit-html.js","../Router":"Router.js","../Auth":"Auth.js","../App":"App.js","../UserAPI":"UserAPI.js","../Toast":"Toast.js"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 function getBundleURLCached() {
   if (!bundleURL) {
@@ -9467,6 +9692,7 @@ module.hot.accept(reloadCSS);
 var _App = _interopRequireDefault(require("./App.js"));
 require("./components/paw-header.js");
 require("./components/paw-petcard.js");
+require("./components/paw-applicationcard.js");
 require("./scss/master.scss");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 // components (custom web components)
@@ -9477,7 +9703,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 document.addEventListener('DOMContentLoaded', () => {
   _App.default.init();
 });
-},{"./App.js":"App.js","./components/paw-header.js":"components/paw-header.js","./components/paw-petcard.js":"components/paw-petcard.js","./scss/master.scss":"scss/master.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./App.js":"App.js","./components/paw-header.js":"components/paw-header.js","./components/paw-petcard.js":"components/paw-petcard.js","./components/paw-applicationcard.js":"components/paw-applicationcard.js","./scss/master.scss":"scss/master.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;

@@ -439,29 +439,70 @@ h3 {
 }
 .dashboard-view .dashboard-section:nth-child(2) {
   background-color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0;
+}
+.dashboard-view .dashboard-section:nth-child(2) #dashboard-pets-title {
+  color: white;
+  margin: 0;
+  font-size: 2.5vw;
+}
+.dashboard-view .dashboard-section:nth-child(2) .carousel-container {
+  width: 100%;
+  height: 85%;
   padding: 0 0 0 2vw;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
 }
-.dashboard-view .dashboard-section:nth-child(2) sl-carousel {
+.dashboard-view .dashboard-section:nth-child(2) .carousel-container sl-carousel {
   width: 83%;
-  height: 80%;
+  height: 95%;
 }
-.dashboard-view .dashboard-section:nth-child(2) sl-icon {
+.dashboard-view .dashboard-section:nth-child(2) .carousel-container sl-icon {
   color: #225560;
   font-size: 100px;
 }
-.dashboard-view .dashboard-section:nth-child(2) .avatar-button {
+.dashboard-view .dashboard-section:nth-child(2) .carousel-container .avatar-button {
   --size: 10vw;
 }
-.dashboard-view .dashboard-section:nth-child(2) .avatar-button sl-icon {
+.dashboard-view .dashboard-section:nth-child(2) .carousel-container .avatar-button sl-icon {
   color: white;
   font-size: 10vw;
 }
 .dashboard-view .dashboard-section:nth-child(3) {
   background-color: #d0cfec;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1%;
+  padding: 0;
+}
+.dashboard-view .dashboard-section:nth-child(3) #dashboard-pets-title {
+  color: black;
+  margin: 0;
+  font-size: 2.5vw;
+}
+.dashboard-view .dashboard-section:nth-child(3) .carousel-container {
+  width: 100%;
+  height: 85%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-end;
+}
+.dashboard-view .dashboard-section:nth-child(3) .carousel-container sl-carousel {
+  width: 100%;
+  height: 95%;
+}
+.dashboard-view .dashboard-section:nth-child(3) .carousel-container sl-icon {
+  color: #310d20;
+  font-size: 80px;
 }
 .dashboard-view #avatar-paw {
   width: 60%;
