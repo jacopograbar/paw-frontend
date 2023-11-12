@@ -4,11 +4,9 @@ import { gotoRoute, anchorRoute } from "../../Router";
 import Auth from "../../Auth";
 import Utils from "../../Utils";
 
-class DashboardView {
+class ShelterDashboardView {
   init() {
-    document.title = "Dashboard";
-    // dummy access level set to 1 for shelter view rendering
-    this.accessLevel = 1;
+    document.title = "Shelter Dashboard";
     this.pets = Utils.createDummyPetObjects();
     this.applications = Utils.createDummyApplicationObjects();
     this.render();
@@ -22,11 +20,7 @@ class DashboardView {
   render() {
     const template = html`
       <paw-header title="Dashboard"></paw-header>
-      <div
-        class=${this.accessLevel === 1
-          ? "shelter dashboard-view"
-          : "seeker dashboard-view"}
-      >
+      <div class="shelter dashboard-view">
         <!-- First Section -->
         <section class="dashboard-section">
           <div class="section-column">
@@ -116,7 +110,7 @@ class DashboardView {
               id="carousel"
               navigation
               mouse-dragging
-              slides-per-page="${this.pets.length === 0 ? 1 : 3}"
+              slides-per-page="${this.applications.length === 0 ? 1 : 3}"
               slides-per-move="1"
             >
               ${this.applications.length === 0
@@ -150,4 +144,4 @@ class DashboardView {
   }
 }
 
-export default new DashboardView();
+export default new ShelterDashboardView();

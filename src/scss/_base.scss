@@ -386,6 +386,7 @@ h3 {
     min-height: 900px;
     width: 100%;
     position: relative;
+    overflow: hidden;
 
     #first-background-img,
     #second-background-img,
@@ -536,4 +537,63 @@ h3 {
 // Seeker Dashboard styling
 .seeker {
   background-color: $paw-turquoise;
+
+  #center-white::part(base) {
+    background-color: $paw-yellow;
+  }
+
+  #center-white{
+    border-color: black;
+  }
+
+  .avatar-button img {
+    width: 70%;
+  }
+
+  #seeker-central-column {
+      justify-content: flex-start;
+      padding-top: 22vh;
+
+      h1{
+        font-size: 3vw;
+      }
+  }
+
+  .dashboard-section:nth-child(2) {
+
+    @include flex-column(center, center);
+    gap: 5%;
+
+    .filter-menu{
+      color: white;
+      width: 100%;
+      @include flex-row(center, center);
+      gap: 7%;
+
+      h3, p{
+        margin: 0;
+      }
+
+      div{
+        @include flex-row(center, center);
+        gap: 10px;
+      }
+    }
+
+    .carousel-container {
+      width: 100%;
+      height: 72%;
+      padding: 0 0 0 2vw;
+      @include flex-row(space-around, center);
+      sl-carousel {
+        width: 100%;
+        height: 110%;
+      }
+
+      sl-icon {
+        font-size: 80px;
+      }
+    }
+  }
+  
 }

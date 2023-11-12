@@ -7479,6 +7479,46 @@ class Utils {
     }];
     return applications;
   }
+  createDummyShelterObjects() {
+    const shelters = [{
+      _id: "1000",
+      name: "First Shelter",
+      email: "first@email.com",
+      state: "NSW",
+      address: "Some St 29, Whoo How",
+      bio: "Some bio for this amazing animal shelter",
+      animals: ["Cats", "Dogs"],
+      profilePic: "https://cdn.vox-cdn.com/thumbor/v9ksZRhgha_kZsrjZkR0iCD8DB8=/0x0:4189x2608/1200x800/filters:focal(1766x853:2436x1523)/cdn.vox-cdn.com/uploads/chorus_image/image/72548864/GettyImages_1401741294.0.jpg"
+    }, {
+      _id: "1001",
+      name: "Second Shelter",
+      email: "second@email.com",
+      state: "NSW",
+      address: "Some Other St 11, Whoo How",
+      bio: "Some bio for this amazing animal shelter",
+      animals: ["Cats", "Dogs"],
+      profilePic: "https://blog.adobe.com/en/publish/2021/10/19/media_16dc563cf8f4cafb81a1011a270c4c7919f09f0b2.png?width=750&format=png&optimize=medium"
+    }, {
+      _id: "1002",
+      name: "Third Shelter",
+      email: "third@email.com",
+      state: "NSW",
+      address: "Check This St 9, Pow Pow",
+      bio: "Some bio for this amazing animal shelter",
+      animals: ["Cats", "Dogs"],
+      profilePic: "https://images.wagwalkingweb.com/media/daily_wag/blog_articles/hero/1651153661.2751184/a-day-in-the-life-of-an-animal-shelter-volunteer.png"
+    }, {
+      _id: "1003",
+      name: "Fourth Shelter",
+      email: "fourth@email.com",
+      state: "VIC",
+      address: "Bundee St 22, Pooville",
+      bio: "Some bio for this amazing animal shelter",
+      animals: ["Cats", "Dogs"],
+      profilePic: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKPolgpou1Vm9LDN1QvMTebttl4qre9KNUMzlhTQQI9hS4qbLY5yYcCGLPsvUBa14AbNY&usqp=CAU"
+    }];
+    return shelters;
+  }
 }
 var _default = exports.default = new Utils();
 },{"gsap":"../node_modules/gsap/index.js"}],"views/pages/home.js":[function(require,module,exports) {
@@ -7611,7 +7651,7 @@ class SignUpFirstView {
   }
 }
 var _default = exports.default = new SignUpFirstView();
-},{"../../App":"App.js","../../Auth":"Auth.js","lit-html":"../node_modules/lit-html/lit-html.js","../../Router":"Router.js","../../Utils":"Utils.js"}],"views/pages/dashboard.js":[function(require,module,exports) {
+},{"../../App":"App.js","../../Auth":"Auth.js","lit-html":"../node_modules/lit-html/lit-html.js","../../Router":"Router.js","../../Utils":"Utils.js"}],"views/pages/shelterDashboard.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7626,11 +7666,9 @@ var _Utils = _interopRequireDefault(require("../../Utils"));
 var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6, _templateObject7;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-class DashboardView {
+class ShelterDashboardView {
   init() {
-    document.title = "Dashboard";
-    // dummy access level set to 1 for shelter view rendering
-    this.accessLevel = 1;
+    document.title = "Shelter Dashboard";
     this.pets = _Utils.default.createDummyPetObjects();
     this.applications = _Utils.default.createDummyApplicationObjects();
     this.render();
@@ -7640,11 +7678,46 @@ class DashboardView {
     console.log("next");
   }
   render() {
-    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n      <paw-header title=\"Dashboard\"></paw-header>\n      <div\n        class=", "\n      >\n        <!-- First Section -->\n        <section class=\"dashboard-section\">\n          <div class=\"section-column\">\n            <sl-avatar class=\"avatar-button\" label=\"Our Pets\">\n              <img\n                id=\"avatar-paw\"\n                slot=\"icon\"\n                src=\"../images/pawprint-white.png\"\n              />\n            </sl-avatar>\n            <h2>Our Pets</h2>\n          </div>\n          <div class=\"section-column\">\n            <sl-avatar class=\"avatar-main\" label=\"Our Pets\">\n              <img\n                id=\"avatar-image\"\n                slot=\"icon\"\n                src=\"https://cdn.vox-cdn.com/thumbor/v9ksZRhgha_kZsrjZkR0iCD8DB8=/0x0:4189x2608/1200x800/filters:focal(1766x853:2436x1523)/cdn.vox-cdn.com/uploads/chorus_image/image/72548864/GettyImages_1401741294.0.jpg\"\n              />\n            </sl-avatar>\n            <div class=\"shelter-info\">\n              <h2>Shelter's Name</h2>\n              <h3>Shelter's Address</h3>\n              <p>Shelter's description</p>\n              <sl-button>Edit Profile</sl-button>\n            </div>\n          </div>\n          <div class=\"section-column\">\n            <sl-avatar class=\"avatar-button\" label=\"Applications\">\n              <sl-icon slot=\"icon\" name=\"file-text\"></sl-icon>\n            </sl-avatar>\n            <h2>Applications</h2>\n          </div>\n          <img\n            id=\"first-background-img\"\n            src=\"../images/pet-shelter-white.png\"\n          />\n        </section>\n        <!-- Second Section -->\n        <section class=\"dashboard-section\">\n          <img id=\"second-background-img\" src=\"../images/pawprint-white.png\" />\n          <h2 id=\"dashboard-pets-title\">Our pets</h2>\n          <div class=\"carousel-container\">\n            <sl-avatar class=\"avatar-button\" label=\"Add more\">\n              <sl-icon slot=\"icon\" name=\"plus\"></sl-icon>\n            </sl-avatar>\n            <sl-carousel\n              id=\"carousel\"\n              navigation\n              mouse-dragging\n              slides-per-page=\"", "\"\n              slides-per-move=\"1\"\n            >\n              ", "\n              <sl-icon slot=\"next-icon\" name=\"caret-right-fill\"></sl-icon>\n              <sl-icon slot=\"previous-icon\" name=\"caret-left-fill\"></sl-icon>\n            </sl-carousel>\n          </div>\n        </section>\n        <section class=\"dashboard-section\">\n          <img id=\"third-background-img\" src=\"../images/applications.png\" />\n          <h2 id=\"dashboard-pets-title\">Current Applications</h2>\n          <div class=\"carousel-container\">\n            <sl-carousel\n              id=\"carousel\"\n              navigation\n              mouse-dragging\n              slides-per-page=\"", "\"\n              slides-per-move=\"1\"\n            >\n              ", "\n              <sl-icon slot=\"next-icon\" name=\"caret-right-fill\"></sl-icon>\n              <sl-icon slot=\"previous-icon\" name=\"caret-left-fill\"></sl-icon>\n            </sl-carousel>\n          </div>\n        </section>\n      </div>\n    "])), this.accessLevel === 1 ? "shelter dashboard-view" : "seeker dashboard-view", this.pets.length === 0 ? 1 : 2.3, this.pets.length === 0 ? (0, _litHtml.html)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n                    <sl-spinner\n                      style=\"font-size: 7vw; --stroke-width: 1vw;\"\n                    ></sl-spinner>\n                  "]))) : (0, _litHtml.html)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n                    ", "\n                  "])), this.pets.map(pet => (0, _litHtml.html)(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n                        <sl-carousel-item>\n                          <paw-petcard\n                            id=\"", "\"\n                            name=\"", "\"\n                            petType=\"", "\"\n                            breed=\"", "\"\n                            image=\"", "\"\n                            gender=\"", "\"\n                            age=\"", "\"\n                          ></paw-petcard>\n                        </sl-carousel-item>\n                      "])), pet._id, pet.name, pet.petType, pet.breed, pet.images[0], pet.gender, pet.age))), this.pets.length === 0 ? 1 : 3, this.applications.length === 0 ? (0, _litHtml.html)(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n                    <sl-spinner\n                      style=\"font-size: 7vw; --stroke-width: 1vw;\"\n                    ></sl-spinner>\n                  "]))) : (0, _litHtml.html)(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["\n                    ", "\n                  "])), this.applications.map(application => (0, _litHtml.html)(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["\n                        <sl-carousel-item>\n                          <paw-applicationcard\n                            id=\"", "\"\n                            date=\"", "\"\n                            pet=\"", "\"\n                            applicant=\"", "\"\n                          ></paw-applicationcard>\n                        </sl-carousel-item>\n                      "])), application._id, application.date, JSON.stringify(application.pet), JSON.stringify(application.adopter)))));
+    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n      <paw-header title=\"Dashboard\"></paw-header>\n      <div class=\"shelter dashboard-view\">\n        <!-- First Section -->\n        <section class=\"dashboard-section\">\n          <div class=\"section-column\">\n            <sl-avatar class=\"avatar-button\" label=\"Our Pets\">\n              <img\n                id=\"avatar-paw\"\n                slot=\"icon\"\n                src=\"../images/pawprint-white.png\"\n              />\n            </sl-avatar>\n            <h2>Our Pets</h2>\n          </div>\n          <div class=\"section-column\">\n            <sl-avatar class=\"avatar-main\" label=\"Our Pets\">\n              <img\n                id=\"avatar-image\"\n                slot=\"icon\"\n                src=\"https://cdn.vox-cdn.com/thumbor/v9ksZRhgha_kZsrjZkR0iCD8DB8=/0x0:4189x2608/1200x800/filters:focal(1766x853:2436x1523)/cdn.vox-cdn.com/uploads/chorus_image/image/72548864/GettyImages_1401741294.0.jpg\"\n              />\n            </sl-avatar>\n            <div class=\"shelter-info\">\n              <h2>Shelter's Name</h2>\n              <h3>Shelter's Address</h3>\n              <p>Shelter's description</p>\n              <sl-button>Edit Profile</sl-button>\n            </div>\n          </div>\n          <div class=\"section-column\">\n            <sl-avatar class=\"avatar-button\" label=\"Applications\">\n              <sl-icon slot=\"icon\" name=\"file-text\"></sl-icon>\n            </sl-avatar>\n            <h2>Applications</h2>\n          </div>\n          <img\n            id=\"first-background-img\"\n            src=\"../images/pet-shelter-white.png\"\n          />\n        </section>\n        <!-- Second Section -->\n        <section class=\"dashboard-section\">\n          <img id=\"second-background-img\" src=\"../images/pawprint-white.png\" />\n          <h2 id=\"dashboard-pets-title\">Our pets</h2>\n          <div class=\"carousel-container\">\n            <sl-avatar class=\"avatar-button\" label=\"Add more\">\n              <sl-icon slot=\"icon\" name=\"plus\"></sl-icon>\n            </sl-avatar>\n            <sl-carousel\n              id=\"carousel\"\n              navigation\n              mouse-dragging\n              slides-per-page=\"", "\"\n              slides-per-move=\"1\"\n            >\n              ", "\n              <sl-icon slot=\"next-icon\" name=\"caret-right-fill\"></sl-icon>\n              <sl-icon slot=\"previous-icon\" name=\"caret-left-fill\"></sl-icon>\n            </sl-carousel>\n          </div>\n        </section>\n        <section class=\"dashboard-section\">\n          <img id=\"third-background-img\" src=\"../images/applications.png\" />\n          <h2 id=\"dashboard-pets-title\">Current Applications</h2>\n          <div class=\"carousel-container\">\n            <sl-carousel\n              id=\"carousel\"\n              navigation\n              mouse-dragging\n              slides-per-page=\"", "\"\n              slides-per-move=\"1\"\n            >\n              ", "\n              <sl-icon slot=\"next-icon\" name=\"caret-right-fill\"></sl-icon>\n              <sl-icon slot=\"previous-icon\" name=\"caret-left-fill\"></sl-icon>\n            </sl-carousel>\n          </div>\n        </section>\n      </div>\n    "])), this.pets.length === 0 ? 1 : 2.3, this.pets.length === 0 ? (0, _litHtml.html)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n                    <sl-spinner\n                      style=\"font-size: 7vw; --stroke-width: 1vw;\"\n                    ></sl-spinner>\n                  "]))) : (0, _litHtml.html)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n                    ", "\n                  "])), this.pets.map(pet => (0, _litHtml.html)(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n                        <sl-carousel-item>\n                          <paw-petcard\n                            id=\"", "\"\n                            name=\"", "\"\n                            petType=\"", "\"\n                            breed=\"", "\"\n                            image=\"", "\"\n                            gender=\"", "\"\n                            age=\"", "\"\n                          ></paw-petcard>\n                        </sl-carousel-item>\n                      "])), pet._id, pet.name, pet.petType, pet.breed, pet.images[0], pet.gender, pet.age))), this.applications.length === 0 ? 1 : 3, this.applications.length === 0 ? (0, _litHtml.html)(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n                    <sl-spinner\n                      style=\"font-size: 7vw; --stroke-width: 1vw;\"\n                    ></sl-spinner>\n                  "]))) : (0, _litHtml.html)(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["\n                    ", "\n                  "])), this.applications.map(application => (0, _litHtml.html)(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["\n                        <sl-carousel-item>\n                          <paw-applicationcard\n                            id=\"", "\"\n                            date=\"", "\"\n                            pet=\"", "\"\n                            applicant=\"", "\"\n                          ></paw-applicationcard>\n                        </sl-carousel-item>\n                      "])), application._id, application.date, JSON.stringify(application.pet), JSON.stringify(application.adopter)))));
     (0, _litHtml.render)(template, _App.default.rootEl);
   }
 }
-var _default = exports.default = new DashboardView();
+var _default = exports.default = new ShelterDashboardView();
+},{"../../App":"App.js","lit-html":"../node_modules/lit-html/lit-html.js","../../Router":"Router.js","../../Auth":"Auth.js","../../Utils":"Utils.js"}],"views/pages/seekerDashboard.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _App = _interopRequireDefault(require("../../App"));
+var _litHtml = require("lit-html");
+var _Router = require("../../Router");
+var _Auth = _interopRequireDefault(require("../../Auth"));
+var _Utils = _interopRequireDefault(require("../../Utils"));
+var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6, _templateObject7;
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+class SeekerDashboardView {
+  init() {
+    document.title = "Seeker Dashboard";
+    this.pets = _Utils.default.createDummyPetObjects();
+    this.shelters = _Utils.default.createDummyShelterObjects();
+    this.render();
+    _Utils.default.pageIntroAnim();
+  }
+  handleNext() {
+    console.log("next");
+  }
+  handleFilter() {
+    console.log("filter");
+  }
+  render() {
+    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n      <paw-header title=\"Dashboard\"></paw-header>\n      <div class=\"seeker dashboard-view\">\n        <!-- First Section -->\n        <section class=\"dashboard-section\">\n          <div class=\"section-column\">\n            <sl-avatar class=\"avatar-button\" label=\"Browse cats\">\n              <img slot=\"icon\" src=\"../images/cat-white.png\" />\n            </sl-avatar>\n            <h2>Our Pets</h2>\n          </div>\n          <div class=\"section-column\" id=\"seeker-central-column\">\n            <h1>I am looking for...</h1>\n            <sl-avatar id=\"center-white\" class=\"avatar-button\" label=\"Our Pets\">\n              <img\n                id=\"avatar-image\"\n                slot=\"icon\"\n                src=\"../images/pet-shelter-black.png\"\n              />\n            </sl-avatar>\n            <h2>Shelters</h2>\n          </div>\n          <div class=\"section-column\">\n            <sl-avatar class=\"avatar-button\" label=\"Browse dogs\">\n              <img\n                id=\"avatar-image\"\n                slot=\"icon\"\n                src=\"../images/dog-white.png\"\n              />\n            </sl-avatar>\n            <h2>Applications</h2>\n          </div>\n          <img id=\"first-background-img\" src=\"../images/pawprint-white.png\" />\n        </section>\n        <!-- Second Section -->\n        <section class=\"dashboard-section\">\n          <img id=\"second-background-img\" src=\"../images/cat-white.png\" />\n          <h2 id=\"dashboard-pets-title\">Find a pet</h2>\n          <div class=\"filter-menu\">\n            <h3>Filter by</h3>\n            <div>\n              <p>Pet type</p>\n              <sl-button\n                class=\"filter-button\"\n                size=\"small\"\n                data-field=\"gender\"\n                data-match=\"m\"\n                @click=", "\n                >Cat</sl-button\n              >\n              <sl-button\n                class=\"filter-button\"\n                size=\"small\"\n                data-field=\"gender\"\n                data-match=\"f\"\n                @click=", "\n                >Dog</sl-button\n              >\n              <sl-button\n                class=\"filter-button\"\n                size=\"small\"\n                data-field=\"gender\"\n                data-match=\"u\"\n                @click=", "\n                >All pets</sl-button\n              >\n            </div>\n            <div>\n              <p>State</p>\n              <sl-button\n                class=\"filter-button\"\n                size=\"small\"\n                data-field=\"gender\"\n                data-match=\"m\"\n                @click=", "\n                >NSW</sl-button\n              >\n              <sl-button\n                class=\"filter-button\"\n                size=\"small\"\n                data-field=\"gender\"\n                data-match=\"f\"\n                @click=", "\n                >VIC</sl-button\n              >\n              <sl-button\n                class=\"filter-button\"\n                size=\"small\"\n                data-field=\"gender\"\n                data-match=\"u\"\n                @click=", "\n                >SA</sl-button\n              >\n              <sl-button\n                class=\"filter-button\"\n                size=\"small\"\n                data-field=\"gender\"\n                data-match=\"m\"\n                @click=", "\n                >QLD</sl-button\n              >\n              <sl-button\n                class=\"filter-button\"\n                size=\"small\"\n                data-field=\"gender\"\n                data-match=\"f\"\n                @click=", "\n                >ACT</sl-button\n              >\n              <sl-button\n                class=\"filter-button\"\n                size=\"small\"\n                data-field=\"gender\"\n                data-match=\"u\"\n                @click=", "\n                >NT</sl-button\n              >\n              <sl-button\n                class=\"filter-button\"\n                size=\"small\"\n                data-field=\"gender\"\n                data-match=\"u\"\n                @click=", "\n                >TAS</sl-button\n              >\n              <sl-button\n                class=\"filter-button\"\n                size=\"small\"\n                data-field=\"gender\"\n                data-match=\"u\"\n                @click=", "\n                >WA</sl-button\n              >\n            </div>\n          </div>\n          <div class=\"carousel-container\">\n            <sl-carousel\n              id=\"carousel\"\n              navigation\n              mouse-dragging\n              slides-per-page=\"", "\"\n              slides-per-move=\"1\"\n            >\n              ", "\n              <sl-icon slot=\"next-icon\" name=\"caret-right-fill\"></sl-icon>\n              <sl-icon slot=\"previous-icon\" name=\"caret-left-fill\"></sl-icon>\n            </sl-carousel>\n          </div>\n        </section>\n        <section class=\"dashboard-section\">\n          <img\n            id=\"third-background-img\"\n            src=\"../images/pet-shelter-black.png\"\n          />\n          <h2 id=\"dashboard-pets-title\">Browse Shelters</h2>\n          <div class=\"carousel-container\">\n            <sl-carousel\n              id=\"carousel\"\n              navigation\n              mouse-dragging\n              slides-per-page=\"", "\"\n              slides-per-move=\"1\"\n            >\n              ", "\n              <sl-icon slot=\"next-icon\" name=\"caret-right-fill\"></sl-icon>\n              <sl-icon slot=\"previous-icon\" name=\"caret-left-fill\"></sl-icon>\n            </sl-carousel>\n          </div>\n        </section>\n      </div>\n    "])), this.handleFilter.bind(this), this.handleFilter.bind(this), this.handleFilter.bind(this), this.handleFilter.bind(this), this.handleFilter.bind(this), this.handleFilter.bind(this), this.handleFilter.bind(this), this.handleFilter.bind(this), this.handleFilter.bind(this), this.handleFilter.bind(this), this.handleFilter.bind(this), this.pets.length === 0 ? 1 : 3, this.pets.length === 0 ? (0, _litHtml.html)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n                    <sl-spinner\n                      style=\"font-size: 7vw; --stroke-width: 1vw;\"\n                    ></sl-spinner>\n                  "]))) : (0, _litHtml.html)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n                    ", "\n                  "])), this.pets.map(pet => (0, _litHtml.html)(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n                        <sl-carousel-item>\n                          <paw-petcard\n                            id=\"", "\"\n                            name=\"", "\"\n                            petType=\"", "\"\n                            breed=\"", "\"\n                            image=\"", "\"\n                            gender=\"", "\"\n                            age=\"", "\"\n                          ></paw-petcard>\n                        </sl-carousel-item>\n                      "])), pet._id, pet.name, pet.petType, pet.breed, pet.images[0], pet.gender, pet.age))), this.shelters.length === 0 ? 1 : 3, this.shelters.length === 0 ? (0, _litHtml.html)(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n                    <sl-spinner\n                      style=\"font-size: 7vw; --stroke-width: 1vw;\"\n                    ></sl-spinner>\n                  "]))) : (0, _litHtml.html)(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["\n                    ", "\n                  "])), this.shelters.map(shelter => (0, _litHtml.html)(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["\n                        <sl-carousel-item>\n                          <paw-sheltercard\n                            id=\"", "\"\n                            name=\"", "\"\n                            image=\"", "\"\n                            state=\"", "\"\n                            address=\"", "\"\n                            bio=\"", "\"\n                          ></paw-sheltercard>\n                        </sl-carousel-item>\n                      "])), shelter._id, shelter.name, shelter.profilePic, shelter.state, shelter.address, shelter.bio))));
+    (0, _litHtml.render)(template, _App.default.rootEl);
+  }
+}
+var _default = exports.default = new SeekerDashboardView();
 },{"../../App":"App.js","lit-html":"../node_modules/lit-html/lit-html.js","../../Router":"Router.js","../../Auth":"Auth.js","../../Utils":"Utils.js"}],"views/pages/signupShelter.js":[function(require,module,exports) {
 "use strict";
 
@@ -7820,7 +7893,8 @@ var _home = _interopRequireDefault(require("./views/pages/home"));
 var _ = _interopRequireDefault(require("./views/pages/404"));
 var _signin = _interopRequireDefault(require("./views/pages/signin"));
 var _signupFirst = _interopRequireDefault(require("./views/pages/signupFirst"));
-var _dashboard = _interopRequireDefault(require("./views/pages/dashboard"));
+var _shelterDashboard = _interopRequireDefault(require("./views/pages/shelterDashboard"));
+var _seekerDashboard = _interopRequireDefault(require("./views/pages/seekerDashboard"));
 var _signupShelter = _interopRequireDefault(require("./views/pages/signupShelter"));
 var _signupSeeker = _interopRequireDefault(require("./views/pages/signupSeeker"));
 var _guide = _interopRequireDefault(require("./views/pages/guide"));
@@ -7839,7 +7913,8 @@ const routes = {
   '/signup/shelter': _signupShelter.default,
   '/signup/seeker': _signupSeeker.default,
   '/guide': _guide.default,
-  '/dashboard': _dashboard.default,
+  '/dashboard/shelter': _shelterDashboard.default,
+  '/dashboard/seeker': _seekerDashboard.default,
   '/shelter': _shelterPage.default,
   '/pet': _pet.default,
   '/my-applications': _myApplications.default
@@ -7888,7 +7963,7 @@ function anchorRoute(e) {
   const pathname = e.target.closest('a').pathname;
   AppRouter.gotoRoute(pathname);
 }
-},{"./views/pages/home":"views/pages/home.js","./views/pages/404":"views/pages/404.js","./views/pages/signin":"views/pages/signin.js","./views/pages/signupFirst":"views/pages/signupFirst.js","./views/pages/dashboard":"views/pages/dashboard.js","./views/pages/signupShelter":"views/pages/signupShelter.js","./views/pages/signupSeeker":"views/pages/signupSeeker.js","./views/pages/guide":"views/pages/guide.js","./views/pages/shelterPage":"views/pages/shelterPage.js","./views/pages/pet":"views/pages/pet.js","./views/pages/myApplications":"views/pages/myApplications.js"}],"App.js":[function(require,module,exports) {
+},{"./views/pages/home":"views/pages/home.js","./views/pages/404":"views/pages/404.js","./views/pages/signin":"views/pages/signin.js","./views/pages/signupFirst":"views/pages/signupFirst.js","./views/pages/shelterDashboard":"views/pages/shelterDashboard.js","./views/pages/seekerDashboard":"views/pages/seekerDashboard.js","./views/pages/signupShelter":"views/pages/signupShelter.js","./views/pages/signupSeeker":"views/pages/signupSeeker.js","./views/pages/guide":"views/pages/guide.js","./views/pages/shelterPage":"views/pages/shelterPage.js","./views/pages/pet":"views/pages/pet.js","./views/pages/myApplications":"views/pages/myApplications.js"}],"App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -9631,6 +9706,55 @@ customElements.define("paw-applicationcard", class ApplicationCard extends _litE
     return (0, _litElement.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n        <style>\n          .application-card {\n            width: 22vw;\n            height: 65vh;\n            min-height: 550px;\n            background-color:#f8b102;\n            border-radius: 40px;\n            position: relative;\n          }\n\n          .card-body {\n            height: 95%;\n            width: 100%;\n            display: flex;\n            flex-direction: column;\n            justify-content: flex-end;\n            align-items: center;\n            gap: 2%;\n            padding-bottom: 5%;\n          }\n\n          .card-body p{\n            margin: 0;\n          }\n\n          .card-body h2{\n            margin: 0 0 3% 0;\n          }\n\n\n          .card-image{\n            position: absolute;\n            border-radius: 50%;\n            overflow: hidden;\n            border: solid 1.5vw #f8b102;\n          }\n\n          .card-image img{\n            width: 100%;\n            height: 100%;\n            object-fit: cover;\n          }\n\n          .pet{\n            width: 11vw;\n            height: 11vw;\n            right: -10%;\n            top: 18%;\n          }\n\n          .applicant{\n            width: 18vw;\n            height: 18vw;\n            top: -10%;\n            left: -10%;\n          }\n\n          sl-button::part(base) {\n            background-color: black;\n            color: white;\n            border: 0;\n            box-shadow: 0 2px 10px #0002;\n            margin-top: 30%;\n          }\n\n          sl-button::part(base):hover {\n            color: #f8b102;\n          }\n        </style>\n        <div class=\"application-card\">\n          <div class=\"card-image applicant\">\n            <img src=\"", "\" alt=\"", "\" />\n          </div>\n          <div class=\"card-image pet\">\n            <img src=\"", "\" alt=\"", "\" />\n          </div>\n          <div class=\"card-body\">\n            <h2>Application ID: ", "</h2>\n            <p>", " x ", "</p>\n            <p>Lodged on ", "</p>\n            <sl-button @click=", ">Review</sl-button>\n          </div>\n          </div>\n        </div>\n      "])), this.applicant.image, this.applicant.name, this.pet.images[0], this.pet.name, this.id, this.applicant.name, this.pet.name, this.date, this.redirectToPetPage.bind(this));
   }
 });
+},{"@polymer/lit-element":"../node_modules/@polymer/lit-element/lit-element.js","lit-html":"../node_modules/lit-html/lit-html.js","../Router":"Router.js","../Auth":"Auth.js","../App":"App.js","../UserAPI":"UserAPI.js","../Toast":"Toast.js"}],"components/paw-sheltercard.js":[function(require,module,exports) {
+"use strict";
+
+var _litElement = require("@polymer/lit-element");
+var _litHtml = require("lit-html");
+var _Router = require("../Router");
+var _Auth = _interopRequireDefault(require("../Auth"));
+var _App = _interopRequireDefault(require("../App"));
+var _UserAPI = _interopRequireDefault(require("../UserAPI"));
+var _Toast = _interopRequireDefault(require("../Toast"));
+var _templateObject;
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+customElements.define("paw-sheltercard", class ShelterCard extends _litElement.LitElement {
+  constructor() {
+    super();
+  }
+  static get properties() {
+    return {
+      id: {
+        type: String
+      },
+      image: {
+        type: String
+      },
+      name: {
+        type: String
+      },
+      state: {
+        type: String
+      },
+      address: {
+        type: String
+      },
+      bio: {
+        type: String
+      }
+    };
+  }
+  firstUpdated() {
+    super.firstUpdated();
+  }
+  redirectToPetPage() {
+    alert("test");
+  }
+  render() {
+    return (0, _litElement.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n        <style>\n          .shelter-card {\n            width: 22vw;\n            height: 65vh;\n            min-height: 550px;\n            background-color:#f8b102;\n            border-radius: 40px;\n            position: relative;\n          }\n\n          .card-body {\n            height: 90%;\n            width: 96%;\n            display: flex;\n            flex-direction: column;\n            justify-content: flex-end;\n            align-items: center;\n            text-align: center;\n            gap: 5%;\n            padding: 5% 2%;\n          }\n\n          .card-body p {\n            margin: 0;\n          }\n\n          .card-body h2 {\n            margin: 0 0 3% 0;\n          }\n\n          .card-image {\n            position: absolute;\n            border-radius: 50%;\n            overflow: hidden;\n            border: solid 1.5vw #f8b102;\n            width: 15vw;\n            height: 15vw;\n            right: -10%;\n            top: -6%;\n          }\n\n          .card-image img {\n            width: 100%;\n            height: 100%;\n            object-fit: cover;\n          }\n\n          sl-button::part(base) {\n            background-color: black;\n            color: white;\n            border: 0;\n            box-shadow: 0 2px 10px #0002;\n            margin-top: 30%;\n          }\n\n          sl-button::part(base):hover {\n            color: #f8b102;\n          }\n\n          #location-pin{\n            width: 20px;\n            margin-right: 5px;\n          }\n        </style>\n        <div class=\"shelter-card\">\n          <div class=\"card-image\">\n            <img src=\"", "\" alt=\"", "\" />\n          </div>\n          <div class=\"card-body\">\n            <h2>", "</h2>\n            <p><img src=\"../images/location-pin.png\" id=\"location-pin\" alt=\"Location Pin\" />", ", ", "</p>\n            <p>", "</p>\n            <sl-button @click=", "\n              >View</sl-button\n            >\n          </div>\n        </div>\n      "])), this.image, this.name, this.name, this.address, this.state, this.bio, this.redirectToPetPage.bind(this));
+  }
+});
 },{"@polymer/lit-element":"../node_modules/@polymer/lit-element/lit-element.js","lit-html":"../node_modules/lit-html/lit-html.js","../Router":"Router.js","../Auth":"Auth.js","../App":"App.js","../UserAPI":"UserAPI.js","../Toast":"Toast.js"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 function getBundleURLCached() {
@@ -9693,6 +9817,7 @@ var _App = _interopRequireDefault(require("./App.js"));
 require("./components/paw-header.js");
 require("./components/paw-petcard.js");
 require("./components/paw-applicationcard.js");
+require("./components/paw-sheltercard.js");
 require("./scss/master.scss");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 // components (custom web components)
@@ -9703,7 +9828,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 document.addEventListener('DOMContentLoaded', () => {
   _App.default.init();
 });
-},{"./App.js":"App.js","./components/paw-header.js":"components/paw-header.js","./components/paw-petcard.js":"components/paw-petcard.js","./components/paw-applicationcard.js":"components/paw-applicationcard.js","./scss/master.scss":"scss/master.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./App.js":"App.js","./components/paw-header.js":"components/paw-header.js","./components/paw-petcard.js":"components/paw-petcard.js","./components/paw-applicationcard.js":"components/paw-applicationcard.js","./components/paw-sheltercard.js":"components/paw-sheltercard.js","./scss/master.scss":"scss/master.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -9728,7 +9853,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50362" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56464" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

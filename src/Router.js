@@ -3,7 +3,8 @@ import homeView from './views/pages/home'
 import fourOFourView from './views/pages/404'
 import signinView from './views/pages/signin'
 import signupFirstView from './views/pages/signupFirst'
-import dashboardView from './views/pages/dashboard'
+import shelterDashboardView from './views/pages/shelterDashboard'
+import seekerDashboardView from './views/pages/seekerDashboard'
 import signupShelterView from './views/pages/signupShelter'
 import signupSeekerView from './views/pages/signupSeeker'
 import guideView from './views/pages/guide'
@@ -20,7 +21,8 @@ const routes = {
 	'/signup/shelter': signupShelterView,
 	'/signup/seeker': signupSeekerView,
 	'/guide': guideView,
-	'/dashboard': dashboardView,
+	'/dashboard/shelter': shelterDashboardView,
+	'/dashboard/seeker': seekerDashboardView,
 	'/shelter': shelterPageView,
 	'/pet': petView,
 	'/my-applications': myApplicationsView

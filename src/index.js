@@ -4,6 +4,7 @@ import App from './App.js'
 import './components/paw-header.js'
 import './components/paw-petcard.js'
 import './components/paw-applicationcard.js'
+import './components/paw-sheltercard.js'
 
 // styles
 import './scss/master.scss'
