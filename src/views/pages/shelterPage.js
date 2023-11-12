@@ -13,12 +13,16 @@ class ShelterPageView {
 
   render(){
     const template = html`
-      <va-app-header title="Shelter Page" user="${JSON.stringify(Auth.currentUser)}"></va-app-header>
-      <div class="page-content">        
-        <h1>Shelter Page</h1>
-        <p>Page content ...</p>
-        
-      </div>      
+      <paw-header title="Shelter Page"></paw-header>
+      <div class="shelter-page-view layout-page">
+        <!-- First Section -->
+        <section class="shelter-page-section layout-section">
+        <img id="first-background-img" src="../images/pawprint-white.png" />
+        </section>
+        <section class="shelter-page-section layout-section">
+        <img id="first-background-img" src="../images/pawprint-white.png" />
+        </section>
+      </div>    
     `
     render(template, App.rootEl)
   }

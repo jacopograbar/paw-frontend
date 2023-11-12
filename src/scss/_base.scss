@@ -542,7 +542,7 @@ h3 {
     background-color: $paw-yellow;
   }
 
-  #center-white{
+  #center-white {
     border-color: black;
   }
 
@@ -551,30 +551,30 @@ h3 {
   }
 
   #seeker-central-column {
-      justify-content: flex-start;
-      padding-top: 22vh;
+    justify-content: flex-start;
+    padding-top: 22vh;
 
-      h1{
-        font-size: 3vw;
-      }
+    h1 {
+      font-size: 3vw;
+    }
   }
 
   .dashboard-section:nth-child(2) {
-
     @include flex-column(center, center);
     gap: 5%;
 
-    .filter-menu{
+    .filter-menu {
       color: white;
       width: 100%;
       @include flex-row(center, center);
       gap: 7%;
 
-      h3, p{
+      h3,
+      p {
         margin: 0;
       }
 
-      div{
+      div {
         @include flex-row(center, center);
         gap: 10px;
       }
@@ -595,5 +595,64 @@ h3 {
       }
     }
   }
-  
+}
+
+// ************************************ PET & SHELTER PAGE COMMON STYLING *********************************** //
+.layout-page {
+  width: 100%;
+  height: 200vh;
+  min-height: 1800px;
+  position: relative;
+  overflow: hidden;
+
+  .layout-section {
+    height: 100vh;
+    min-height: 900px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+
+    &:nth-child(2) {
+      background-color: black;
+    }
+  }
+
+  #first-background-img,
+  #second-background-img {
+    position: absolute;
+    z-index: 0;
+    opacity: 0.05;
+    height: 110%;
+  }
+
+  #first-background-img {
+    left: -3%;
+    bottom: -20%;
+  }
+
+  #second-background-img {
+    right: -10%;
+    bottom: -5%;
+    opacity: 0.15;
+  }
+}
+
+// ************************************ PET PAGE *********************************** //
+
+.pet-page-view {
+  .pet-page-section {
+    &:nth-child(1) {
+      background-color: $paw-turquoise;
+    }
+  }
+}
+
+// ************************************ SHELTER PAGE *********************************** //
+
+.shelter-page-view {
+  .shelter-page-section {
+    &:nth-child(1) {
+      background-color: $paw-bordeaux;
+    }
+  }
 }

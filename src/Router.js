@@ -23,7 +23,6 @@ const routes = {
   "/guide": guideView,
   "/dashboard/shelter": shelterDashboardView,
   "/dashboard/seeker": seekerDashboardView,
-  "/shelter": shelterPageView,
   "/my-applications": myApplicationsView,
 };
 
@@ -46,7 +45,6 @@ class Router {
     // extract path without params
     const pathname = fullPathname.split("?")[0];
     const route = this.routes[pathname];
-    console.log(pathname.split("/")[2]);
 
     if (route) {
       // if route exists, run init() of the view
@@ -58,7 +56,14 @@ class Router {
     ) {
       // special handling for pet view routing
       petView.init();
-    } else {
+    } else if (
+      pathname.split("/")[1] === "shelter" &&
+      pathname.split("/")[2] &&
+      !pathname.split("/")[3]
+    ) {
+      // special handling for shelter view routing
+      shelterPageView.init();
+    }  else {
       // show 404 view instead
       this.routes["404"].init();
     }
