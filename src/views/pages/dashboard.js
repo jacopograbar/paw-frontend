@@ -9,6 +9,7 @@ class DashboardView {
     document.title = "Dashboard";
     // dummy access level set to 1 for shelter view rendering
     this.accessLevel = 1;
+    this.pets = Utils.createDummyPetObjects();
     this.render();
     Utils.pageIntroAnim();
   }
@@ -73,87 +74,30 @@ class DashboardView {
             id="carousel"
             navigation
             mouse-dragging
-            slides-per-page="2"
-            slides-per-move="2"
+            slides-per-page= "${this.pets.length === 0 ? 1 : 2.3}"
+            slides-per-move="1"
           >
-            <sl-icon slot="next-icon" name="gear"></sl-icon>
-            <sl-icon slot="previous-icon" name="gear"></sl-icon>
-            <sl-carousel-item>
-              <sl-card class="card-overview">
-                <img
-                  slot="image"
-                  src="https://images.unsplash.com/photo-1559209172-0ff8f6d49ff7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80"
-                  alt="A kitten sits patiently between a terracotta pot and decorative grasses."
-                />
-
-                <strong>Mittens</strong><br />
-                This kitten is as cute as he is playful. Bring him home
-                today!<br />
-                <small>6 weeks old</small>
-
-                <div slot="footer">
-                  <sl-button variant="primary" pill>More Info</sl-button>
-                  <sl-rating></sl-rating>
-                </div>
-              </sl-card>
-            </sl-carousel-item>
-            <sl-carousel-item>
-              <sl-card class="card-overview">
-                <img
-                  slot="image"
-                  src="https://images.unsplash.com/photo-1559209172-0ff8f6d49ff7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80"
-                  alt="A kitten sits patiently between a terracotta pot and decorative grasses."
-                />
-
-                <strong>Mittens</strong><br />
-                This kitten is as cute as he is playful. Bring him home
-                today!<br />
-                <small>6 weeks old</small>
-
-                <div slot="footer">
-                  <sl-button variant="primary" pill>More Info</sl-button>
-                  <sl-rating></sl-rating>
-                </div>
-              </sl-card>
-            </sl-carousel-item>
-            <sl-carousel-item>
-              <sl-card class="card-overview">
-                <img
-                  slot="image"
-                  src="https://images.unsplash.com/photo-1559209172-0ff8f6d49ff7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80"
-                  alt="A kitten sits patiently between a terracotta pot and decorative grasses."
-                />
-
-                <strong>Mittens</strong><br />
-                This kitten is as cute as he is playful. Bring him home
-                today!<br />
-                <small>6 weeks old</small>
-
-                <div slot="footer">
-                  <sl-button variant="primary" pill>More Info</sl-button>
-                  <sl-rating></sl-rating>
-                </div>
-              </sl-card>
-            </sl-carousel-item>
-            <sl-carousel-item>
-              <sl-card class="card-overview">
-                <img
-                  slot="image"
-                  src="https://images.unsplash.com/photo-1559209172-0ff8f6d49ff7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80"
-                  alt="A kitten sits patiently between a terracotta pot and decorative grasses."
-                />
-
-                <strong>Mittens</strong><br />
-                This kitten is as cute as he is playful. Bring him home
-                today!<br />
-                <small>6 weeks old</small>
-
-                <div slot="footer">
-                  <sl-button variant="primary" pill>More Info</sl-button>
-                  <sl-rating></sl-rating>
-                </div>
-              </sl-card>
-            </sl-carousel-item>
+            ${this.pets.length === 0
+              ? html` <sl-spinner style="font-size: 7vw; --stroke-width: 1vw;"></sl-spinner> `
+              : html`
+                  ${this.pets.map(
+                    (pet) => html`
+                      <sl-carousel-item>
+                        <paw-petcard
+                          id="${pet._id}"
+                          name="${pet.name}"
+                          petType="${pet.petType}"
+                          breed="${pet.breed}"
+                          image="${pet.images[0]}"
+                          gender="${pet.gender}"
+                          age="${pet.age}"
+                        ></paw-petcard>
+                      </sl-carousel-item>
+                    `
+                  )}
+                `}
+            <sl-icon slot="next-icon" name="caret-right-fill"></sl-icon>
+            <sl-icon slot="previous-icon" name="caret-left-fill"></sl-icon>
           </sl-carousel>
         </section>
         <section class="dashboard-section">

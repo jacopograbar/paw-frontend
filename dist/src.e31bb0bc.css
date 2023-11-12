@@ -380,11 +380,13 @@ h3 {
 .dashboard-view {
   width: 100%;
   height: 300vh;
+  min-height: 2700px;
   position: relative;
   overflow: hidden;
 }
 .dashboard-view .dashboard-section {
   height: 100vh;
+  min-height: 900px;
   width: 100%;
   position: relative;
 }
@@ -397,15 +399,16 @@ h3 {
   height: 110%;
 }
 .dashboard-view .dashboard-section #first-background-img {
-  left: -3%;
+  right: -3%;
   bottom: -10%;
 }
 .dashboard-view .dashboard-section #second-background-img {
-  right: -3%;
+  left: -3%;
   bottom: -5%;
+  opacity: 0.08;
 }
 .dashboard-view .dashboard-section #third-background-img {
-  left: -3%;
+  right: -3%;
   bottom: -15%;
 }
 .dashboard-view .dashboard-section:nth-child(1) {
@@ -436,18 +439,26 @@ h3 {
 }
 .dashboard-view .dashboard-section:nth-child(2) {
   background-color: black;
+  padding: 0 0 0 2vw;
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: space-around;
   align-items: center;
-  gap: 5%;
 }
 .dashboard-view .dashboard-section:nth-child(2) sl-carousel {
-  width: 70%;
+  width: 83%;
   height: 80%;
 }
 .dashboard-view .dashboard-section:nth-child(2) sl-icon {
+  color: #225560;
+  font-size: 100px;
+}
+.dashboard-view .dashboard-section:nth-child(2) .avatar-button {
+  --size: 10vw;
+}
+.dashboard-view .dashboard-section:nth-child(2) .avatar-button sl-icon {
   color: white;
+  font-size: 10vw;
 }
 .dashboard-view .dashboard-section:nth-child(3) {
   background-color: #d0cfec;

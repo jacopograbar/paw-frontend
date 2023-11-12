@@ -7215,7 +7215,7 @@ class Utils {
     }
   }
   pageIntroAnim() {
-    const pageContent = document.querySelector('.page-content');
+    const pageContent = document.querySelector(".page-content");
     if (!pageContent) return;
     _gsap.default.fromTo(pageContent, {
       opacity: 0,
@@ -7223,9 +7223,80 @@ class Utils {
     }, {
       opacity: 1,
       y: 0,
-      ease: 'power2.out',
+      ease: "power2.out",
       duration: 0.3
     });
+  }
+  createDummyPetObjects() {
+    const pets = [{
+      _id: "01",
+      name: "Rugas",
+      petType: "cat",
+      breed: "Sphynx",
+      age: "2",
+      gender: "M",
+      vaccinated: true,
+      friendliness: "4",
+      shelter: {
+        id: "100",
+        name: "This Shelter"
+      },
+      diseases: [],
+      images: ["https://i.ebayimg.com/images/g/LJUAAOSwFcVfHrSa/s-l1200.webp"],
+      notes: "Great pet"
+    }, {
+      _id: "02",
+      name: "Pelosa",
+      petType: "cat",
+      breed: "Bengal",
+      age: "1",
+      gender: "F",
+      vaccinated: true,
+      friendliness: "3",
+      shelter: {
+        id: "100",
+        name: "This Shelter"
+      },
+      diseases: [],
+      images: ["https://cats.com/wp-content/uploads/2020/10/Bengal-cat-like-a-leopard-sneaks.jpg"],
+      notes: "So stunning"
+    }, {
+      _id: "03",
+      name: "Antares",
+      petType: "dog",
+      breed: "Border Collie",
+      age: "5",
+      gender: "M",
+      vaccinated: true,
+      friendliness: "5",
+      shelter: {
+        id: "100",
+        name: "This Shelter"
+      },
+      diseases: [],
+      images: ["https://www.rover.com/blog/wp-content/uploads/border-collie-min-1024x681.jpg"],
+      notes: "Handsome boi"
+    }];
+    return pets;
+  }
+  createDummyApplicationObjects() {
+    const pets = [{
+      _id: "01",
+      name: "Rugas",
+      petType: "cat",
+      breed: "Sphynx",
+      age: "2",
+      gender: "M",
+      vaccinated: true,
+      friendliness: "4",
+      shelter: {
+        id: "100",
+        name: "This Shelter"
+      },
+      diseases: [],
+      images: ["https://i.ebayimg.com/images/g/LJUAAOSwFcVfHrSa/s-l1200.webp"],
+      notes: "Great pet"
+    }];
   }
 }
 var _default = exports.default = new Utils();
@@ -7371,7 +7442,7 @@ var _litHtml = require("lit-html");
 var _Router = require("../../Router");
 var _Auth = _interopRequireDefault(require("../../Auth"));
 var _Utils = _interopRequireDefault(require("../../Utils"));
-var _templateObject;
+var _templateObject, _templateObject2, _templateObject3, _templateObject4;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 class DashboardView {
@@ -7379,6 +7450,7 @@ class DashboardView {
     document.title = "Dashboard";
     // dummy access level set to 1 for shelter view rendering
     this.accessLevel = 1;
+    this.pets = _Utils.default.createDummyPetObjects();
     this.render();
     _Utils.default.pageIntroAnim();
   }
@@ -7386,7 +7458,7 @@ class DashboardView {
     console.log("next");
   }
   render() {
-    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n      <paw-header title=\"Dashboard\"></paw-header>\n      <div\n        class=", "\n      >\n        <!-- First Section -->\n        <section class=\"dashboard-section\">\n          <div class=\"section-column\">\n            <sl-avatar class=\"avatar-button\" label=\"Our Pets\">\n              <img\n                id=\"avatar-paw\"\n                slot=\"icon\"\n                src=\"../images/pawprint-white.png\"\n              />\n            </sl-avatar>\n            <h2>Our Pets</h2>\n          </div>\n          <div class=\"section-column\">\n            <sl-avatar class=\"avatar-main\" label=\"Our Pets\">\n              <img\n                id=\"avatar-image\"\n                slot=\"icon\"\n                src=\"https://cdn.vox-cdn.com/thumbor/v9ksZRhgha_kZsrjZkR0iCD8DB8=/0x0:4189x2608/1200x800/filters:focal(1766x853:2436x1523)/cdn.vox-cdn.com/uploads/chorus_image/image/72548864/GettyImages_1401741294.0.jpg\"\n              />\n            </sl-avatar>\n            <div class=\"shelter-info\">\n              <h2>Shelter's Name</h2>\n              <h3>Shelter's Address</h3>\n              <p>Shelter's description</p>\n              <sl-button>Edit Profile</sl-button>\n            </div>\n          </div>\n          <div class=\"section-column\">\n            <sl-avatar class=\"avatar-button\" label=\"Applications\">\n              <sl-icon slot=\"icon\" name=\"file-text\"></sl-icon>\n            </sl-avatar>\n            <h2>Applications</h2>\n          </div>\n          <img\n            id=\"first-background-img\"\n            src=\"../images/pet-shelter-white.png\"\n          />\n        </section>\n        <!-- Second Section -->\n        <section class=\"dashboard-section\">\n          <img id=\"second-background-img\" src=\"../images/pawprint-white.png\" />\n          <sl-avatar class=\"avatar-button\" label=\"Add more\">\n            <sl-icon slot=\"icon\" name=\"plus\"></sl-icon>\n          </sl-avatar>\n          <sl-carousel\n            id=\"carousel\"\n            navigation\n            mouse-dragging\n            slides-per-page=\"2\"\n            slides-per-move=\"2\"\n          >\n            <sl-icon slot=\"next-icon\" name=\"gear\"></sl-icon>\n            <sl-icon slot=\"previous-icon\" name=\"gear\"></sl-icon>\n            <sl-carousel-item>\n              <sl-card class=\"card-overview\">\n                <img\n                  slot=\"image\"\n                  src=\"https://images.unsplash.com/photo-1559209172-0ff8f6d49ff7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80\"\n                  alt=\"A kitten sits patiently between a terracotta pot and decorative grasses.\"\n                />\n\n                <strong>Mittens</strong><br />\n                This kitten is as cute as he is playful. Bring him home\n                today!<br />\n                <small>6 weeks old</small>\n\n                <div slot=\"footer\">\n                  <sl-button variant=\"primary\" pill>More Info</sl-button>\n                  <sl-rating></sl-rating>\n                </div>\n              </sl-card>\n            </sl-carousel-item>\n            <sl-carousel-item>\n              <sl-card class=\"card-overview\">\n                <img\n                  slot=\"image\"\n                  src=\"https://images.unsplash.com/photo-1559209172-0ff8f6d49ff7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80\"\n                  alt=\"A kitten sits patiently between a terracotta pot and decorative grasses.\"\n                />\n\n                <strong>Mittens</strong><br />\n                This kitten is as cute as he is playful. Bring him home\n                today!<br />\n                <small>6 weeks old</small>\n\n                <div slot=\"footer\">\n                  <sl-button variant=\"primary\" pill>More Info</sl-button>\n                  <sl-rating></sl-rating>\n                </div>\n              </sl-card>\n            </sl-carousel-item>\n            <sl-carousel-item>\n              <sl-card class=\"card-overview\">\n                <img\n                  slot=\"image\"\n                  src=\"https://images.unsplash.com/photo-1559209172-0ff8f6d49ff7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80\"\n                  alt=\"A kitten sits patiently between a terracotta pot and decorative grasses.\"\n                />\n\n                <strong>Mittens</strong><br />\n                This kitten is as cute as he is playful. Bring him home\n                today!<br />\n                <small>6 weeks old</small>\n\n                <div slot=\"footer\">\n                  <sl-button variant=\"primary\" pill>More Info</sl-button>\n                  <sl-rating></sl-rating>\n                </div>\n              </sl-card>\n            </sl-carousel-item>\n            <sl-carousel-item>\n              <sl-card class=\"card-overview\">\n                <img\n                  slot=\"image\"\n                  src=\"https://images.unsplash.com/photo-1559209172-0ff8f6d49ff7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80\"\n                  alt=\"A kitten sits patiently between a terracotta pot and decorative grasses.\"\n                />\n\n                <strong>Mittens</strong><br />\n                This kitten is as cute as he is playful. Bring him home\n                today!<br />\n                <small>6 weeks old</small>\n\n                <div slot=\"footer\">\n                  <sl-button variant=\"primary\" pill>More Info</sl-button>\n                  <sl-rating></sl-rating>\n                </div>\n              </sl-card>\n            </sl-carousel-item>\n          </sl-carousel>\n        </section>\n        <section class=\"dashboard-section\">\n          <img id=\"third-background-img\" src=\"../images/applications.png\" />\n        </section>\n      </div>\n    "])), this.accessLevel === 1 ? "shelter dashboard-view" : "seeker dashboard-view");
+    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n      <paw-header title=\"Dashboard\"></paw-header>\n      <div\n        class=", "\n      >\n        <!-- First Section -->\n        <section class=\"dashboard-section\">\n          <div class=\"section-column\">\n            <sl-avatar class=\"avatar-button\" label=\"Our Pets\">\n              <img\n                id=\"avatar-paw\"\n                slot=\"icon\"\n                src=\"../images/pawprint-white.png\"\n              />\n            </sl-avatar>\n            <h2>Our Pets</h2>\n          </div>\n          <div class=\"section-column\">\n            <sl-avatar class=\"avatar-main\" label=\"Our Pets\">\n              <img\n                id=\"avatar-image\"\n                slot=\"icon\"\n                src=\"https://cdn.vox-cdn.com/thumbor/v9ksZRhgha_kZsrjZkR0iCD8DB8=/0x0:4189x2608/1200x800/filters:focal(1766x853:2436x1523)/cdn.vox-cdn.com/uploads/chorus_image/image/72548864/GettyImages_1401741294.0.jpg\"\n              />\n            </sl-avatar>\n            <div class=\"shelter-info\">\n              <h2>Shelter's Name</h2>\n              <h3>Shelter's Address</h3>\n              <p>Shelter's description</p>\n              <sl-button>Edit Profile</sl-button>\n            </div>\n          </div>\n          <div class=\"section-column\">\n            <sl-avatar class=\"avatar-button\" label=\"Applications\">\n              <sl-icon slot=\"icon\" name=\"file-text\"></sl-icon>\n            </sl-avatar>\n            <h2>Applications</h2>\n          </div>\n          <img\n            id=\"first-background-img\"\n            src=\"../images/pet-shelter-white.png\"\n          />\n        </section>\n        <!-- Second Section -->\n        <section class=\"dashboard-section\">\n          <img id=\"second-background-img\" src=\"../images/pawprint-white.png\" />\n          <sl-avatar class=\"avatar-button\" label=\"Add more\">\n            <sl-icon slot=\"icon\" name=\"plus\"></sl-icon>\n          </sl-avatar>\n          <sl-carousel\n            id=\"carousel\"\n            navigation\n            mouse-dragging\n            slides-per-page= \"", "\"\n            slides-per-move=\"1\"\n          >\n            ", "\n            <sl-icon slot=\"next-icon\" name=\"caret-right-fill\"></sl-icon>\n            <sl-icon slot=\"previous-icon\" name=\"caret-left-fill\"></sl-icon>\n          </sl-carousel>\n        </section>\n        <section class=\"dashboard-section\">\n          <img id=\"third-background-img\" src=\"../images/applications.png\" />\n        </section>\n      </div>\n    "])), this.accessLevel === 1 ? "shelter dashboard-view" : "seeker dashboard-view", this.pets.length === 0 ? 1 : 2.3, this.pets.length === 0 ? (0, _litHtml.html)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral([" <sl-spinner style=\"font-size: 7vw; --stroke-width: 1vw;\"></sl-spinner> "]))) : (0, _litHtml.html)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n                  ", "\n                "])), this.pets.map(pet => (0, _litHtml.html)(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n                      <sl-carousel-item>\n                        <paw-petcard\n                          id=\"", "\"\n                          name=\"", "\"\n                          petType=\"", "\"\n                          breed=\"", "\"\n                          image=\"", "\"\n                          gender=\"", "\"\n                          age=\"", "\"\n                        ></paw-petcard>\n                      </sl-carousel-item>\n                    "])), pet._id, pet.name, pet.petType, pet.breed, pet.images[0], pet.gender, pet.age))));
     (0, _litHtml.render)(template, _App.default.rootEl);
   }
 }
@@ -9210,7 +9282,131 @@ customElements.define("paw-header", class AppHeader extends _litElement.LitEleme
     return (0, _litElement.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n        <style>\n          .app-header {\n            position: absolute;\n            z-index: 10;\n            height: 300px;\n            width: 370px;\n            background-color: white;\n            border-radius: 50%;\n            border: 10px solid black;\n            left: -130px;\n            top: -140px;\n          }\n\n          .app-top-nav {\n            width: 100%;\n            height: 100%;\n            border-radius: 50%;\n            border: 1px solid red;\n          }\n\n          .app-top-nav img {\n            width: 35%;\n            position: absolute;\n            bottom: 10px;\n            right: 80px;\n          }\n\n          .app-header:hover {\n            transform: scale(1.03);\n            transition: transform 0.35s ease-out;\n          }\n        </style>\n        <header class=\"app-header\">\n          <nav class=\"app-top-nav\">\n            <a href=\"/\" @click=\"", "\">\n              <img src=\"../images/paw_logo.png\" />\n            </a>\n          </nav>\n        </header>\n      "])), _Router.anchorRoute);
   }
 });
-},{"@polymer/lit-element":"../node_modules/@polymer/lit-element/lit-element.js","../Router":"Router.js","../Auth":"Auth.js","../App":"App.js"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{"@polymer/lit-element":"../node_modules/@polymer/lit-element/lit-element.js","../Router":"Router.js","../Auth":"Auth.js","../App":"App.js"}],"UserAPI.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _App = _interopRequireDefault(require("./App"));
+var _Auth = _interopRequireDefault(require("./Auth"));
+var _Toast = _interopRequireDefault(require("./Toast"));
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+class UserAPI {
+  async updateUser(userId, userData) {
+    // validate
+    if (!userId || !userData) return;
+
+    // make fetch request to backend
+    const response = await fetch("".concat(_App.default.apiBase, "/user/").concat(userId), {
+      method: "PUT",
+      headers: {
+        "Authorization": "Bearer ".concat(localStorage.accessToken)
+      },
+      body: userData
+    });
+
+    // if response not ok
+    if (!response.ok) {
+      // console log error
+      const err = await response.json();
+      if (err) console.log(err);
+      // throw error (exit this function)      
+      throw new Error('Problem updating user');
+    }
+
+    // convert response payload into json - store as data
+    const data = await response.json();
+
+    // return data
+    return data;
+  }
+  async getUser(userId) {
+    // validate
+    if (!userId) return;
+
+    // fetch the json data
+    const response = await fetch("".concat(_App.default.apiBase, "/user/").concat(userId), {
+      headers: {
+        "Authorization": "Bearer ".concat(localStorage.accessToken)
+      }
+    });
+
+    // if response not ok
+    if (!response.ok) {
+      // console log error
+      const err = await response.json();
+      if (err) console.log(err);
+      // throw error (exit this function)      
+      throw new Error('Problem getting user');
+    }
+
+    // convert response payload into json - store as data
+    const data = await response.json();
+
+    // return data
+    return data;
+  }
+}
+var _default = exports.default = new UserAPI();
+},{"./App":"App.js","./Auth":"Auth.js","./Toast":"Toast.js"}],"components/paw-petcard.js":[function(require,module,exports) {
+"use strict";
+
+var _litElement = require("@polymer/lit-element");
+var _litHtml = require("lit-html");
+var _Router = require("./../Router");
+var _Auth = _interopRequireDefault(require("./../Auth"));
+var _App = _interopRequireDefault(require("./../App"));
+var _UserAPI = _interopRequireDefault(require("../UserAPI"));
+var _Toast = _interopRequireDefault(require("../Toast"));
+var _templateObject;
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+customElements.define("paw-petcard", class PetCard extends _litElement.LitElement {
+  constructor() {
+    super();
+    this.catImgURL = "../images/cat.png";
+    this.dogImgURL = "../images/dog.png";
+    this.femaleURL = "../images/female.png";
+    this.maleURL = "../images/male.png";
+  }
+  static get properties() {
+    return {
+      id: {
+        type: String
+      },
+      name: {
+        type: String
+      },
+      petType: {
+        type: String
+      },
+      breed: {
+        type: String
+      },
+      age: {
+        type: String
+      },
+      gender: {
+        type: String
+      },
+      image: {
+        type: String
+      }
+    };
+  }
+  firstUpdated() {
+    super.firstUpdated();
+  }
+  redirectToPetPage() {
+    alert("test");
+  }
+  render() {
+    return (0, _litElement.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n        <style>\n          .pet-card {\n            width: 23vw;\n            height: 70vh;\n            min-height: 600px;\n            background-color: #d0cfec;\n            overflow: hidden;\n            border-radius: 40px;\n            box-shadow: 20px 20px 1px #f8b102;\n          }\n\n          .card-image-wrapper {\n            height: 55%;\n            width: 100%;\n          }\n\n          .card-image-wrapper img {\n            width: 100%;\n            height: 100%;\n            object-fit: cover;\n          }\n\n          .pet-card-body {\n            height: 45%;\n            width: 100%;\n            display: flex;\n            flex-direction: column;\n            justify-content: center;\n            align-items: center;\n            gap: 5%;\n          }\n\n          .pet-card-body p,\n          .badges-row {\n            margin: 0 0 3% 0;\n          }\n          .pet-card-body h2 {\n            margin: 0;\n          }\n\n          .badges-row {\n            display: flex;\n            flex-direction: row;\n            justify-content: center;\n            align-items: center;\n            width: 100%;\n            gap: 10%;\n          }\n\n          sl-avatar {\n            --size: 3.5vw;\n            border: solid 0.3vw black;\n            border-radius: 50%;\n          }\n\n          #first::part(base) {\n            background-color: #f8b102;\n          }\n\n          #second::part(base) {\n            background-color: black;\n          }\n\n          #avatar-pic {\n            width: 2.5vw;\n          }\n\n          sl-button::part(base) {\n            background-color: black;\n            color: white;\n            border: 0;\n            box-shadow: 0 2px 10px #0002;\n          }\n\n          sl-button::part(base):hover {\n            color: #f8b102;\n          }\n        </style>\n        <div class=\"pet-card\">\n          <div class=\"card-image-wrapper\">\n            <img src=\"", "\" alt=\"", "\" />\n          </div>\n          <div class=\"pet-card-body\">\n            <h2>", "</h2>\n            <p>\n              ", " ", " old ", "\n              ", "\n            </p>\n            <div class=\"badges-row\">\n              <sl-avatar id=\"first\" label=\"", "\">\n                <img\n                  slot=\"icon\"\n                  id=\"avatar-pic\"\n                  src=\"", "\"\n                />\n              </sl-avatar>\n              <sl-avatar id=\"second\" label=\"", "\">\n                <img\n                  slot=\"icon\"\n                  id=\"avatar-pic\"\n                  src=\"", "\"\n                />\n              </sl-avatar>\n            </div>\n            <sl-button @click=", "\n              >Meet ", "</sl-button\n            >\n          </div>\n        </div>\n      "])), this.image, this.name, this.name, this.age, this.age == 1 ? "year" : "years", this.breed, this.petType, this.petType, this.petType == "cat" ? this.catImgURL : this.dogImgURL, this.gender, this.gender == "M" ? this.maleURL : this.femaleURL, this.redirectToPetPage.bind(this), this.name);
+  }
+});
+},{"@polymer/lit-element":"../node_modules/@polymer/lit-element/lit-element.js","lit-html":"../node_modules/lit-html/lit-html.js","./../Router":"Router.js","./../Auth":"Auth.js","./../App":"App.js","../UserAPI":"UserAPI.js","../Toast":"Toast.js"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 function getBundleURLCached() {
   if (!bundleURL) {
@@ -9270,6 +9466,7 @@ module.hot.accept(reloadCSS);
 
 var _App = _interopRequireDefault(require("./App.js"));
 require("./components/paw-header.js");
+require("./components/paw-petcard.js");
 require("./scss/master.scss");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 // components (custom web components)
@@ -9280,7 +9477,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 document.addEventListener('DOMContentLoaded', () => {
   _App.default.init();
 });
-},{"./App.js":"App.js","./components/paw-header.js":"components/paw-header.js","./scss/master.scss":"scss/master.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./App.js":"App.js","./components/paw-header.js":"components/paw-header.js","./components/paw-petcard.js":"components/paw-petcard.js","./scss/master.scss":"scss/master.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -9305,7 +9502,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65123" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50362" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
