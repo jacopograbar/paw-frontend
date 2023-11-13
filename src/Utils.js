@@ -38,6 +38,10 @@ class Utils {
         diseases: [],
         images: [
           "https://i.ebayimg.com/images/g/LJUAAOSwFcVfHrSa/s-l1200.webp",
+          "https://m.media-amazon.com/images/I/51shStdlnOL._AC_UF894,1000_QL80_.jpg",
+          "https://i.insider.com/5e6a17ad235c187b2a5b26d3?width=750&format=jpeg&auto=webp",
+          "https://p.turbosquid.com/ts-thumb/mP/Z6QRhz/cx/sphynx_pink_pose1_main_12/png/1617876850/600x600/fit_q87/60d3cb0f666bf22d2bf5bcf390056ffcfc3efa45/sphynx_pink_pose1_main_12.jpg",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYL12y1T-beM2zyuxvrE3WEBkXO1kCPFaywg&usqp=CAU",
         ],
         notes: "Great pet",
       },
@@ -311,7 +315,7 @@ class Utils {
     return applications;
   }
 
-  createDummyShelterObjects(){
+  createDummyShelterObjects() {
     const shelters = [
       {
         _id: "1000",
@@ -321,7 +325,8 @@ class Utils {
         address: "Some St 29, Whoo How",
         bio: "Some bio for this amazing animal shelter",
         animals: ["Cats", "Dogs"],
-        profilePic: "https://cdn.vox-cdn.com/thumbor/v9ksZRhgha_kZsrjZkR0iCD8DB8=/0x0:4189x2608/1200x800/filters:focal(1766x853:2436x1523)/cdn.vox-cdn.com/uploads/chorus_image/image/72548864/GettyImages_1401741294.0.jpg"
+        profilePic:
+          "https://cdn.vox-cdn.com/thumbor/v9ksZRhgha_kZsrjZkR0iCD8DB8=/0x0:4189x2608/1200x800/filters:focal(1766x853:2436x1523)/cdn.vox-cdn.com/uploads/chorus_image/image/72548864/GettyImages_1401741294.0.jpg",
       },
       {
         _id: "1001",
@@ -331,7 +336,8 @@ class Utils {
         address: "Some Other St 11, Whoo How",
         bio: "Some bio for this amazing animal shelter",
         animals: ["Cats", "Dogs"],
-        profilePic: "https://blog.adobe.com/en/publish/2021/10/19/media_16dc563cf8f4cafb81a1011a270c4c7919f09f0b2.png?width=750&format=png&optimize=medium"
+        profilePic:
+          "https://blog.adobe.com/en/publish/2021/10/19/media_16dc563cf8f4cafb81a1011a270c4c7919f09f0b2.png?width=750&format=png&optimize=medium",
       },
       {
         _id: "1002",
@@ -341,7 +347,8 @@ class Utils {
         address: "Check This St 9, Pow Pow",
         bio: "Some bio for this amazing animal shelter",
         animals: ["Cats", "Dogs"],
-        profilePic: "https://images.wagwalkingweb.com/media/daily_wag/blog_articles/hero/1651153661.2751184/a-day-in-the-life-of-an-animal-shelter-volunteer.png"
+        profilePic:
+          "https://images.wagwalkingweb.com/media/daily_wag/blog_articles/hero/1651153661.2751184/a-day-in-the-life-of-an-animal-shelter-volunteer.png",
       },
       {
         _id: "1003",
@@ -351,9 +358,10 @@ class Utils {
         address: "Bundee St 22, Pooville",
         bio: "Some bio for this amazing animal shelter",
         animals: ["Cats", "Dogs"],
-        profilePic: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKPolgpou1Vm9LDN1QvMTebttl4qre9KNUMzlhTQQI9hS4qbLY5yYcCGLPsvUBa14AbNY&usqp=CAU"
-      }
-    ]
+        profilePic:
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKPolgpou1Vm9LDN1QvMTebttl4qre9KNUMzlhTQQI9hS4qbLY5yYcCGLPsvUBa14AbNY&usqp=CAU",
+      },
+    ];
 
     return shelters;
   }
