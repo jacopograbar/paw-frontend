@@ -26,6 +26,7 @@ class PetView {
     const template = html`
       <paw-header title="Pet Page"></paw-header>
       <div class="pet-page-view layout-page">
+      <div class="page-animation"></div>
         <!-- First Section -->
         <section class="pet-page-section layout-section">
           <div class="section-column">
@@ -36,7 +37,7 @@ class PetView {
                 src="../images/pet-shelter-white.png"
               />
             </sl-avatar>
-            <h2>My Shelter</h2>
+            <h2 class="pet-btn-title">My Shelter</h2>
           </div>
           <div class="section-column">
             <div class="img-gallery">
@@ -93,18 +94,28 @@ class PetView {
             </p>
             <div class="badges-row">
               <sl-avatar class="avatar-badge">
-                <img slot="icon" src="${this.pet.petType == "cat" ? "../images/cat-white.png":"../images/dog-white.png"}" />
+                <img
+                  slot="icon"
+                  src="${this.pet.petType == "cat"
+                    ? "../images/cat-white.png"
+                    : "../images/dog-white.png"}"
+                />
               </sl-avatar>
               <sl-avatar class="avatar-badge">
-                <img slot="icon" src="${this.pet.gender == "M" ? "../images/male.png":"../images/female.png"}" />
+                <img
+                  slot="icon"
+                  src="${this.pet.gender == "M"
+                    ? "../images/male.png"
+                    : "../images/female.png"}"
+                />
               </sl-avatar>
             </div>
           </div>
           <div class="section-column">
             <sl-avatar class="avatar-button" label="Browse dogs">
-            <sl-icon slot="icon" name="file-text"></sl-icon>
+              <sl-icon slot="icon" name="file-text"></sl-icon>
             </sl-avatar>
-            <h2>Adoption</h2>
+            <h2 class="pet-btn-title">Adoption</h2>
           </div>
           <img id="first-background-img" src="../images/pawprint-white.png" />
         </section>
@@ -115,6 +126,36 @@ class PetView {
               ? "../images/cat-white.png"
               : "../images/dog-white.png"}"
           />
+          <h1 class="pet-title">Health and Care</h1>
+          <li class="list-container">
+            <ul>
+              <sl-avatar>
+                <sl-icon slot="icon" name="heart-pulse"></sl-icon> </sl-avatar
+              >${Utils.getDiseaseString(this.pet.diseases)}
+            </ul>
+            <ul>
+              <sl-avatar>
+                <sl-icon slot="icon" name="file-medical"></sl-icon>
+              </sl-avatar>
+              ${this.pet.vaccinated
+                ? "Fully vaccinated according to government regulations"
+                : "This pet is not currently up to date with necessary vaccinations"}
+            </ul>
+            <ul>
+              <sl-avatar>
+                <sl-icon slot="icon" name="people"></sl-icon>
+              </sl-avatar>
+              ${Utils.getFriendlinessString(this.pet.friendliness)}
+            </ul>
+            <ul>
+              <sl-avatar>
+                <sl-icon slot="icon" name="journals"></sl-icon>
+              </sl-avatar>
+              ${this.pet.notes
+                ? "Additional notes: " + this.pet.notes
+                : "No additional notes from the shelter"}
+            </ul>
+          </li>
         </section>
       </div>
     `;

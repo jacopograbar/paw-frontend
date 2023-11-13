@@ -68,6 +68,14 @@ a {
   }
 }
 
+.page-animation{
+  width: 100%;
+  height: 100%;
+  position:absolute;
+  background-color: black;
+  z-index: 3;
+}
+
 .avatar-button {
   --size: 17vw;
   border: solid 1vw $paw-yellow;
@@ -88,6 +96,7 @@ a {
   --size: 23vw;
   border: solid 1vw black;
   border-radius: 50%;
+  overflow: hidden;
 
   &::part(base) {
     background-color: $paw-yellow;
@@ -105,6 +114,7 @@ a {
   border: solid 0.5vw black;
   border-radius: 50%;
   cursor: pointer;
+  overflow: hidden;
 
   img {
     width: 100%;
@@ -122,11 +132,11 @@ a {
   }
 }
 
-#selected{
+#selected {
   border-color: $paw-yellow;
 }
 
-.avatar-badge{
+.avatar-badge {
   --size: 8vh;
   border: solid 0.5vw $paw-lilac;
   border-radius: 50%;
@@ -658,7 +668,20 @@ h3 {
     position: relative;
     overflow: hidden;
 
-    &:nth-child(2) {
+    .pet-btn-title {
+      color: white;
+      margin-top: 4%;
+    }
+
+    .pet-title {
+      color: white;
+      font-size: 2.5vw;
+      width: 100%;
+      text-align: center;
+      margin-top: 4%;
+    }
+
+    &:nth-child(3) {
       background-color: black;
     }
   }
@@ -686,15 +709,19 @@ h3 {
 // ************************************ PET PAGE *********************************** //
 
 .pet-page-view {
+  .page-animation{
+    background-color: $paw-turquoise;
+  }
+
   .pet-page-section {
-    &:nth-child(1) {
+    &:nth-child(2) {
       background-color: $paw-turquoise;
       @include flex-row(space-around, center);
 
       .section-column {
         @include flex-column(flex-end, center);
         height: 100%;
-        padding-bottom: 10%;
+        padding-bottom: 8%;
         width: 33.3%;
         z-index: 1;
 
@@ -707,12 +734,12 @@ h3 {
         &:nth-child(2) {
           justify-content: flex-start;
           color: white;
-          padding-bottom: 0;
-          h1{
+          padding: 2% 0 1% 0;
+          h1 {
             font-size: 3vw;
             margin-bottom: 0;
           }
-          p{
+          p {
             font-size: 1.5vw;
           }
 
@@ -734,22 +761,24 @@ h3 {
 
               .second {
                 top: -20px;
+                position:relative !important;
               }
 
-              .third{
+              .third {
                 top: -80px;
-                right:-2%;
+                right: -2%;
+                position:relative !important;
               }
 
-              .fourth{
+              .fourth {
                 top: -80px;
-                left:-2%;
+                left: -2%;
+                position:relative !important;
               }
             }
-
           }
 
-          .badges-row{
+          .badges-row {
             @include flex-row(center, center);
             margin-top: 2%;
             gap: 10%;
@@ -758,13 +787,41 @@ h3 {
       }
     }
   }
+
+  .list-container {
+    height: 85%;
+    @include flex-column(center, flex-start);
+    padding-left: 5%;
+    color: white;
+
+    ul {
+      font-size: 2vw;
+      width: 100%;
+    }
+
+    sl-avatar {
+      margin-right: 5%;
+      border: solid 0.5vw white;
+      border-radius: 50%;
+      --size: 5vw;
+      
+      &::part(base) {
+        background-color: $paw-lilac;
+        border-color: white;
+        color: black;
+      }
+    }
+  }
 }
 
 // ************************************ SHELTER PAGE *********************************** //
 
 .shelter-page-view {
+  .page-animation{
+    background-color: $paw-bordeaux;
+  }
   .shelter-page-section {
-    &:nth-child(1) {
+    &:nth-child(2) {
       background-color: $paw-bordeaux;
     }
   }

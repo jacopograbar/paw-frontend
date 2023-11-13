@@ -75,7 +75,6 @@ customElements.define(
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            border: 1px solid red;
           }
 
           .app-top-nav img {
