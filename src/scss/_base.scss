@@ -68,10 +68,10 @@ a {
   }
 }
 
-.page-animation{
+.page-animation {
   width: 100%;
   height: 100%;
-  position:absolute;
+  position: absolute;
   background-color: black;
   z-index: 3;
 }
@@ -660,6 +660,15 @@ h3 {
   min-height: 1800px;
   position: relative;
   overflow: hidden;
+  color: white;
+
+  h1 {
+    font-size: 50px;
+    margin-bottom: 0;
+  }
+  p {
+    font-size: 20px;
+  }
 
   .layout-section {
     height: 100vh;
@@ -709,7 +718,7 @@ h3 {
 // ************************************ PET PAGE *********************************** //
 
 .pet-page-view {
-  .page-animation{
+  .page-animation {
     background-color: $paw-turquoise;
   }
 
@@ -735,13 +744,6 @@ h3 {
           justify-content: flex-start;
           color: white;
           padding: 2% 0 1% 0;
-          h1 {
-            font-size: 3vw;
-            margin-bottom: 0;
-          }
-          p {
-            font-size: 1.5vw;
-          }
 
           .img-gallery {
             width: 100%;
@@ -761,19 +763,19 @@ h3 {
 
               .second {
                 top: -20px;
-                position:relative !important;
+                position: relative !important;
               }
 
               .third {
                 top: -80px;
                 right: -2%;
-                position:relative !important;
+                position: relative !important;
               }
 
               .fourth {
                 top: -80px;
                 left: -2%;
-                position:relative !important;
+                position: relative !important;
               }
             }
           }
@@ -804,7 +806,7 @@ h3 {
       border: solid 0.5vw white;
       border-radius: 50%;
       --size: 5vw;
-      
+
       &::part(base) {
         background-color: $paw-lilac;
         border-color: white;
@@ -817,12 +819,59 @@ h3 {
 // ************************************ SHELTER PAGE *********************************** //
 
 .shelter-page-view {
-  .page-animation{
+  .page-animation {
     background-color: $paw-bordeaux;
   }
   .shelter-page-section {
     &:nth-child(2) {
       background-color: $paw-bordeaux;
+      @include flex-row(center, center);
+    }
+
+    .first-column {
+      height: 100%;
+      width: 40%;
+      min-width: fit-content;
+      @include flex-column(flex-end, center);
+      gap: 3%;
+      padding-bottom: 5%;
+      .avatar-main {
+        --size: 350px;
+      }
+      p {
+        margin-top: 0;
+      }
+    }
+
+    .second-column {
+      height: 100%;
+      width: 70%;
+      @include flex-column(flex-end, flex-start);
+      padding: 0 0 5% 10%;
+      h2 {
+        font-size: 60px;
+      }
+      p {
+        margin-bottom: 10%;
+      }
+
+      .badges-row{
+        width: 100%;
+        @include flex-row(flex-start, center);
+        gap: 3%;
+      }
+
+      .avatar-badge {
+        --size: 10vh;
+        border: solid 0.6vw $paw-yellow;
+      }
+    }
+
+    #shelter-address {
+      img {
+        width: 1.7vw;
+        margin-bottom: -0.2%;
+      }
     }
   }
 }
