@@ -23,7 +23,7 @@ class SeekerDashboardView {
 
   render() {
     const template = html`
-      <paw-header title="Dashboard"></paw-header>
+      <paw-header user="${JSON.stringify(Auth.currentUser)}" title="Dashboard"></paw-header>
       <div class="seeker dashboard-view">
         <!-- First Section -->
         <section class="dashboard-section">

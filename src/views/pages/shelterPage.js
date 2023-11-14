@@ -11,13 +11,22 @@ class ShelterPageView {
     console.log("Shelter page for ID ", shelterID);
     this.shelters = Utils.createDummyShelterObjects();
     this.shelter = this.shelters[0];
+    this.pets = Utils.createDummyPetObjects();
     this.render();
     Utils.pageIntroAnim();
   }
 
+  handleNext() {
+    console.log("next");
+  }
+
+  handleFilter() {
+    console.log("filter");
+  }
+
   render() {
     const template = html`
-      <paw-header title="Shelter Page"></paw-header>
+      <paw-header user="${JSON.stringify(Auth.currentUser)}" title="Shelter Page"></paw-header>
       <div class="shelter-page-view layout-page">
         <div class="page-animation"></div>
         <!-- First Section -->
@@ -42,19 +51,92 @@ class ShelterPageView {
             <h2>Available pets</h2>
             <div class="badges-row">
               ${this.shelter.animals.map(
-                (animal) => html` <sl-avatar
-                  class="avatar-badge"
-                  label="${animal}"
-                >
-                  <img slot="icon" src="${animal == "Cats" ? "../images/cat-white.png" : "../images/dog-white.png" }" />
-                </sl-avatar>`
+                (animal) => html` <div style="text-align:center">
+                  <sl-avatar class="avatar-badge" label="${animal}">
+                    <img
+                      slot="icon"
+                      src="${animal == "Cats"
+                        ? "../images/cat-white.png"
+                        : "../images/dog-white.png"}"
+                    />
+                  </sl-avatar>
+                  <p>${animal}</p>
+                </div>`
               )}
             </div>
           </div>
-          <img id="first-background-img" src="../images/pawprint-white.png" />
+          <img
+            id="first-background-img"
+            src="../images/pet-shelter-white.png"
+          />
         </section>
         <section class="shelter-page-section layout-section">
-          <img id="first-background-img" src="../images/pawprint-white.png" />
+          <img id="second-background-img" src="../images/pawprint-white.png" />
+          <h1 class="pet-title">Our Pets</h1>
+          <div class="filter-menu">
+            <div>
+              <p>Pet type</p>
+              <sl-button
+                class="filter-button"
+                size="small"
+                data-field="gender"
+                data-match="m"
+                @click=${this.handleFilter.bind(this)}
+                >Cat</sl-button
+              >
+              <sl-button
+                class="filter-button"
+                size="small"
+                data-field="gender"
+                data-match="f"
+                @click=${this.handleFilter.bind(this)}
+                >Dog</sl-button
+              >
+              <sl-button
+                class="filter-button"
+                size="small"
+                data-field="gender"
+                data-match="u"
+                @click=${this.handleFilter.bind(this)}
+                >All pets</sl-button
+              >
+            </div>
+          </div>
+          <div class="carousel-container">
+            <sl-carousel
+              id="carousel"
+              navigation
+              mouse-dragging
+              slides-per-page="${this.pets.length === 0 ? 1 : 3}"
+              slides-per-move="1"
+            >
+              ${this.pets.length === 0
+                ? html`
+                    <sl-spinner
+                      style="font-size: 7vw; --stroke-width: 1vw;"
+                    ></sl-spinner>
+                  `
+                : html`
+                    ${this.pets.map(
+                      (pet) => html`
+                        <sl-carousel-item>
+                          <paw-petcard
+                            id="${pet._id}"
+                            name="${pet.name}"
+                            petType="${pet.petType}"
+                            breed="${pet.breed}"
+                            image="${pet.images[0]}"
+                            gender="${pet.gender}"
+                            age="${pet.age}"
+                          ></paw-petcard>
+                        </sl-carousel-item>
+                      `
+                    )}
+                  `}
+              <sl-icon slot="next-icon" name="caret-right-fill"></sl-icon>
+              <sl-icon slot="previous-icon" name="caret-left-fill"></sl-icon>
+            </sl-carousel>
+          </div>
         </section>
       </div>
     `;

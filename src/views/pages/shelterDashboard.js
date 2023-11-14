@@ -19,7 +19,7 @@ class ShelterDashboardView {
 
   render() {
     const template = html`
-      <paw-header title="Dashboard"></paw-header>
+      <paw-header user="${JSON.stringify(Auth.currentUser)}"  title="Dashboard"></paw-header>
       <div class="shelter dashboard-view">
         <!-- First Section -->
         <section class="dashboard-section">

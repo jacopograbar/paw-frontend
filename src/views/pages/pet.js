@@ -24,7 +24,7 @@ class PetView {
 
   render() {
     const template = html`
-      <paw-header title="Pet Page"></paw-header>
+      <paw-header user="${JSON.stringify(Auth.currentUser)}" title="Pet Page"></paw-header>
       <div class="pet-page-view layout-page">
       <div class="page-animation"></div>
         <!-- First Section -->

@@ -7,7 +7,17 @@ import Toast from './Toast'
 class Auth {
 
   constructor(){
-    this.currentUser = {}
+    this.currentUser = {
+      _id: "1001",
+      accessLevel: 1,
+      name: "Ryan Borges",
+      email: "ryabb@email.com",
+      state: "NSW",
+      bio: "This is Ryan's bio",
+      animals: ["Cats", "Birds"],
+      image:
+        "https://i.pinimg.com/originals/60/66/8a/60668aa7d780b6c19684ccbfa0bf320c.jpg",
+    }
   }
   
   async signUp(userData, fail = false){  

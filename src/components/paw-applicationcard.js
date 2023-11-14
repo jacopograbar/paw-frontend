@@ -44,7 +44,7 @@ customElements.define(
           .application-card {
             width: 22vw;
             height: 65vh;
-            min-height: 550px;
+            min-height: 500px;
             background-color:#f8b102;
             border-radius: 40px;
             position: relative;

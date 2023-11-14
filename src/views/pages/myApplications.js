@@ -13,8 +13,8 @@ class MyApplicationsView {
 
   render(){
     const template = html`
-      <va-app-header title="My Applications" user="${JSON.stringify(Auth.currentUser)}"></va-app-header>
-      <div class="page-content">        
+      <paw-header title="My Applications" user="${JSON.stringify(Auth.currentUser)}"></paw-header>
+      <div class="applications-screen">        
         <h1>My Applications</h1>
         <p>Page content ...</p>
         

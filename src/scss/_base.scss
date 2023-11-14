@@ -433,13 +433,13 @@ h3 {
 .dashboard-view {
   width: 100%;
   height: 300vh;
-  min-height: 2700px;
+  min-height: 2400px;
   position: relative;
   overflow: hidden;
 
   .dashboard-section {
     height: 100vh;
-    min-height: 900px;
+    min-height: 800px;
     width: 100%;
     position: relative;
     overflow: hidden;
@@ -608,7 +608,7 @@ h3 {
 
   #seeker-central-column {
     justify-content: flex-start;
-    padding-top: 22vh;
+    padding-top: 7%;
 
     h1 {
       font-size: 3vw;
@@ -618,23 +618,6 @@ h3 {
   .dashboard-section:nth-child(2) {
     @include flex-column(center, center);
     gap: 5%;
-
-    .filter-menu {
-      color: white;
-      width: 100%;
-      @include flex-row(center, center);
-      gap: 7%;
-
-      h3,
-      p {
-        margin: 0;
-      }
-
-      div {
-        @include flex-row(center, center);
-        gap: 10px;
-      }
-    }
 
     .carousel-container {
       width: 100%;
@@ -653,18 +636,39 @@ h3 {
   }
 }
 
+.filter-menu {
+  color: white;
+  width: 100%;
+  @include flex-row(center, center);
+  gap: 7%;
+
+  h3,
+  p {
+    margin: 0;
+  }
+
+  div {
+    @include flex-row(center, center);
+    gap: 10px;
+  }
+}
+
 // ************************************ PET & SHELTER PAGE COMMON STYLING *********************************** //
 .layout-page {
   width: 100%;
   height: 200vh;
-  min-height: 1800px;
+  min-height: 1600px;
   position: relative;
   overflow: hidden;
   color: white;
 
   h1 {
-    font-size: 50px;
+    font-size: 40px;
     margin-bottom: 0;
+  }
+
+  h2 {
+    font-size: 30px;
   }
   p {
     font-size: 20px;
@@ -672,7 +676,7 @@ h3 {
 
   .layout-section {
     height: 100vh;
-    min-height: 900px;
+    min-height: 800px;
     width: 100%;
     position: relative;
     overflow: hidden;
@@ -684,10 +688,10 @@ h3 {
 
     .pet-title {
       color: white;
-      font-size: 2.5vw;
+      font-size: 45px;
       width: 100%;
       text-align: center;
-      margin-top: 4%;
+      margin: 2% 0;
     }
 
     &:nth-child(3) {
@@ -849,13 +853,13 @@ h3 {
       @include flex-column(flex-end, flex-start);
       padding: 0 0 5% 10%;
       h2 {
-        font-size: 60px;
+        font-size: 45px;
       }
       p {
         margin-bottom: 10%;
       }
 
-      .badges-row{
+      .badges-row {
         width: 100%;
         @include flex-row(flex-start, center);
         gap: 3%;
@@ -873,5 +877,32 @@ h3 {
         margin-bottom: -0.2%;
       }
     }
+
+    .carousel-container {
+      width: 100%;
+      height: 78%;
+      padding: 2% 0 0 0;
+      @include flex-row(space-around, center);
+      sl-carousel {
+        width: 100%;
+        height: 110%;
+      }
+
+      sl-icon {
+        font-size: 80px;
+      }
+    }
   }
+}
+
+// ************************************ MY APPLICATIONS *********************************** //
+.applications-screen {
+  width: 100%;
+  height: 100vh;
+  min-height: 800px;
+  position: relative;
+  overflow: hidden;
+  color: white;
+  background-color: $paw-turquoise;
+  @include flex-column(center, center);
 }

@@ -23,43 +23,23 @@ customElements.define(
 
     firstUpdated() {
       super.firstUpdated();
-      this.navActiveLinks();
-    }
-
-    navActiveLinks() {
-      const currentPath = window.location.pathname;
-      const navLinks = this.shadowRoot.querySelectorAll(
-        ".app-top-nav a, .app-side-menu-items a"
-      );
-      navLinks.forEach((navLink) => {
-        if (navLink.href.slice(-1) == "#") return;
-        if (navLink.pathname === currentPath) {
-          navLink.classList.add("active");
-        }
-      });
-    }
-
-    hamburgerClick() {
-      const appMenu = this.shadowRoot.querySelector(".app-side-menu");
-      appMenu.show();
-    }
-
-    menuClick(e) {
-      e.preventDefault();
-      const pathname = e.target.closest("a").pathname;
-      const appSideMenu = this.shadowRoot.querySelector(".app-side-menu");
-      // hide appMenu
-      appSideMenu.hide();
-      appSideMenu.addEventListener("sl-after-hide", () => {
-        // goto route after menu is hidden
-        gotoRoute(pathname);
-      });
     }
 
     render() {
       return html`
         <style>
           .app-header {
+            height: 100px;
+            width: 97%;
+            position: absolute;
+            z-index: 10;
+            text-align: right;
+            padding-right: 3%;
+            padding-top: 1%;
+            color: white;
+          }
+
+          #side-link {
             position: absolute;
             z-index: 10;
             height: 300px;
@@ -84,17 +64,38 @@ customElements.define(
             right: 80px;
           }
 
-          .app-header:hover {
+          #side-link:hover {
             transform: scale(1.03);
             transition: transform 0.35s ease-out;
           }
+
+          .header-link {
+            color: #f8b102;
+            text-decoration: none;
+          }
+
+          p {
+            font-size: 20px;
+          }
         </style>
         <header class="app-header">
-          <nav class="app-top-nav">
-            <a href="/" @click="${anchorRoute}">
+          <a id="side-link" href="/" @click="${anchorRoute}">
+            <nav class="app-top-nav">
               <img src="../images/paw_logo.png" />
-            </a>
-          </nav>
+            </nav>
+          </a>
+          ${this.user ? html`<p>Hi, ${this.user.name}</p>` : html``}
+          ${this.user &&
+          this.user.accessLevel == 1 ?
+          html` <a class="header-link" href="/my-applications">My Applications</a
+            ><br /><a class="header-link" href="/dashboard/seeker"
+              >Dashboard</a
+            >` : html``}
+          ${this.user &&
+          this.user.accessLevel == 2 ?
+          html` <a class="header-link" href="/dashboard/shelter"
+              >Dashboard</a
+            >` : html``}
         </header>
       `;
     }
