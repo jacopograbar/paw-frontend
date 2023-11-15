@@ -11,6 +11,40 @@ class SignupSeekerView {
     Utils.pageIntroAnim();
   }
 
+  async submitHandler(event) {
+    event.preventDefault();
+    const submitBtn = document.querySelector(".submit-btn");
+    submitBtn.setAttribute("loading", "");
+
+    // Wait for controls to be defined before attaching form listeners
+    await Promise.all([
+      customElements.whenDefined("sl-button"),
+      customElements.whenDefined("sl-input"),
+      customElements.whenDefined("sl-option"),
+      customElements.whenDefined("sl-select"),
+      customElements.whenDefined("sl-textarea"),
+    ]).then(() => {
+      const form = document.querySelector(".signup-form");
+      const formData = new FormData(form);
+
+      // logging data for testing
+      for (const [key, value] of formData) {
+        console.log(`${key}: ${value}`);
+      }
+
+      // getting arrays
+      console.log(formData.getAll("animals"));
+      // CAN GET JUST ONE VALUE WITH .GET
+
+      submitBtn.removeAttribute("loading");
+
+      // sign up using Auth
+      // Auth.signUp(formData, () => {
+      //   submitBtn.removeAttribute("loading");
+      // });
+    });
+  }
+
   render() {
     const template = html`
       <paw-header title="Pet Seeker Signup"></paw-header>
@@ -23,8 +57,8 @@ class SignupSeekerView {
         <div class="paw-top-right"></div>
         <div class="signup-overlay">
           <h1>Pet Seeker Signup</h1>
-          <form class="signup-form" @sl-submit=${this.signUpSubmitHandler}>
-            <sl-input hidden name="accessType" type="text" value="2"></sl-input>
+          <form class="signup-form" @submit=${this.submitHandler}>
+            <input name="accessType" value="2" type="hidden" />
             <div class="signup-column">
               <div class="input-group">
                 <sl-input
@@ -72,11 +106,8 @@ class SignupSeekerView {
                   multiple
                   clearable
                 >
-                  <sl-menu-item value="cats">Cats</sl-menu-item>
-                  <sl-menu-item value="dogs">Dogs</sl-menu-item>
-                  <sl-menu-item value="birds">Birds</sl-menu-item>
-                  <sl-menu-item value="rodents">Rodents</sl-menu-item>
-                  <sl-menu-item value="reptiles">Reptiles</sl-menu-item>
+                  <sl-option value="cats">Cats</sl-option>
+                  <sl-option value="dogs">Dogs</sl-option>
                 </sl-select>
               </div>
             </div>
@@ -86,17 +117,18 @@ class SignupSeekerView {
                   name="state"
                   label="State"
                   placeholder="Select your state..."
+                  clearable
                 >
-                  <sl-menu-item value="NSW">New South Wales</sl-menu-item>
-                  <sl-menu-item value="VIC">Victoria</sl-menu-item>
-                  <sl-menu-item value="WA">Western Australia</sl-menu-item>
-                  <sl-menu-item value="SA">South Australia</sl-menu-item>
-                  <sl-menu-item value="QLD">Queensland</sl-menu-item>
-                  <sl-menu-item value="NT">Northern Territory</sl-menu-item>
-                  <sl-menu-item value="ACT"
-                    >Australian Capital Territory</sl-menu-item
+                  <sl-option value="NSW">New South Wales</sl-option>
+                  <sl-option value="VIC">Victoria</sl-option>
+                  <sl-option value="WA">Western Australia</sl-option>
+                  <sl-option value="SA">South Australia</sl-option>
+                  <sl-option value="QLD">Queensland</sl-option>
+                  <sl-option value="NT">Northern Territory</sl-option>
+                  <sl-option value="ACT"
+                    >Australian Capital Territory</sl-option
                   >
-                  <sl-menu-item value="TAS">Tasmania</sl-menu-item>
+                  <sl-option value="TAS">Tasmania</sl-option>
                 </sl-select>
               </div>
               <div class="input-group">
@@ -117,7 +149,7 @@ class SignupSeekerView {
                 ></sl-textarea>
               </div>
               <div class="signup-submit-area">
-                <sl-button type="primary" class="submit-btn" submit
+                <sl-button type="submit" variant="primary" class="submit-btn"
                   >Sign Up</sl-button
                 >
               </div>

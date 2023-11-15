@@ -12,15 +12,28 @@ class SignInView {
     Utils.pageIntroAnim();
   }
 
-  signInSubmitHandler(e) {
+  async signInSubmitHandler(e) {
     e.preventDefault();
-    const formData = e.detail.formData;
     const submitBtn = document.querySelector(".submit-btn");
     submitBtn.setAttribute("loading", "");
+    // Wait for controls to be defined before attaching form listeners
+    await Promise.all([
+      customElements.whenDefined("sl-button"),
+      customElements.whenDefined("sl-input"),
+    ]).then(() => {
+      const form = document.querySelector("#form-signin");
+      const formData = new FormData(form);
 
-    // sign in using Auth
-    Auth.signIn(formData, () => {
+      // logging data for testing
+      for (const [key, value] of formData) {
+        console.log(`${key}: ${value}`);
+      }
+
       submitBtn.removeAttribute("loading");
+      // sign in using Auth
+      // Auth.signIn(formData, () => {
+      //   submitBtn.removeAttribute("loading");
+      // });
     });
   }
 
@@ -34,15 +47,15 @@ class SignInView {
         <div id="paw-3" class="paw-div"></div>
         <div id="paw-4" class="paw-div"></div>
         <div class="paw-top-right"></div>
-          <sl-form id="form-signin" @sl-submit=${this.signInSubmitHandler}>  
+          <form id="form-signin" @submit=${this.signInSubmitHandler}>  
             <div class="signin-input">
               <sl-input label="Email" name="email" type="email" placeholder="Email" required/>
             </div>
             <div class="signin-input">
               <sl-input label="Password" name="password" type="password" placeholder="Password" required toggle-password />
             </div>
-            <sl-button class="submit-btn" type="default" submit>Sign In</sl-button>
-          </sl-form>
+            <sl-button class="submit-btn" variant="default" type="submit">Sign In</sl-button>
+          </form>
           <p>Don't have an account? <a href="/signup" @click=${anchorRoute}>Sign Up</a></p>
         </div>
       </div>
