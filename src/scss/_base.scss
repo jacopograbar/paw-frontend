@@ -150,6 +150,20 @@ a {
   }
 }
 
+.avatar-app {
+  --size: 170px;
+  min-width: 180px;
+  border: solid 0.5vw black;
+  border-radius: 50%;
+  overflow: hidden;
+
+  img {
+    min-width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
 // ************************************ Headings *********************************** //
 h1,
 h2,
@@ -898,11 +912,80 @@ h3 {
 // ************************************ MY APPLICATIONS *********************************** //
 .applications-screen {
   width: 100%;
-  height: 100vh;
+  height: fit-content;
   min-height: 800px;
   position: relative;
-  overflow: hidden;
+  overflow: auto;
   color: white;
   background-color: $paw-turquoise;
-  @include flex-column(center, center);
+  @include flex-column(flex-start, center);
+  padding: 12% 0 5% 0;
+  h1 {
+    margin-bottom: 40px;
+  }
+}
+
+.details-group {
+  width: 80%;
+}
+sl-details {
+  color: black;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+sl-details::part(header) {
+  background-color: $paw-lilac;
+}
+
+sl-details::part(summary) {
+  width: 100%;
+}
+
+.summary {
+  width: 100%;
+  @include flex-row(space-between, center);
+  p {
+    width: 20%;
+    margin: 0;
+  }
+}
+
+sl-details::part(content) {
+  height: 200px;
+}
+
+.details-show {
+  width: 96%;
+  height: 100%;
+  padding: 0 2%;
+  @include flex-row(space-between, center);
+
+  .left-content {
+    @include flex-row(flex-start, center);
+    gap: 10%;
+    width: 80%;
+    p {
+      width: 80%;
+    }
+  }
+
+  .right-content {
+    height: 100%;
+    @include flex-column(center, center);
+    gap: 9%;
+    width: 20%;
+    p{
+      margin: 0;
+      text-align: center;
+    }
+  }
+
+  .avatar-button {
+    border-width: 10px;
+    --size: 80px;
+    sl-icon {
+      font-size: 500px;
+    }
+  }
 }

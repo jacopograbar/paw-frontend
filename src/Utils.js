@@ -15,8 +15,8 @@ class Utils {
     if (!pageContent) return;
     gsap.fromTo(
       pageContent,
-      { opacity: 1, },
-      { opacity: 0, ease: "ease-in-out",  zIndex:-1, duration: 2}
+      { opacity: 1 },
+      { opacity: 0, ease: "ease-in-out", zIndex: -1, duration: 2 }
     );
   }
 
@@ -143,6 +143,8 @@ class Utils {
         _id: "01",
         status: "2",
         date: "30/10/2023",
+        message:
+          "Eager to open my heart and home to a furry friend. Ready to provide love and care for a sweet cat companion. Let's make our home her forever home!",
         pet: {
           _id: "300",
           name: "Pelosa",
@@ -165,6 +167,7 @@ class Utils {
         shelter: {
           _id: "100",
           name: "This Shelter",
+          email: "shelter@email.com",
         },
         adopter: {
           _id: "1001",
@@ -181,6 +184,8 @@ class Utils {
         _id: "02",
         status: "2",
         date: "21/10/2023",
+        message:
+          "Searching for a four-legged family member to join our household. We're a loving family, and our hearts are ready to welcome a playful pup. Are you our perfect match?",
         pet: {
           _id: "200",
           name: "Rugas",
@@ -199,6 +204,7 @@ class Utils {
         shelter: {
           _id: "100",
           name: "This Shelter",
+          email: "shelter@email.com",
         },
         adopter: {
           _id: "1000",
@@ -213,8 +219,10 @@ class Utils {
       },
       {
         _id: "03",
-        status: "2",
+        status: "3",
         date: "12/09/2023",
+        message:
+          "Ready to embrace the joy of adopting a senior dog. Our home is filled with love, and we're excited to offer a peaceful haven for Daisy's golden years. Let's make lasting memories together!",
         pet: {
           _id: "300",
           name: "Antares",
@@ -237,6 +245,7 @@ class Utils {
         shelter: {
           _id: "100",
           name: "This Shelter",
+          email: "shelter@email.com",
         },
         adopter: {
           _id: "1000",
@@ -253,6 +262,8 @@ class Utils {
         _id: "01",
         status: "2",
         date: "30/10/2023",
+        message:
+          "Excited to expand our family with adorable kittens. Our home is kitten-proofed, and we're prepared for the pitter-patter of tiny paws. Ready for a lifetime of cuddles and playtime!",
         pet: {
           _id: "300",
           name: "Pelosa",
@@ -275,6 +286,7 @@ class Utils {
         shelter: {
           _id: "100",
           name: "This Shelter",
+          email: "shelter@email.com",
         },
         adopter: {
           _id: "1001",
@@ -289,8 +301,10 @@ class Utils {
       },
       {
         _id: "02",
-        status: "2",
+        status: "1",
         date: "21/10/2023",
+        message:
+          "Yearning to share my life with a loyal canine companion. A committed dog lover, I'm ready to provide a forever home filled with love, walks, and belly rubs. Let's embark on this journey together!",
         pet: {
           _id: "200",
           name: "Rugas",
@@ -309,6 +323,7 @@ class Utils {
         shelter: {
           _id: "100",
           name: "This Shelter",
+          email: "shelter@email.com",
         },
         adopter: {
           _id: "1000",
@@ -325,6 +340,8 @@ class Utils {
         _id: "03",
         status: "2",
         date: "12/09/2023",
+        message:
+          "Passionate about giving a forever home to a loving cat or kitten. Our home is a haven for feline friends, complete with cozy spots and endless affection. Join us for purr-fect moments and endless cuddles!",
         pet: {
           _id: "300",
           name: "Antares",
@@ -347,6 +364,7 @@ class Utils {
         shelter: {
           _id: "100",
           name: "This Shelter",
+          email: "shelter@email.com",
         },
         adopter: {
           _id: "1000",
