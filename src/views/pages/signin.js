@@ -1,7 +1,7 @@
 import App from "./../../App";
 import { html, render } from "lit-html";
 import { anchorRoute, gotoRoute } from "./../../Router";
-import Auth from "./../../Auth";
+import Auth from "../../services/Auth";
 import Utils from "./../../Utils";
 
 class SignInView {
@@ -29,11 +29,10 @@ class SignInView {
         console.log(`${key}: ${value}`);
       }
 
-      submitBtn.removeAttribute("loading");
       // sign in using Auth
-      // Auth.signIn(formData, () => {
-      //   submitBtn.removeAttribute("loading");
-      // });
+      Auth.signIn(formData, () => {
+        submitBtn.removeAttribute("loading");
+      });
     });
   }
 

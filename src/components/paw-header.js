@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "@polymer/lit-element";
 import { anchorRoute, gotoRoute } from "../Router";
-import Auth from "../Auth";
+import Auth from "../services/Auth";
 import App from "../App";
 
 customElements.define(
@@ -85,17 +85,19 @@ customElements.define(
             </nav>
           </a>
           ${this.user ? html`<p>Hi, ${this.user.name}</p>` : html``}
-          ${this.user &&
-          this.user.accessLevel == 1 ?
-          html` <a class="header-link" href="/my-applications">My Applications</a
-            ><br /><a class="header-link" href="/dashboard/seeker"
-              >Dashboard</a
-            >` : html``}
-          ${this.user &&
-          this.user.accessLevel == 2 ?
-          html` <a class="header-link" href="/dashboard/shelter"
-              >Dashboard</a
-            >` : html``}
+          ${this.user && this.user.accessLevel == 1
+            ? html` <a class="header-link" href="/my-applications"
+                  >My Applications</a
+                ><br /><a class="header-link" href="/dashboard/seeker"
+                  >Dashboard</a
+                >`
+            : html``}
+          ${this.user && this.user.accessLevel == 2
+            ? html` <a class="header-link" href="/dashboard/shelter"
+                >Dashboard</a
+              >`
+            : html``}
+          ${this.user ? html`<a class="header-link" href="" @click=${Auth.signOut}>Log out</a>` : html``}
         </header>
       `;
     }

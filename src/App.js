@@ -1,5 +1,5 @@
 import Router from './Router'
-import Auth from './Auth'
+import Auth from './services/Auth'
 import Toast from './Toast'
 
 
@@ -19,10 +19,10 @@ class App {
     Toast.init()   
     
     // Authentication check    
-    // Auth.check(() => {
+    Auth.check(() => {
       // authenticated! init Router
       Router.init()
-    // })    
+    })    
   }
 }
 

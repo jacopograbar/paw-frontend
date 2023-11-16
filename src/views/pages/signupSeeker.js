@@ -1,7 +1,7 @@
 import App from "../../App";
 import { html, render } from "lit-html";
 import { gotoRoute, anchorRoute } from "../../Router";
-import Auth from "../../Auth";
+import Auth from "../../services/Auth";
 import Utils from "../../Utils";
 
 class SignupSeekerView {
@@ -36,12 +36,10 @@ class SignupSeekerView {
       console.log(formData.getAll("animals"));
       // CAN GET JUST ONE VALUE WITH .GET
 
-      submitBtn.removeAttribute("loading");
-
       // sign up using Auth
-      // Auth.signUp(formData, () => {
-      //   submitBtn.removeAttribute("loading");
-      // });
+      Auth.signUp(formData, () => {
+        submitBtn.removeAttribute("loading");
+      });
     });
   }
 
@@ -58,7 +56,8 @@ class SignupSeekerView {
         <div class="signup-overlay">
           <h1>Pet Seeker Signup</h1>
           <form class="signup-form" @submit=${this.submitHandler}>
-            <input name="accessType" value="2" type="hidden" />
+            <input name="accessLevel" value="1" type="hidden" />
+            <input name="newUser" value="true" type="hidden" />
             <div class="signup-column">
               <div class="input-group">
                 <sl-input
@@ -142,6 +141,7 @@ class SignupSeekerView {
               </div>
               <div class="input-group">
                 <sl-textarea
+                  name="bio"
                   rows="5"
                   resize="none"
                   placeholder="Write your bio here..."

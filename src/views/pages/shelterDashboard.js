@@ -1,7 +1,7 @@
 import App from "../../App";
 import { html, render } from "lit-html";
 import { gotoRoute, anchorRoute } from "../../Router";
-import Auth from "../../Auth";
+import Auth from "../../services/Auth";
 import Utils from "../../Utils";
 
 class ShelterDashboardView {
@@ -9,6 +9,7 @@ class ShelterDashboardView {
     document.title = "Shelter Dashboard";
     this.pets = Utils.createDummyPetObjects();
     this.applications = Utils.createDummyApplicationObjects();
+    this.user = Auth.currentUser;
     this.render();
     Utils.pageIntroAnim();
   }
@@ -42,9 +43,9 @@ class ShelterDashboardView {
               />
             </sl-avatar>
             <div class="shelter-info">
-              <h2>Shelter's Name</h2>
-              <h3>Shelter's Address</h3>
-              <p>Shelter's description</p>
+              <h2>${this.user.name}</h2>
+              <h3><img src="../images/location-pin.png" id="location-pin" alt="Location Pin" />${this.user.address}, ${this.user.state}</h3>
+              <p>${this.user.bio}</p>
               <sl-button>Edit Profile</sl-button>
             </div>
           </div>

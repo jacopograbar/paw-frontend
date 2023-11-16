@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "@polymer/lit-element";
 import { anchorRoute, gotoRoute } from "../Router";
-import Auth from "../Auth";
+import Auth from "../services/Auth";
 import App from "../App";
 
 customElements.define(

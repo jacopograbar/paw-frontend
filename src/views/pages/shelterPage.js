@@ -1,7 +1,7 @@
 import App from "../../App";
 import { html, render } from "lit-html";
 import { gotoRoute, anchorRoute } from "../../Router";
-import Auth from "../../Auth";
+import Auth from "../../services/Auth";
 import Utils from "../../Utils";
 
 class ShelterPageView {

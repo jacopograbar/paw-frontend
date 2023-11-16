@@ -1,5 +1,5 @@
 import App from "../../App";
-import Auth from "../../Auth";
+import Auth from "../../services/Auth";
 import { html, render } from "lit-html";
 import { anchorRoute, gotoRoute } from "../../Router";
 import Utils from "../../Utils";
@@ -10,18 +10,6 @@ class SignUpFirstView {
     document.title = "Sign In";
     this.render();
     Utils.pageIntroAnim();
-  }
-
-  signUpSubmitHandler(e) {
-    e.preventDefault();
-    const submitBtn = document.querySelector(".submit-btn");
-    submitBtn.setAttribute("loading", "");
-    const formData = e.detail.formData;
-
-    // sign up using Auth
-    Auth.signUp(formData, () => {
-      submitBtn.removeAttribute("loading");
-    });
   }
 
   render() {

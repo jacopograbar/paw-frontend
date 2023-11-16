@@ -588,6 +588,16 @@ h3 {
   .shelter-info {
     @include flex-column(flex-start, center);
     gap: 2%;
+    text-align: center;
+
+    h3{
+      @include flex-row(center, center);
+    }
+
+    #location-pin{
+      width: 20px;
+      margin-right: 5px;
+    }
     sl-button {
       margin-top: 5%;
 

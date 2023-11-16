@@ -1,7 +1,7 @@
 import { LitElement, html, css } from "@polymer/lit-element";
 import { render } from "lit-html";
 import { anchorRoute, gotoRoute } from "../Router";
-import Auth from "../Auth";
+import Auth from "../services/Auth";
 import App from "../App";
 import UserAPI from "../UserAPI";
 import Toast from "../Toast";

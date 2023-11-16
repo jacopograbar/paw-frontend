@@ -1,5 +1,5 @@
 import App from './App'
-import Auth from './Auth'
+import Auth from './services/Auth'
 import Toast from './Toast'
 
 class UserAPI {
