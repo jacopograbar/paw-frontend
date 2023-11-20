@@ -1,15 +1,20 @@
 import App from "../../App";
 import { html, render } from "lit-html";
 import { gotoRoute, anchorRoute } from "../../Router";
+import PetAPI from "../../services/PetAPI";
 import Auth from "../../services/Auth";
 import Utils from "../../Utils";
+import ApplicationsAPI from "../../services/ApplicationsAPI";
 
 class ShelterDashboardView {
-  init() {
+  async init() {
     document.title = "Shelter Dashboard";
-    this.pets = Utils.createDummyPetObjects();
-    this.applications = Utils.createDummyApplicationObjects();
     this.user = Auth.currentUser;
+    console.log(this.user);
+    this.pets = await PetAPI.getPets();
+    console.log(this.pets);
+    this.applications = await ApplicationsAPI.getApplications(2, this.user._id)
+    console.log(this.applications)
     this.render();
     Utils.pageIntroAnim();
   }
@@ -126,9 +131,11 @@ class ShelterDashboardView {
                         <sl-carousel-item>
                           <paw-applicationcard
                             id="${application._id}"
-                            date="${application.date}"
+                            status="${application.status}"
+                            date="${application.createdAt}"
                             pet="${JSON.stringify(application.pet)}"
                             applicant="${JSON.stringify(application.adopter)}"
+                            shelter="${JSON.stringify(application.shelter)}"
                           ></paw-applicationcard>
                         </sl-carousel-item>
                       `

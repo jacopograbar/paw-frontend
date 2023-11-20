@@ -2,13 +2,17 @@ import App from "../../App";
 import { html, render } from "lit-html";
 import { gotoRoute, anchorRoute } from "../../Router";
 import Auth from "../../services/Auth";
+import PetAPI from "../../services/PetAPI";
+import UserAPI from "../../services/UserAPI"
 import Utils from "../../Utils";
 
 class SeekerDashboardView {
-  init() {
+  async init() {
     document.title = "Seeker Dashboard";
-    this.pets = Utils.createDummyPetObjects();
-    this.shelters = Utils.createDummyShelterObjects();
+    this.pets = await PetAPI.getPets();
+    this.shelters =  await UserAPI.getUserListByAccessLevel(2);;
+    console.log(this.shelters);
+    console.log(this.pets);
     this.render();
     Utils.pageIntroAnim();
   }
@@ -23,7 +27,10 @@ class SeekerDashboardView {
 
   render() {
     const template = html`
-      <paw-header user="${JSON.stringify(Auth.currentUser)}" title="Dashboard"></paw-header>
+      <paw-header
+        user="${JSON.stringify(Auth.currentUser)}"
+        title="Dashboard"
+      ></paw-header>
       <div class="seeker dashboard-view">
         <!-- First Section -->
         <section class="dashboard-section">

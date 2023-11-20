@@ -90,12 +90,12 @@ customElements.define(
                   >My Applications</a
                 ><br /><a class="header-link" href="/dashboard/seeker"
                   >Dashboard</a
-                >`
+                ><br />`
             : html``}
           ${this.user && this.user.accessLevel == 2
             ? html` <a class="header-link" href="/dashboard/shelter"
                 >Dashboard</a
-              >`
+              ><br />`
             : html``}
           ${this.user ? html`<a class="header-link" href="" @click=${Auth.signOut}>Log out</a>` : html``}
         </header>
