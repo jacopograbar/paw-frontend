@@ -55,6 +55,28 @@ class ApplicationsAPI {
     // return data
     return data;
   }
+
+  async submitApplication(applicationData, fail = false) {
+    const response = await fetch(`${App.apiBase}/application`, {
+      method: "POST",
+      body: applicationData,
+    });
+
+    // if response not ok
+    if (!response.ok) {
+      // console log error
+      const err = await response.json();
+      if (err) console.log(err);
+      // show error
+      Toast.show(`Problem submitting application: ${response.status}`);
+      // run fail() functon if set
+      if (typeof fail == "function") fail();
+    }
+    /// sign up success - show toast and redirect to sign in page
+    Toast.show("Application submitted!");
+    // redirect to signin
+    gotoRoute("/dashboard/seeker");
+  }
 }
 
 export default new ApplicationsAPI();

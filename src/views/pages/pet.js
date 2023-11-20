@@ -11,6 +11,7 @@ class PetView {
     this.petID = window.location.pathname.split("/")[2];
     console.log("Pet page for ID ", this.petID);
     this.pet = await PetAPI.getPetById(this.petID);
+    console.log(this.pet);
     this.i = 0;
     this.render();
     Utils.pageIntroAnim();
@@ -22,6 +23,10 @@ class PetView {
     this.render();
   }
 
+  sendEOI(){
+    alert('sending...');
+  }
+
   render() {
     const template = html`
       <paw-header user="${JSON.stringify(Auth.currentUser)}" title="Pet Page"></paw-header>
@@ -30,7 +35,7 @@ class PetView {
         <!-- First Section -->
         <section class="pet-page-section layout-section">
           <div class="section-column">
-            <sl-avatar class="avatar-button" label="Browse dogs">
+            <sl-avatar class="avatar-button" label="My Shelter" @click=${()=> gotoRoute(`/shelter/${this.pet.shelter._id}`)}>
               <img
                 id="avatar-image"
                 slot="icon"
@@ -112,7 +117,7 @@ class PetView {
             </div>
           </div>
           <div class="section-column">
-            <sl-avatar class="avatar-button" label="Browse dogs">
+            <sl-avatar class="avatar-button" label="Adoption"  @click=${()=> gotoRoute(`/application/${this.pet._id}`)}>
               <sl-icon slot="icon" name="file-text"></sl-icon>
             </sl-avatar>
             <h2 class="pet-btn-title">Adoption</h2>

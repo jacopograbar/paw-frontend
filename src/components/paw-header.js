@@ -8,6 +8,7 @@ customElements.define(
   class AppHeader extends LitElement {
     constructor() {
       super();
+      this.pathName = window.location.pathname.split("/")[1];
     }
 
     static get properties() {
@@ -85,19 +86,29 @@ customElements.define(
             </nav>
           </a>
           ${this.user ? html`<p>Hi, ${this.user.name}</p>` : html``}
-          ${this.user && this.user.accessLevel == 1
+          ${this.user &&
+          this.user.accessLevel == 1 &&
+          this.pathName != "my-applications"
             ? html` <a class="header-link" href="/my-applications"
                   >My Applications</a
-                ><br /><a class="header-link" href="/dashboard/seeker"
-                  >Dashboard</a
+                ><br />`
+            : html``}
+          ${this.user &&
+          this.user.accessLevel == 1 &&
+          this.pathName != "dashboard"
+            ? html`<a class="header-link" href="/dashboard/seeker">Dashboard</a
                 ><br />`
             : html``}
           ${this.user && this.user.accessLevel == 2
             ? html` <a class="header-link" href="/dashboard/shelter"
-                >Dashboard</a
-              ><br />`
+                  >Dashboard</a
+                ><br />`
             : html``}
-          ${this.user ? html`<a class="header-link" href="" @click=${Auth.signOut}>Log out</a>` : html``}
+          ${this.user
+            ? html`<a class="header-link" href="" @click=${Auth.signOut}
+                >Log out</a
+              >`
+            : html``}
         </header>
       `;
     }
