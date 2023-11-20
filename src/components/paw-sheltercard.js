@@ -39,8 +39,8 @@ customElements.define(
       super.firstUpdated();
     }
 
-    redirectToPetPage() {
-      alert("test");
+    redirectToShelterPage() {
+      gotoRoute(`/shelter/${this.id}`);
     }
 
     render() {
@@ -117,7 +117,7 @@ customElements.define(
             <h2>${this.name}</h2>
             <p><img src="../images/location-pin.png" id="location-pin" alt="Location Pin" />${this.address}, ${this.state}</p>
             <p>${this.bio}</p>
-            <sl-button @click=${this.redirectToPetPage.bind(this)}
+            <sl-button @click=${this.redirectToShelterPage.bind(this)}
               >View</sl-button
             >
           </div>

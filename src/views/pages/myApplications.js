@@ -3,11 +3,17 @@ import { html, render } from "lit-html";
 import { gotoRoute, anchorRoute } from "../../Router";
 import Auth from "../../services/Auth";
 import Utils from "../../Utils";
+import ApplicationsAPI from "../../services/ApplicationsAPI";
+import dayjs from "dayjs";
 
 class MyApplicationsView {
-  init() {
+  async init() {
     document.title = "My Applications";
-    this.applications = Utils.createDummyApplicationObjects();
+    this.applications = await ApplicationsAPI.getApplications(
+      Auth.currentUser.accessLevel,
+      Auth.currentUser._id
+    );
+    console.log(this.applications);
     this.render();
     Utils.pageIntroAnim();
   }
@@ -39,7 +45,7 @@ class MyApplicationsView {
               html` <sl-details @sl-show=${this.handleOpen}>
                 <div class="summary" slot="summary">
                   <p><strong>${app.pet.name}</strong></p>
-                  <p>${app.date}</p>
+                  <p>${dayjs(app.createdAt).format("DD/MM/YYYY")}</p>
                   <p>${app.adopter.name}</p>
                   <p>${app.shelter.name}</p>
                   <p

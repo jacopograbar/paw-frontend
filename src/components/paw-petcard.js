@@ -47,7 +47,7 @@ customElements.define(
     }
 
     redirectToPetPage() {
-      alert("test");
+      gotoRoute(`/pet/${this.id}`);
     }
 
     render() {

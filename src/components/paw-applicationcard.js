@@ -5,6 +5,7 @@ import Auth from "../services/Auth";
 import App from "../App";
 import Toast from "../Toast";
 import dayjs from "dayjs";
+import ApplicationsAPI from "../services/ApplicationsAPI";
 
 customElements.define(
   "paw-applicationcard",
@@ -32,7 +33,7 @@ customElements.define(
         },
         shelter: {
           type: Object,
-        }
+        },
       };
     }
 
@@ -40,8 +41,9 @@ customElements.define(
       super.firstUpdated();
     }
 
-    redirectToPetPage() {
-      alert("test");
+    async redirectToApplicationPage() {
+      const applicationData = await ApplicationsAPI.getApplicationById(this.id);
+      console.log(applicationData);
     }
 
     render() {
@@ -117,16 +119,20 @@ customElements.define(
         </style>
         <div class="application-card">
           <div class="card-image applicant">
-            <img src="${this.applicant.profilePic}" alt="${this.applicant.name}" />
+            <img src="${this.applicant.profilePic}" alt="${
+        this.applicant.name
+      }" />
           </div>
           <div class="card-image pet">
             <img src="${this.pet.images[0]}" alt="${this.pet.name}" />
           </div>
           <div class="card-body">
-            <h2>${this.status == 2 ? "Pending" : "" } ${this.status == 1 ? "Rejected" : "" } ${this.status == 3 ? "Approved" : "" }Application</h2>
+            <h2>${this.status == 2 ? "Pending" : ""} ${
+        this.status == 1 ? "Rejected" : ""
+      } ${this.status == 3 ? "Approved" : ""}Application</h2>
             <p>${this.applicant.name} x ${this.pet.name}</p>
-            <p>Lodged on ${dayjs(this.date).format('DD/MM/YYYY') }</p>
-            <sl-button @click=${this.redirectToPetPage.bind(
+            <p>Lodged on ${dayjs(this.date).format("DD/MM/YYYY")}</p>
+            <sl-button @click=${this.redirectToApplicationPage.bind(
               this
             )}>Review</sl-button>
           </div>

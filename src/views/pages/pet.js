@@ -2,15 +2,15 @@ import App from "../../App";
 import { html, render } from "lit-html";
 import { gotoRoute, anchorRoute } from "../../Router";
 import Auth from "../../services/Auth";
+import PetAPI from "../../services/PetAPI";
 import Utils from "../../Utils";
 
 class PetView {
-  init() {
+  async init() {
     document.title = "Pet Page";
-    const petID = window.location.pathname.split("/")[2];
-    console.log("Pet page for ID ", petID);
-    this.pets = Utils.createDummyPetObjects();
-    this.pet = this.pets[0];
+    this.petID = window.location.pathname.split("/")[2];
+    console.log("Pet page for ID ", this.petID);
+    this.pet = await PetAPI.getPetById(this.petID);
     this.i = 0;
     this.render();
     Utils.pageIntroAnim();

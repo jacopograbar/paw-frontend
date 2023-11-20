@@ -2,16 +2,19 @@ import App from "../../App";
 import { html, render } from "lit-html";
 import { gotoRoute, anchorRoute } from "../../Router";
 import Auth from "../../services/Auth";
+import UserAPI from "../../services/UserAPI";
+import PetAPI from "../../services/PetAPI";
 import Utils from "../../Utils";
 
 class ShelterPageView {
-  init() {
+  async init() {
     document.title = "Shelter Page";
-    const shelterID = window.location.pathname.split("/")[2];
-    console.log("Shelter page for ID ", shelterID);
-    this.shelters = Utils.createDummyShelterObjects();
-    this.shelter = this.shelters[0];
-    this.pets = Utils.createDummyPetObjects();
+    this.shelterID = window.location.pathname.split("/")[2];
+    console.log("Shelter page for ID ", this.shelterID);
+    this.shelter = await UserAPI.getProfileById(this.shelterID);
+    this.pets = await PetAPI.getPets();
+    console.log(this.shelter);
+    console.log(this.pets);
     this.render();
     Utils.pageIntroAnim();
   }
@@ -26,7 +29,10 @@ class ShelterPageView {
 
   render() {
     const template = html`
-      <paw-header user="${JSON.stringify(Auth.currentUser)}" title="Shelter Page"></paw-header>
+      <paw-header
+        user="${JSON.stringify(Auth.currentUser)}"
+        title="Shelter Page"
+      ></paw-header>
       <div class="shelter-page-view layout-page">
         <div class="page-animation"></div>
         <!-- First Section -->

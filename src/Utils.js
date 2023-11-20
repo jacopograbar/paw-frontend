@@ -56,7 +56,7 @@ class Utils {
         break;
       case 3:
         string =
-          "Good behaviour, but some temperamental issues.Some previous experience with pets advised.";
+          "Good behaviour, but some temperamental issues. Some previous experience with pets advised.";
         break;
       case 4:
         string = "Friendly pet. Suitable for families and new pet owners.";
