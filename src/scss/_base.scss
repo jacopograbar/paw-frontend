@@ -1037,3 +1037,50 @@ sl-details::part(content) {
     padding-top: 20px;
   }
 }
+
+// ************************************ REVIEW APPLICATION *********************************** //
+#review{
+  padding: 0 10%;
+
+  table{
+    width: 100%;
+    color: black;
+
+    th{
+      background-color: $paw-yellow;
+      padding: 1%;
+      border-radius: 10px;
+    }
+    td{
+      padding: 1%;
+    }
+  }
+
+  .details{
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.924);
+  }
+
+  .application-submit-area{
+    width: 100%;
+  }
+
+  #reject-btn, #approve-btn{
+    width: 100px;
+    margin-left: 2%;
+    &::part(base):hover{
+      transform: scale(1.05);
+      transition: 0.4s ease-in-out;
+    }
+  }
+
+  #approve-btn::part(base){
+    background-color: green;
+    border-color: green;
+  }
+
+  #reject-btn::part(base){
+    background-color: $paw-bordeaux;
+    border-color: $paw-bordeaux;
+  }
+}

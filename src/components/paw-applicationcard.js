@@ -41,9 +41,8 @@ customElements.define(
       super.firstUpdated();
     }
 
-    async redirectToApplicationPage() {
-      const applicationData = await ApplicationsAPI.getApplicationById(this.id);
-      console.log(applicationData);
+    redirectToApplicationPage() {
+      gotoRoute(`/review/${this.id}`);
     }
 
     render() {

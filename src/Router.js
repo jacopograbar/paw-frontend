@@ -11,7 +11,8 @@ import guideView from "./views/pages/guide";
 import shelterPageView from "./views/pages/shelterPage";
 import petView from "./views/pages/pet";
 import myApplicationsView from "./views/pages/myApplications";
-import ApplicationPageView from "./views/pages/applicationPage";
+import applicationPageView from "./views/pages/applicationPage";
+import applicationReviewView from "./views/pages/applicationReview";
 
 // define routes
 const routes = {
@@ -70,8 +71,15 @@ class Router {
       !pathname.split("/")[3]
     ) {
       // special handling for shelter view routing
-      ApplicationPageView.init();
-    }else {
+      applicationPageView.init();
+    } else if (
+      pathname.split("/")[1] === "review" &&
+      pathname.split("/")[2] &&
+      !pathname.split("/")[3]
+    ) {
+      // special handling for shelter view routing
+      applicationReviewView.init();
+    } else {
       // show 404 view instead
       this.routes["404"].init();
     }

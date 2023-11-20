@@ -138,7 +138,6 @@ customElements.define(
             <h2>${this.name}</h2>
             <p>
               ${this.age} ${this.age == 1 ? "year" : "years"} old ${this.breed}
-              ${this.petType}
             </p>
             <div class="badges-row">
               <sl-avatar id="first" label="${this.petType}">

@@ -72,10 +72,42 @@ class ApplicationsAPI {
       // run fail() functon if set
       if (typeof fail == "function") fail();
     }
-    /// sign up success - show toast and redirect to sign in page
+    /// success message
     Toast.show("Application submitted!");
-    // redirect to signin
+    // redirect to seeker dashboard
     gotoRoute("/dashboard/seeker");
+  }
+
+  async processApplication(id, status) {
+    // validate
+    if (!id) return;
+
+    // fetch the json data
+    const response = await fetch(`${App.apiBase}/application/${id}`, {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${localStorage.accessToken}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ status: status }),
+    });
+
+    // if response not ok
+    if (!response.ok) {
+      // console log error
+      const err = await response.json();
+      if (err) console.log(err);
+      // throw error (exit this function)
+      throw new Error(
+        "A problem occurred while trying to process the application. Try again later."
+      );
+    }
+
+    // convert response payload into json - store as data
+    const data = await response.json();
+
+    // return data
+    return data;
   }
 }
 

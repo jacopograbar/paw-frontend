@@ -34,11 +34,6 @@ class ApplicationPageView {
         console.log(`${key}: ${value}`);
       }
 
-      // getting arrays
-      // console.log(formData.getAll("animals"));
-      // CAN GET JUST ONE VALUE WITH .GET
-      // submitBtn.removeAttribute("loading");
-
       // submit application
       ApplicationsAPI.submitApplication(formData, () => {
         submitBtn.removeAttribute("loading");
