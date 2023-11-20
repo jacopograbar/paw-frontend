@@ -13,6 +13,7 @@ import petView from "./views/pages/pet";
 import myApplicationsView from "./views/pages/myApplications";
 import applicationPageView from "./views/pages/applicationPage";
 import applicationReviewView from "./views/pages/applicationReview";
+import editProfileView from "./views/pages/editProfile";
 
 // define routes
 const routes = {
@@ -26,6 +27,7 @@ const routes = {
   "/dashboard/shelter": shelterDashboardView,
   "/dashboard/seeker": seekerDashboardView,
   "/my-applications": myApplicationsView,
+  "/edit-profile": editProfileView,
 };
 
 class Router {

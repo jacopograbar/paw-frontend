@@ -93,6 +93,10 @@ customElements.define(
                   >My Applications</a
                 ><br />`
             : html``}
+          ${this.user && this.pathName != "edit-profile"
+            ? html`<a class="header-link" href="/edit-profile">Edit Profile</a
+                ><br />`
+            : html``}
           ${this.user &&
           this.user.accessLevel == 1 &&
           this.pathName != "dashboard"
