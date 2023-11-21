@@ -82,6 +82,24 @@ customElements.define(
           sl-avatar {
             margin-left: 20px;
           }
+
+          @media (max-width: 481px) {
+            #side-link {
+              width: 200px;
+              height: 150px;
+              left: -90px;
+              top: -50px;
+            }
+
+            p{
+              font-size: 18px;
+            }
+
+            .app-top-nav img {
+              bottom: 15px;
+              right: 40px;
+            }
+          }
         </style>
         <header class="app-header">
           <a id="side-link" href="/" @click="${anchorRoute}">

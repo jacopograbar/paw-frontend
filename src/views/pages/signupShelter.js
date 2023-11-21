@@ -46,7 +46,7 @@ class SignupShelterView {
   render() {
     const template = html`
       <paw-header title="Pet Shelter Signup"></paw-header>
-      <div class="signup-page">
+      <div class="signup-page" id="signup-second-page">
         <div class="paw-main"></div>
         <div id="paw-1" class="paw-div"></div>
         <div id="paw-2" class="paw-div"></div>

@@ -12,7 +12,9 @@ class SeekerDashboardView {
     document.title = "Seeker Dashboard";
     this.pets = null;
     this.shelters = await UserAPI.getUserListByAccessLevel(2);
+    this.width = window.innerWidth;
     console.log(this.shelters);
+    window.addEventListener("resize", this.resizeCarousel.bind(this));
     this.render();
     window.scrollTo(0, 0);
     Utils.pageIntroAnim();
@@ -78,6 +80,16 @@ class SeekerDashboardView {
     document
       .getElementById(sectionTag)
       .scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  resizeCarousel() {
+    console.log('resizing');
+    const carousel = document.querySelector(".carousel-container");
+    this.render();
+  }
+
+  observeScreenWidth() {
+    window.onresize = this.resizeCarousel();
   }
 
   handleScrollToPet(petType) {
@@ -179,7 +191,11 @@ class SeekerDashboardView {
               id="carousel"
               navigation
               mouse-dragging
-              slides-per-page="${this.pets && this.pets.length === 0 ? 1 : 3}"
+              slides-per-page="${window.innerWidth > 1100
+                ? 3
+                : window.innerWidth > 690
+                ? 2
+                : 1}"
               slides-per-move="1"
             >
               ${!this.pets

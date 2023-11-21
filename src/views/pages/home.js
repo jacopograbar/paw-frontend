@@ -22,6 +22,7 @@ class HomeView {
         <div id="paw-3" class="paw-div"></div>
         <div id="paw-4" class="paw-div"></div>
         <div class="paw-top-right"></div>
+        <div class="overlay"></div>
         <div class="landing-buttons">
           <sl-button class="landing-button" @click=${() => gotoRoute("/login")}
             >Login</sl-button

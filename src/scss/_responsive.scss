@@ -1,0 +1,202 @@
+// Responsive styling //
+
+// ******************************* HD LAPTOP (1280 X 720) ********************************* //
+
+@media (max-width: 1380px) {
+}
+
+@media (max-width: 1280px) {
+  // *********************** LANDING PAGE  ************************* //
+
+  // ***********************  LOGIN PAGE  ***********************  //
+
+  // ***********************  SIGNUP PAGE  ***********************  //
+
+  // ***********************  DASHBOARD  ***********************  //
+
+  // ***********************  PET PAGE  ***********************  //
+
+  // ***********************  SHELTER PAGE  ***********************  //
+
+  // ***********************  FORMS  ***********************  //
+}
+
+// ******************************* TABLET (821px width) ********************************* //
+
+@media (max-width: 821px) {
+  // *********************** LANDING PAGE  ************************* //
+  .landing-page {
+    padding: 0 10% 10% 0;
+    .landing-buttons {
+      width: 40%;
+    }
+  }
+
+  .overlay {
+    display: initial;
+  }
+  // ***********************  LOGIN PAGE  ***********************  //
+
+  .login-page {
+    #form-signin,
+    p {
+      width: 50%;
+    }
+  }
+  // ***********************  SIGNUP PAGE  ***********************  //
+
+  .signup-page {
+    .overlay {
+      .user-type-picker {
+        width: 35vw;
+        height: 35vw;
+        gap: 3%;
+
+        img {
+          width: 17vw;
+        }
+      }
+    }
+  }
+  // ***********************  DASHBOARD  ***********************  //
+
+  .dashboard-view {
+    height: 150vh;
+    .dashboard-section {
+      height: 50vh;
+
+      &:nth-child(1) {
+        .section-column {
+          padding-bottom: 5%;
+        }
+
+        .avatar-button {
+          --size: 20vw;
+        }
+      }
+    }
+  }
+
+  .seeker {
+    #seeker-central-column {
+      padding-top: 250px;
+
+      h1 {
+        font-size: 30px;
+        width: 70vw;
+        text-align: center;
+      }
+    }
+  }
+  // ***********************  PET PAGE  ***********************  //
+
+  // ***********************  SHELTER PAGE  ***********************  //
+
+  // ***********************  FORMS  ***********************  //
+}
+
+// ******************************* MOBILE () ********************************* //
+
+@media (max-width: 481px) {
+  // *********************** LANDING PAGE  ************************* //
+  .landing-page {
+    @include flex-column(center, center);
+    padding: 0;
+
+    .landing-buttons {
+      width: 50%;
+      gap: 40px;
+    }
+  }
+
+  // ***********************  LOGIN PAGE  ***********************  //
+
+  .login-page {
+    @include flex-column(center, center);
+    padding: 20% 0 0 0;
+  }
+  // ***********************  SIGNUP PAGE  ***********************  //
+
+  .signup-page {
+    .overlay {
+      .picker-container {
+        flex-direction: column;
+      }
+
+      .user-type-picker {
+        width: 200px;
+        height: 200px;
+        gap: 0;
+
+        img {
+          width: 100px;
+        }
+      }
+    }
+  }
+  #signup-second-page {
+    height: 1200px;
+    .signup-overlay {
+      padding-top: 150px;
+      height: 1200px;
+      gap: 0;
+
+      h1 {
+        width: 95%;
+        text-align: center;
+      }
+
+      .signup-form {
+        height: 100%;
+        flex-direction: column;
+        gap: 10px;
+
+        .signup-column {
+          height: fit-content;
+          width: 90%;
+          gap: 15px;
+        }
+      }
+    }
+  }
+  // ***********************  DASHBOARD  ***********************  //
+
+  .dashboard-view {
+    .dashboard-section {
+      height: 50vh;
+
+      &:nth-child(1) {
+        padding-left: 25px;
+        padding-right: 25px;
+        .avatar-button {
+          --size: 27vw;
+        }
+
+        .section-column {
+          h2 {
+            font-size: 25px;
+          }
+
+          gap: 3%;
+        }
+      }
+    }
+  }
+
+  .seeker {
+    #seeker-central-column {
+      padding-top: 250px;
+
+      h1 {
+        font-size: 25px;
+        width: 70vw;
+        text-align: center;
+      }
+    }
+  }
+  // ***********************  PET PAGE  ***********************  //
+
+  // ***********************  SHELTER PAGE  ***********************  //
+
+  // ***********************  FORMS  ***********************  //
+}

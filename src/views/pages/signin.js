@@ -40,12 +40,13 @@ class SignInView {
     const template = html`   
     <paw-header title="Select user type"></paw-header>   
       <div class="login-page">  
-      <div class="paw-main"></div>
+        <div class="paw-main"></div>
         <div id="paw-1" class="paw-div"></div>
         <div id="paw-2" class="paw-div"></div>
         <div id="paw-3" class="paw-div"></div>
         <div id="paw-4" class="paw-div"></div>
         <div class="paw-top-right"></div>
+        <div class="overlay"></div>
           <form id="form-signin" @submit=${this.signInSubmitHandler}>  
             <div class="signin-input">
               <sl-input label="Email" name="email" type="email" placeholder="Email" required/>

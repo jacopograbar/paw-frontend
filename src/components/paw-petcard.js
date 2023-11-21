@@ -55,6 +55,7 @@ customElements.define(
         <style>
           .pet-card {
             width: 23vw;
+            max-width: 350px;
             height: 70vh;
             min-height: 520px;
             background-color: #d0cfec;
@@ -128,6 +129,21 @@ customElements.define(
 
           sl-button::part(base):hover {
             color: #f8b102;
+          }
+
+          @media (max-width: 1100px) {
+            .pet-card {
+            width: 25vw;
+            max-width: 350px;
+            height: 70%;
+          }
+
+
+          @media (max-width: 690px) {
+            .pet-card {
+            width: 40vw;
+            height: 70%;
+          }
           }
         </style>
         <div class="pet-card">
