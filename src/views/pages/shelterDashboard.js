@@ -28,9 +28,8 @@ class ShelterDashboardView {
   }
 
   resizeCarousel() {
-    this.render();
+    if (document.title == "Shelter Dashboard") this.render();
   }
-
 
   render() {
     const template = html`

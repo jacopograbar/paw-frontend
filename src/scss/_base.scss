@@ -843,6 +843,10 @@ h3 {
     ul {
       font-size: 2vw;
       width: 100%;
+      @include flex-row(flex-start, center);
+      span{
+        max-width: 85%;
+      }
     }
 
     sl-avatar {

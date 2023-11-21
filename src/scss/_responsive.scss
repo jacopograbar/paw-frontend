@@ -6,14 +6,6 @@
 }
 
 @media (max-width: 1280px) {
-  // *********************** LANDING PAGE  ************************* //
-
-  // ***********************  LOGIN PAGE  ***********************  //
-
-  // ***********************  SIGNUP PAGE  ***********************  //
-
-  // ***********************  DASHBOARD  ***********************  //
-
   // ***********************  PET PAGE  ***********************  //
 
   // ***********************  SHELTER PAGE  ***********************  //
@@ -21,9 +13,9 @@
   // ***********************  FORMS  ***********************  //
 }
 
-// ******************************* TABLET (821px width) ********************************* //
+// ******************************* TABLET (under 1024px width) ********************************* //
 
-@media (max-width: 821px) {
+@media (max-width: 1024px) {
   // *********************** LANDING PAGE  ************************* //
   .landing-page {
     padding: 0 10% 10% 0;
@@ -115,6 +107,56 @@
   }
   // ***********************  PET PAGE  ***********************  //
 
+  .pet-page-view {
+    .pet-page-section {
+      &:nth-child(2) {
+        .section-column:nth-child(2) {
+          .img-gallery {
+            height: 58%;
+            .avatar-main {
+              --size: 300px;
+            }
+
+            .gallery-row {
+              width: fit-content;
+              min-width: unset;
+              .second {
+                top: -40px;
+                margin: 0 30px;
+              }
+              .third {
+                top: -125px;
+                right: -35px;
+              }
+
+              .fourth {
+                top: -125px;
+                left: -35px;
+              }
+            }
+
+            .avatar-gallery {
+              --size: 80px;
+            }
+          }
+        }
+      }
+    }
+
+    .list-container {
+      ul {
+        font-size: 25px;
+
+        span {
+          max-width: 80%;
+        }
+
+        sl-avatar {
+          --size: 50px;
+        }
+      }
+    }
+  }
   // ***********************  SHELTER PAGE  ***********************  //
 
   // ***********************  FORMS  ***********************  //
@@ -242,7 +284,8 @@
       }
     }
 
-    .dashboard-section:nth-child(2), .dashboard-section:nth-child(3){
+    .dashboard-section:nth-child(2),
+    .dashboard-section:nth-child(3) {
       .carousel-container {
         sl-carousel {
           width: 100%;
@@ -270,6 +313,84 @@
   }
   // ***********************  PET PAGE  ***********************  //
 
+  .pet-page-view {
+    .pet-page-section {
+      &:nth-child(2) {
+        padding: 0 20px;
+
+        h1 {
+          width: 70vw;
+          font-size: 30px;
+        }
+
+        h2 {
+          font-size: 25px;
+          width: 40vw;
+        }
+
+        p {
+          font-size: 18px;
+          width: 70vw;
+        }
+
+        h1,
+        h2,
+        p {
+          text-align: center;
+        }
+        .section-column:nth-child(2) {
+          .img-gallery {
+            justify-content: flex-end;
+            padding-bottom: 30px;
+            .avatar-main {
+              --size: 220px;
+            }
+
+            .gallery-row {
+              .second {
+                top: -25px;
+                margin: 0 25px;
+              }
+              .third {
+                top: -90px;
+                right: -25px;
+              }
+
+              .fourth {
+                top: -90px;
+                left: -25px;
+              }
+            }
+
+            .avatar-gallery {
+              --size: 50px;
+            }
+          }
+        }
+      }
+    }
+
+    .list-container {
+      ul {
+        font-size: 22px;
+        width: 100%;
+        margin-left: -8%;
+
+        span {
+          max-width: 80%;
+        }
+      }
+    }
+  }
+
+  .layout-page{
+    .layout-section{
+      .pet-title{
+        font-size: 30px;
+        padding-top: 10px;
+      }
+    }
+  }
   // ***********************  SHELTER PAGE  ***********************  //
 
   // ***********************  FORMS  ***********************  //

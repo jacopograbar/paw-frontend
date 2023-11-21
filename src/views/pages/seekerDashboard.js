@@ -83,7 +83,7 @@ class SeekerDashboardView {
   }
 
   resizeCarousel() {
-    this.render();
+    if (document.title == "Seeker Dashboard") this.render();
   }
 
 

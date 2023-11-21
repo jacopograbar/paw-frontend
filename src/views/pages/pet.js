@@ -157,29 +157,35 @@ class PetView {
             <ul>
               <sl-avatar>
                 <sl-icon slot="icon" name="heart-pulse"></sl-icon> </sl-avatar
-              >${Utils.getDiseaseString(this.pet.diseases)}
+              ><span>${Utils.getDiseaseString(this.pet.diseases)}</span>
             </ul>
             <ul>
               <sl-avatar>
                 <sl-icon slot="icon" name="file-medical"></sl-icon>
               </sl-avatar>
-              ${this.pet.vaccinated
-                ? "Fully vaccinated according to government regulations"
-                : "This pet is not currently up to date with necessary vaccinations"}
+              <span>
+                ${this.pet.vaccinated
+                  ? "Fully vaccinated according to government regulations"
+                  : "This pet is not currently up to date with necessary vaccinations"}
+              </span>
             </ul>
             <ul>
               <sl-avatar>
                 <sl-icon slot="icon" name="people"></sl-icon>
               </sl-avatar>
-              ${Utils.getFriendlinessString(this.pet.friendliness)}
+              <span>
+                ${Utils.getFriendlinessString(this.pet.friendliness)}
+              </span>
             </ul>
             <ul>
               <sl-avatar>
                 <sl-icon slot="icon" name="journals"></sl-icon>
               </sl-avatar>
-              ${this.pet.notes
-                ? "Additional notes: " + this.pet.notes
-                : "No additional notes from the shelter"}
+              <span>
+                ${this.pet.notes
+                  ? "Additional notes: " + this.pet.notes
+                  : "No additional notes from the shelter"}
+              </span>
             </ul>
           </li>
         </section>
