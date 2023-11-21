@@ -79,7 +79,7 @@ customElements.define(
             font-size: 20px;
           }
 
-          sl-avatar{
+          sl-avatar {
             margin-left: 20px;
           }
         </style>
@@ -114,9 +114,10 @@ customElements.define(
             ? html`<a class="header-link" href="/dashboard/seeker">Dashboard</a
                 ><br />`
             : html``}
-          ${this.user && this.user.accessLevel == 2
-            ? html` <a class="header-link" href="/dashboard/shelter"
-                  >Dashboard</a
+          ${this.user &&
+          this.user.accessLevel == 2 &&
+          this.pathName != "dashboard"
+            ? html`<a class="header-link" href="/dashboard/shelter">Dashboard</a
                 ><br />`
             : html``}
           ${this.user

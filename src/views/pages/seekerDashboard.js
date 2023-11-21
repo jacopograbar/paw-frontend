@@ -3,26 +3,78 @@ import { html, render } from "lit-html";
 import { gotoRoute, anchorRoute } from "../../Router";
 import Auth from "../../services/Auth";
 import PetAPI from "../../services/PetAPI";
-import UserAPI from "../../services/UserAPI"
+import UserAPI from "../../services/UserAPI";
 import Utils from "../../Utils";
+import Toast from "../../Toast";
 
 class SeekerDashboardView {
   async init() {
     document.title = "Seeker Dashboard";
-    this.pets = await PetAPI.getPets();
-    this.shelters =  await UserAPI.getUserListByAccessLevel(2);;
+    this.pets = null;
+    this.shelters = await UserAPI.getUserListByAccessLevel(2);
     console.log(this.shelters);
-    console.log(this.pets);
     this.render();
     Utils.pageIntroAnim();
+    await this.getPets();
+  }
+
+  async getPets() {
+    try {
+      this.pets = await PetAPI.getPets();
+      console.log(this.pets);
+      this.render();
+    } catch (err) {
+      Toast.show(err, "error");
+    }
+  }
+
+  async filterPets(match) {
+    // Validation
+    if (!match) return;
+
+    // get fresh copy of the haircuts
+    try {
+      this.pets = await PetAPI.getPets();
+    } catch (err) {
+      console.log(err);
+      return;
+    }
+
+    let filtered = this.pets.filter((pet) => pet.petType == match);
+
+    // Render
+    this.pets = filtered;
+    this.render();
+  }
+
+  clearFilterButtons() {
+    const buttons = document.querySelectorAll(".filter-button");
+    buttons.forEach((button) => {
+      button.removeAttribute("variant");
+    });
+  }
+
+  clearFilters() {
+    this.getPets();
+    this.clearFilterButtons();
   }
 
   handleNext() {
     console.log("next");
   }
 
-  handleFilter() {
-    console.log("filter");
+  handleFilter(e) {
+    // unset all buttons
+    this.clearFilterButtons();
+
+    // set active button
+    e.target.setAttribute("variant", "primary");
+
+    // extract match
+    const match = e.target.getAttribute("data-match");
+
+    // filter
+    this.filterPets(match);
   }
 
   render() {
@@ -68,99 +120,28 @@ class SeekerDashboardView {
           <img id="second-background-img" src="../images/cat-white.png" />
           <h2 id="dashboard-pets-title">Find a pet</h2>
           <div class="filter-menu">
-            <h3>Filter by</h3>
+            <h3>I am looking for:</h3>
             <div>
-              <p>Pet type</p>
               <sl-button
                 class="filter-button"
                 size="small"
                 data-field="gender"
-                data-match="m"
+                data-match="cat"
                 @click=${this.handleFilter.bind(this)}
-                >Cat</sl-button
+                >Cats</sl-button
               >
               <sl-button
                 class="filter-button"
                 size="small"
-                data-field="gender"
-                data-match="f"
+                data-match="dog"
                 @click=${this.handleFilter.bind(this)}
-                >Dog</sl-button
+                >Dogs</sl-button
               >
               <sl-button
                 class="filter-button"
                 size="small"
-                data-field="gender"
-                data-match="u"
-                @click=${this.handleFilter.bind(this)}
+                @click=${this.clearFilters.bind(this)}
                 >All pets</sl-button
-              >
-            </div>
-            <div>
-              <p>State</p>
-              <sl-button
-                class="filter-button"
-                size="small"
-                data-field="gender"
-                data-match="m"
-                @click=${this.handleFilter.bind(this)}
-                >NSW</sl-button
-              >
-              <sl-button
-                class="filter-button"
-                size="small"
-                data-field="gender"
-                data-match="f"
-                @click=${this.handleFilter.bind(this)}
-                >VIC</sl-button
-              >
-              <sl-button
-                class="filter-button"
-                size="small"
-                data-field="gender"
-                data-match="u"
-                @click=${this.handleFilter.bind(this)}
-                >SA</sl-button
-              >
-              <sl-button
-                class="filter-button"
-                size="small"
-                data-field="gender"
-                data-match="m"
-                @click=${this.handleFilter.bind(this)}
-                >QLD</sl-button
-              >
-              <sl-button
-                class="filter-button"
-                size="small"
-                data-field="gender"
-                data-match="f"
-                @click=${this.handleFilter.bind(this)}
-                >ACT</sl-button
-              >
-              <sl-button
-                class="filter-button"
-                size="small"
-                data-field="gender"
-                data-match="u"
-                @click=${this.handleFilter.bind(this)}
-                >NT</sl-button
-              >
-              <sl-button
-                class="filter-button"
-                size="small"
-                data-field="gender"
-                data-match="u"
-                @click=${this.handleFilter.bind(this)}
-                >TAS</sl-button
-              >
-              <sl-button
-                class="filter-button"
-                size="small"
-                data-field="gender"
-                data-match="u"
-                @click=${this.handleFilter.bind(this)}
-                >WA</sl-button
               >
             </div>
           </div>
@@ -169,10 +150,10 @@ class SeekerDashboardView {
               id="carousel"
               navigation
               mouse-dragging
-              slides-per-page="${this.pets.length === 0 ? 1 : 3}"
+              slides-per-page="${this.pets && this.pets.length === 0 ? 1 : 3}"
               slides-per-move="1"
             >
-              ${this.pets.length === 0
+              ${!this.pets
                 ? html`
                     <sl-spinner
                       style="font-size: 7vw; --stroke-width: 1vw;"
