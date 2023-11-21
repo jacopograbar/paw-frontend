@@ -15,6 +15,7 @@ class ShelterDashboardView {
     console.log(this.pets);
     this.applications = await ApplicationsAPI.getApplications(2, this.user._id);
     console.log(this.applications);
+    window.addEventListener("resize", this.resizeCarousel.bind(this));
     this.render();
     window.scrollTo(0, 0);
     Utils.pageIntroAnim();
@@ -26,6 +27,11 @@ class ShelterDashboardView {
       .scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
+  resizeCarousel() {
+    this.render();
+  }
+
+
   render() {
     const template = html`
       <paw-header
@@ -36,7 +42,11 @@ class ShelterDashboardView {
         <!-- First Section -->
         <section class="dashboard-section" id="intro-section">
           <div class="section-column">
-            <sl-avatar class="avatar-button" label="Our Pets" @click=${() => this.scrollToSection("pets-section").bind(this)}>
+            <sl-avatar
+              class="avatar-button"
+              label="Our Pets"
+              @click=${() => this.scrollToSection("pets-section").bind(this)}
+            >
               <img
                 id="avatar-paw"
                 slot="icon"
@@ -65,7 +75,11 @@ class ShelterDashboardView {
             </div>
           </div>
           <div class="section-column">
-            <sl-avatar class="avatar-button" label="Applications" @click=${() => this.scrollToSection("apps-section").bind(this)}>
+            <sl-avatar
+              class="avatar-button"
+              label="Applications"
+              @click=${() => this.scrollToSection("apps-section").bind(this)}
+            >
               <sl-icon slot="icon" name="file-text"></sl-icon>
             </sl-avatar>
             <h2>Applications</h2>
@@ -78,9 +92,20 @@ class ShelterDashboardView {
         <!-- Second Section -->
         <section class="dashboard-section" id="pets-section">
           <img id="second-background-img" src="../images/pawprint-white.png" />
-          <h2 id="dashboard-pets-title">Our pets</h2>
+          <h2 id="dashboard-pets-title">
+            Our pets
+            <sl-avatar
+              id="mobile-add-pet-bttn"
+              class="avatar-button"
+              label="Add more"
+              @click=${() => gotoRoute("/new-pet")}
+            >
+              <sl-icon slot="icon" name="plus"></sl-icon>
+            </sl-avatar>
+          </h2>
           <div class="carousel-container">
             <sl-avatar
+              id="add-pet-bttn"
               class="avatar-button"
               label="Add more"
               @click=${() => gotoRoute("/new-pet")}
@@ -91,7 +116,11 @@ class ShelterDashboardView {
               id="carousel"
               navigation
               mouse-dragging
-              slides-per-page="${this.pets.length === 0 ? 1 : 2.3}"
+              slides-per-page="${window.innerWidth > 1740
+                ? 3
+                : window.innerWidth > 1100
+                ? 2
+                : 1}"
               slides-per-move="1"
             >
               ${this.pets.length === 0
@@ -130,7 +159,11 @@ class ShelterDashboardView {
               id="carousel"
               navigation
               mouse-dragging
-              slides-per-page="${this.applications.length === 0 ? 1 : 3}"
+              slides-per-page="${window.innerWidth > 1100
+                ? 3
+                : window.innerWidth > 690
+                ? 2
+                : 1}"
               slides-per-move="1"
             >
               ${this.applications.length === 0

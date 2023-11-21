@@ -75,6 +75,13 @@
         }
       }
     }
+
+    .dashboard-section:nth-child(2),
+    .dashboard-section:nth-child(3) {
+      #dashboard-pets-title {
+        font-size: 30px;
+      }
+    }
   }
 
   .seeker {
@@ -85,6 +92,24 @@
         font-size: 30px;
         width: 70vw;
         text-align: center;
+      }
+    }
+  }
+
+  .shelter {
+    .dashboard-section:nth-child(1) {
+      .section-column:nth-child(2) {
+        padding-top: 150px;
+
+        h2,
+        h3 {
+          width: 80vw;
+          text-align: center;
+        }
+        p {
+          width: 30vw;
+          text-align: center;
+        }
       }
     }
   }
@@ -193,6 +218,55 @@
         text-align: center;
       }
     }
+
+    .dashboard-section:nth-child(2),
+    .dashboard-section:nth-child(3) {
+      #dashboard-pets-title {
+        font-size: 20px;
+      }
+      .carousel-container {
+        sl-icon {
+          font-size: 40px;
+        }
+      }
+    }
+  }
+
+  .shelter {
+    .dashboard-section:nth-child(1) {
+      .section-column:nth-child(2) {
+        p {
+          width: 40vw;
+          text-align: center;
+        }
+      }
+    }
+
+    .dashboard-section:nth-child(2), .dashboard-section:nth-child(3){
+      .carousel-container {
+        sl-carousel {
+          width: 100%;
+        }
+
+        sl-icon {
+          font-size: 40px;
+        }
+      }
+    }
+  }
+
+  #add-pet-bttn {
+    display: none;
+  }
+
+  #mobile-add-pet-bttn {
+    display: inline-block;
+    &::part(base) {
+      width: 45px;
+      height: 45px;
+    }
+
+    margin-left: 20px;
   }
   // ***********************  PET PAGE  ***********************  //
 

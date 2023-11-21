@@ -92,7 +92,7 @@ customElements.define(
             }
 
             p{
-              font-size: 18px;
+              color: transparent;
             }
 
             .app-top-nav img {

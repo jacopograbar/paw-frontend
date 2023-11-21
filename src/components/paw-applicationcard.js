@@ -120,6 +120,41 @@ customElements.define(
           sl-button::part(base):hover {
             color: #f8b102;
           }
+
+          @media (max-width: 1100px) {
+            .application-card {
+              width: 30vw;
+              max-width: 350px;
+              height: 70%;
+            }
+
+            .pet {
+              width: 18vw;
+              height: 18vw;
+              top: 13%;
+            }
+
+            .applicant{
+              width: 23vw;
+              height: 23vw;
+            }
+          }
+
+          @media (max-width: 690px) {
+            .application-card {
+              width: 50vw;
+              height: 70%;
+            }
+            .pet {
+              width: 30vw;
+              height: 30vw;
+              top: 16%;
+            }
+
+            .applicant{
+              width: 45vw;
+              height: 45vw;
+            }
         </style>
         <div class="application-card">
           <div class="card-image applicant">

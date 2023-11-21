@@ -20,18 +20,18 @@ customElements.define(
         image: {
           type: String,
         },
-        name:{
+        name: {
           type: String,
         },
-        state:{
+        state: {
           type: String,
         },
-        address:{
+        address: {
           type: String,
         },
-        bio:{
+        bio: {
           type: String,
-        }
+        },
       };
     }
 
@@ -50,7 +50,7 @@ customElements.define(
             width: 22vw;
             height: 65vh;
             min-height: 550px;
-            background-color:#f8b102;
+            background-color: #f8b102;
             border-radius: 40px;
             position: relative;
           }
@@ -104,22 +104,52 @@ customElements.define(
             color: #f8b102;
           }
 
-          #location-pin{
+          #location-pin {
             width: 20px;
             margin-right: 5px;
+          }
+          @media (max-width: 1100px) {
+            .shelter-card {
+              width: 30vw;
+              max-width: 350px;
+              height: 70%;
+            }
+
+            .card-image {
+              width: 20vw;
+              height: 20vw;
+            }
+          }
+
+          @media (max-width: 690px) {
+            .shelter-card {
+              width: 50vw;
+              height: 70%;
+            }
+            .card-image {
+              width: 35vw;
+              height: 35vw;
+            }
           }
         </style>
         <div class="shelter-card">
           <div class="card-image">
-          <img src="${
-              this.image
+            <img
+              src="${this.image
                 ? `${App.apiBase}/images/${this.image}`
-                : `${App.apiBase}/images/default.jpg`
-            }" alt="${this.name}" />
+                : `${App.apiBase}/images/default.jpg`}"
+              alt="${this.name}"
+            />
           </div>
           <div class="card-body">
             <h2>${this.name}</h2>
-            <p><img src="../images/location-pin.png" id="location-pin" alt="Location Pin" />${this.address}, ${this.state}</p>
+            <p>
+              <img
+                src="../images/location-pin.png"
+                id="location-pin"
+                alt="Location Pin"
+              />${this.address}, ${this.state}
+            </p>
             <p>${this.bio}</p>
             <sl-button @click=${this.redirectToShelterPage.bind(this)}
               >View</sl-button

@@ -133,16 +133,28 @@ customElements.define(
 
           @media (max-width: 1100px) {
             .pet-card {
-            width: 25vw;
+            width: 30vw;
             max-width: 350px;
-            height: 70%;
+            max-height: 500px;
+            min-height: 70%;
           }
 
 
           @media (max-width: 690px) {
             .pet-card {
-            width: 40vw;
-            height: 70%;
+            width: 50vw;
+            max-height: 450px;
+            min-height: 60%;
+          }
+          sl-avatar {
+            --size: 30px;
+            border: solid 0.3vw black;
+            border-radius: 50%;
+          }
+
+
+          #avatar-pic {
+            width: 20px;
           }
           }
         </style>

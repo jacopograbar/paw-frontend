@@ -83,14 +83,9 @@ class SeekerDashboardView {
   }
 
   resizeCarousel() {
-    console.log('resizing');
-    const carousel = document.querySelector(".carousel-container");
     this.render();
   }
 
-  observeScreenWidth() {
-    window.onresize = this.resizeCarousel();
-  }
 
   handleScrollToPet(petType) {
     // scroll to section
@@ -237,7 +232,11 @@ class SeekerDashboardView {
               id="carousel"
               navigation
               mouse-dragging
-              slides-per-page="${this.shelters.length === 0 ? 1 : 3}"
+              slides-per-page="${window.innerWidth > 1100
+                ? 3
+                : window.innerWidth > 690
+                ? 2
+                : 1}"
               slides-per-move="1"
             >
               ${this.shelters.length === 0
