@@ -788,6 +788,7 @@ h3 {
           justify-content: flex-start;
           color: white;
           padding: 2% 0 1% 0;
+          z-index: 10 !important;
 
           .img-gallery {
             width: 100%;
@@ -803,7 +804,7 @@ h3 {
             .gallery-row {
               width: 100%;
               min-width: 60vh;
-              @include flex-row(space-around, center);
+              @include flex-row(space-around, center);     
 
               .second {
                 top: -20px;

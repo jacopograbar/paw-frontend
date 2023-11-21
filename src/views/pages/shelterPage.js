@@ -16,6 +16,7 @@ class ShelterPageView {
     this.pets = null;
     console.log(this.shelter);
     console.log(this.pets);
+    window.addEventListener("resize", this.resizeCarousel.bind(this));
     this.render();
     window.scrollTo(0, 0);
     Utils.pageIntroAnim();
@@ -30,6 +31,10 @@ class ShelterPageView {
     } catch (err) {
       Toast.show(err, "error");
     }
+  }
+
+  resizeCarousel() {
+    if (document.title == "Shelter Page") this.render();
   }
 
   async filterPets(match) {
@@ -163,7 +168,11 @@ class ShelterPageView {
               id="carousel"
               navigation
               mouse-dragging
-              slides-per-page="${this.pets && this.pets.length === 0 ? 1 : 3}"
+              slides-per-page="${window.innerWidth > 1100
+                ? 3
+                : window.innerWidth > 690
+                ? 2
+                : 1}"
               slides-per-move="1"
             >
               ${!this.pets

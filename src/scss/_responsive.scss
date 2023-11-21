@@ -159,6 +159,57 @@
   }
   // ***********************  SHELTER PAGE  ***********************  //
 
+  .shelter-page-view {
+    height: 2000px;
+    min-height: 200vh;
+    .shelter-page-section {
+      height: 1000px;
+      min-height: 100vh;
+
+      &:nth-child(2) {
+        flex-direction: column;
+      }
+      .first-column,
+      .second-column,
+      .second-column .badges-row {
+        padding: 0;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        height: fit-content;
+
+        p {
+          margin-bottom: 5%;
+          padding: 0;
+        }
+
+        h2 {
+          margin-bottom: 1%;
+          padding: 0;
+        }
+
+        h1 {
+          margin: 3% 0;
+        }
+      }
+
+      .first-column {
+        .avatar-main {
+          --size: 250px;
+        }
+      }
+
+      .second-column {
+        .avatar-badge {
+          --size: 100px;
+          margin-top: 20px;
+        }
+
+        margin-bottom: -80px;
+      }
+    }
+  }
+
   // ***********************  FORMS  ***********************  //
 }
 
@@ -383,15 +434,76 @@
     }
   }
 
-  .layout-page{
-    .layout-section{
-      .pet-title{
+  .layout-page {
+    .layout-section {
+      .pet-title {
         font-size: 30px;
         padding-top: 10px;
       }
     }
   }
   // ***********************  SHELTER PAGE  ***********************  //
+
+  .shelter-page-view {
+    height: 1800px;
+    min-height: 100vh;
+    .shelter-page-section {
+      height: 900px;
+      min-height: 100vh;
+      .carousel-container {
+        sl-carousel {
+          width: 100%;
+        }
+
+        sl-icon {
+          font-size: 40px;
+        }
+      }
+
+      #shelter-address {
+        img {
+          width: 20px;
+        }
+      }
+
+      .first-column,
+      .second-column {
+        h1 {
+          font-size: 30px;
+        }
+
+        h2 {
+          font-size: 25px;
+        }
+
+        p {
+          font-size: 20px;
+          max-width: 90vw;
+          text-align: center;
+        }
+      }
+
+      .first-column {
+        .avatar-main {
+          --size: 200px;
+          margin-bottom: 20px;
+        }
+      }
+
+      .second-column {
+        .avatar-badge {
+          --size: 80px;
+        }
+      }
+    }
+
+    .filter-menu {
+      padding-top: 20px;
+      h3 {
+        display: none;
+      }
+    }
+  }
 
   // ***********************  FORMS  ***********************  //
 }
