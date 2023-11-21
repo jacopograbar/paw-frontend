@@ -16,11 +16,14 @@ class ShelterDashboardView {
     this.applications = await ApplicationsAPI.getApplications(2, this.user._id);
     console.log(this.applications);
     this.render();
+    window.scrollTo(0, 0);
     Utils.pageIntroAnim();
   }
 
-  handleNext() {
-    console.log("next");
+  scrollToSection(sectionTag) {
+    document
+      .getElementById(sectionTag)
+      .scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
   render() {
@@ -31,9 +34,9 @@ class ShelterDashboardView {
       ></paw-header>
       <div class="shelter dashboard-view">
         <!-- First Section -->
-        <section class="dashboard-section">
+        <section class="dashboard-section" id="intro-section">
           <div class="section-column">
-            <sl-avatar class="avatar-button" label="Our Pets">
+            <sl-avatar class="avatar-button" label="Our Pets" @click=${() => this.scrollToSection("pets-section").bind(this)}>
               <img
                 id="avatar-paw"
                 slot="icon"
@@ -59,11 +62,10 @@ class ShelterDashboardView {
                 />${this.user.address}, ${this.user.state}
               </h3>
               <p>${this.user.bio}</p>
-              <sl-button>Edit Profile</sl-button>
             </div>
           </div>
           <div class="section-column">
-            <sl-avatar class="avatar-button" label="Applications">
+            <sl-avatar class="avatar-button" label="Applications" @click=${() => this.scrollToSection("apps-section").bind(this)}>
               <sl-icon slot="icon" name="file-text"></sl-icon>
             </sl-avatar>
             <h2>Applications</h2>
@@ -74,7 +76,7 @@ class ShelterDashboardView {
           />
         </section>
         <!-- Second Section -->
-        <section class="dashboard-section">
+        <section class="dashboard-section" id="pets-section">
           <img id="second-background-img" src="../images/pawprint-white.png" />
           <h2 id="dashboard-pets-title">Our pets</h2>
           <div class="carousel-container">
@@ -120,7 +122,7 @@ class ShelterDashboardView {
             </sl-carousel>
           </div>
         </section>
-        <section class="dashboard-section">
+        <section class="dashboard-section" id="apps-section">
           <img id="third-background-img" src="../images/applications.png" />
           <h2 id="dashboard-pets-title">Current Applications</h2>
           <div class="carousel-container">

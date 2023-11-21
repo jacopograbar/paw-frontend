@@ -15,6 +15,7 @@ class PetView {
     console.log(Auth.currentUser.accessLevel);
     this.i = 0;
     this.render();
+    window.scrollTo(0, 0);
     Utils.pageIntroAnim();
   }
 

@@ -5,6 +5,7 @@ import Auth from "../../services/Auth";
 import UserAPI from "../../services/UserAPI";
 import PetAPI from "../../services/PetAPI";
 import Utils from "../../Utils";
+import Toast from "../../Toast";
 
 class ShelterPageView {
   async init() {
@@ -12,19 +13,68 @@ class ShelterPageView {
     this.shelterID = window.location.pathname.split("/")[2];
     console.log("Shelter page for ID ", this.shelterID);
     this.shelter = await UserAPI.getProfileById(this.shelterID);
-    this.pets = await PetAPI.getPets();
+    this.pets = null;
     console.log(this.shelter);
     console.log(this.pets);
     this.render();
+    window.scrollTo(0, 0);
     Utils.pageIntroAnim();
+    await this.getPets();
   }
 
-  handleNext() {
-    console.log("next");
+  async getPets() {
+    try {
+      this.pets = await PetAPI.getPets();
+      console.log(this.pets);
+      this.render();
+    } catch (err) {
+      Toast.show(err, "error");
+    }
   }
 
-  handleFilter() {
-    console.log("filter");
+  async filterPets(match) {
+    // Validation
+    if (!match) return;
+
+    // get fresh copy of the haircuts
+    try {
+      this.pets = await PetAPI.getPets();
+    } catch (err) {
+      console.log(err);
+      return;
+    }
+
+    let filtered = this.pets.filter((pet) => pet.petType == match);
+
+    // Render
+    this.pets = filtered;
+    this.render();
+  }
+
+  clearFilterButtons() {
+    const buttons = document.querySelectorAll(".filter-button");
+    buttons.forEach((button) => {
+      button.removeAttribute("variant");
+    });
+  }
+
+  clearFilters() {
+    this.getPets();
+    this.clearFilterButtons();
+  }
+
+  handleFilter(e) {
+    // unset all buttons
+    this.clearFilterButtons();
+
+    // set active button
+    e.target.setAttribute("variant", "primary");
+
+    // extract match
+    const match = e.target.getAttribute("data-match");
+
+    // filter
+    this.filterPets(match);
   }
 
   render() {
@@ -38,7 +88,11 @@ class ShelterPageView {
         <!-- First Section -->
         <section class="shelter-page-section layout-section">
           <div class="first-column">
-            <sl-avatar class="avatar-main" label="${this.shelter.name}" image="${App.apiBase}/images/${this.shelter.profilePic}">
+            <sl-avatar
+              class="avatar-main"
+              label="${this.shelter.name}"
+              image="${App.apiBase}/images/${this.shelter.profilePic}"
+            >
             </sl-avatar>
             <h1>${this.shelter.name}</h1>
             <p id="shelter-address">
@@ -79,30 +133,27 @@ class ShelterPageView {
           <img id="second-background-img" src="../images/pawprint-white.png" />
           <h1 class="pet-title">Our Pets</h1>
           <div class="filter-menu">
+            <h3>I am looking for:</h3>
             <div>
-              <p>Pet type</p>
               <sl-button
                 class="filter-button"
                 size="small"
                 data-field="gender"
-                data-match="m"
+                data-match="cat"
                 @click=${this.handleFilter.bind(this)}
-                >Cat</sl-button
+                >Cats</sl-button
               >
               <sl-button
                 class="filter-button"
                 size="small"
-                data-field="gender"
-                data-match="f"
+                data-match="dog"
                 @click=${this.handleFilter.bind(this)}
-                >Dog</sl-button
+                >Dogs</sl-button
               >
               <sl-button
                 class="filter-button"
                 size="small"
-                data-field="gender"
-                data-match="u"
-                @click=${this.handleFilter.bind(this)}
+                @click=${this.clearFilters.bind(this)}
                 >All pets</sl-button
               >
             </div>
@@ -112,10 +163,10 @@ class ShelterPageView {
               id="carousel"
               navigation
               mouse-dragging
-              slides-per-page="${this.pets.length === 0 ? 1 : 3}"
+              slides-per-page="${this.pets && this.pets.length === 0 ? 1 : 3}"
               slides-per-move="1"
             >
-              ${this.pets.length === 0
+              ${!this.pets
                 ? html`
                     <sl-spinner
                       style="font-size: 7vw; --stroke-width: 1vw;"

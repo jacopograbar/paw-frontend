@@ -14,6 +14,7 @@ class SeekerDashboardView {
     this.shelters = await UserAPI.getUserListByAccessLevel(2);
     console.log(this.shelters);
     this.render();
+    window.scrollTo(0, 0);
     Utils.pageIntroAnim();
     await this.getPets();
   }
@@ -59,10 +60,6 @@ class SeekerDashboardView {
     this.clearFilterButtons();
   }
 
-  handleNext() {
-    console.log("next");
-  }
-
   handleFilter(e) {
     // unset all buttons
     this.clearFilterButtons();
@@ -77,6 +74,24 @@ class SeekerDashboardView {
     this.filterPets(match);
   }
 
+  scrollToSection(sectionTag) {
+    document
+      .getElementById(sectionTag)
+      .scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  handleScrollToPet(petType) {
+    // scroll to section
+    this.scrollToSection("browse-pet-section");
+    // unset all buttons
+    this.clearFilterButtons();
+    // select button
+    const filterBtn = document.getElementById(petType);
+    filterBtn.setAttribute("variant", "primary");
+    // filter
+    this.filterPets(petType);
+  }
+
   render() {
     const template = html`
       <paw-header
@@ -85,16 +100,25 @@ class SeekerDashboardView {
       ></paw-header>
       <div class="seeker dashboard-view">
         <!-- First Section -->
-        <section class="dashboard-section">
+        <section class="dashboard-section" id="first-section">
           <div class="section-column">
-            <sl-avatar class="avatar-button" label="Browse cats">
+            <sl-avatar
+              class="avatar-button"
+              label="Browse cats"
+              @click=${() => this.handleScrollToPet("cat").bind(this)}
+            >
               <img slot="icon" src="../images/cat-white.png" />
             </sl-avatar>
             <h2>Cats</h2>
           </div>
           <div class="section-column" id="seeker-central-column">
             <h1>I am looking for...</h1>
-            <sl-avatar id="center-white" class="avatar-button" label="Our Pets">
+            <sl-avatar
+              id="center-white"
+              class="avatar-button"
+              label="Shelters"
+              @click=${() => this.scrollToSection("shelter-section").bind(this)}
+            >
               <img
                 id="avatar-image"
                 slot="icon"
@@ -104,7 +128,11 @@ class SeekerDashboardView {
             <h2>Shelters</h2>
           </div>
           <div class="section-column">
-            <sl-avatar class="avatar-button" label="Browse dogs">
+            <sl-avatar
+              class="avatar-button"
+              label="Browse dogs"
+              @click=${() => this.handleScrollToPet("dog").bind(this)}
+            >
               <img
                 id="avatar-image"
                 slot="icon"
@@ -116,21 +144,22 @@ class SeekerDashboardView {
           <img id="first-background-img" src="../images/pawprint-white.png" />
         </section>
         <!-- Second Section -->
-        <section class="dashboard-section">
+        <section class="dashboard-section" id="browse-pet-section">
           <img id="second-background-img" src="../images/cat-white.png" />
           <h2 id="dashboard-pets-title">Find a pet</h2>
           <div class="filter-menu">
             <h3>I am looking for:</h3>
             <div>
               <sl-button
+                id="cat"
                 class="filter-button"
                 size="small"
-                data-field="gender"
                 data-match="cat"
                 @click=${this.handleFilter.bind(this)}
                 >Cats</sl-button
               >
               <sl-button
+                id="dog"
                 class="filter-button"
                 size="small"
                 data-match="dog"
@@ -181,7 +210,7 @@ class SeekerDashboardView {
             </sl-carousel>
           </div>
         </section>
-        <section class="dashboard-section">
+        <section class="dashboard-section" id="shelter-section">
           <img
             id="third-background-img"
             src="../images/pet-shelter-black.png"
