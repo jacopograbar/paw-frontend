@@ -76,6 +76,11 @@ customElements.define(
             margin: 0 0 3% 0;
           }
 
+          h2, p{
+            width: 90%;
+            text-align: center;
+          }
+
 
           .card-image{
             position: absolute;
@@ -118,17 +123,23 @@ customElements.define(
         </style>
         <div class="application-card">
           <div class="card-image applicant">
-            <img src="${this.applicant.profilePic}" alt="${
-        this.applicant.name
-      }" />
+            <img src="${
+              this.applicant.profilePic
+                ? `${App.apiBase}/images/${this.applicant.profilePic}`
+                : `${App.apiBase}/images/default.jpg`
+            }" alt="${this.applicant.name}" />
           </div>
           <div class="card-image pet">
-            <img src="${this.pet.images[0]}" alt="${this.pet.name}" />
+          <img src="${
+              this.pet.images[0]
+                ? `${App.apiBase}/images/${this.pet.images[0]}`
+                : `${App.apiBase}/images/pet-default.png`
+            }" alt="${this.pet.name}" />
           </div>
           <div class="card-body">
             <h2>${this.status == 2 ? "Pending" : ""} ${
         this.status == 1 ? "Rejected" : ""
-      } ${this.status == 3 ? "Approved" : ""}Application</h2>
+      } ${this.status == 3 ? "Approved" : ""} Application</h2>
             <p>${this.applicant.name} x ${this.pet.name}</p>
             <p>Lodged on ${dayjs(this.date).format("DD/MM/YYYY")}</p>
             <sl-button @click=${this.redirectToApplicationPage.bind(

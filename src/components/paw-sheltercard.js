@@ -111,7 +111,11 @@ customElements.define(
         </style>
         <div class="shelter-card">
           <div class="card-image">
-            <img src="${this.image}" alt="${this.name}" />
+          <img src="${
+              this.image
+                ? `${App.apiBase}/images/${this.image}`
+                : `${App.apiBase}/images/default.jpg`
+            }" alt="${this.name}" />
           </div>
           <div class="card-body">
             <h2>${this.name}</h2>

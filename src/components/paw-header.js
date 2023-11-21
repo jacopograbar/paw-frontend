@@ -78,6 +78,10 @@ customElements.define(
           p {
             font-size: 20px;
           }
+
+          sl-avatar{
+            margin-left: 20px;
+          }
         </style>
         <header class="app-header">
           <a id="side-link" href="/" @click="${anchorRoute}">
@@ -85,7 +89,14 @@ customElements.define(
               <img src="../images/paw_logo.png" />
             </nav>
           </a>
-          ${this.user ? html`<p>Hi, ${this.user.name}</p>` : html``}
+          ${this.user
+            ? html`<p>
+                Hi, ${this.user.name}
+                <sl-avatar
+                  image="${App.apiBase}/images/${this.user.profilePic}"
+                ></sl-avatar>
+              </p> `
+            : html``}
           ${this.user &&
           this.user.accessLevel == 1 &&
           this.pathName != "my-applications"

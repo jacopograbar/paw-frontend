@@ -48,6 +48,35 @@ class PetAPI {
     // return data
     return data;
   }
+
+  async createPet(petData) {
+    // validate
+    if (!petData) return;
+
+    console.log("PET DATA: ", petData);
+
+    // make fetch request to backend
+    const response = await fetch(`${App.apiBase}/pet`, {
+      method: "POST",
+      headers: { Authorization: `Bearer ${localStorage.accessToken}` },
+      body: petData,
+    });
+
+    // if response not ok
+    if (!response.ok) {
+      // console log error
+      const err = await response.json();
+      if (err) console.log(err);
+      // throw error (exit this function)
+      throw new Error("Problem creating pet");
+    }
+
+    // convert response payload into json - store as data
+    const data = await response.json();
+
+    // return data
+    return data;
+  }
 }
 
 export default new PetAPI();

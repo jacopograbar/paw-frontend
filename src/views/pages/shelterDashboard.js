@@ -13,8 +13,8 @@ class ShelterDashboardView {
     console.log(this.user);
     this.pets = await PetAPI.getPets();
     console.log(this.pets);
-    this.applications = await ApplicationsAPI.getApplications(2, this.user._id)
-    console.log(this.applications)
+    this.applications = await ApplicationsAPI.getApplications(2, this.user._id);
+    console.log(this.applications);
     this.render();
     Utils.pageIntroAnim();
   }
@@ -25,7 +25,10 @@ class ShelterDashboardView {
 
   render() {
     const template = html`
-      <paw-header user="${JSON.stringify(Auth.currentUser)}"  title="Dashboard"></paw-header>
+      <paw-header
+        user="${JSON.stringify(Auth.currentUser)}"
+        title="Dashboard"
+      ></paw-header>
       <div class="shelter dashboard-view">
         <!-- First Section -->
         <section class="dashboard-section">
@@ -40,16 +43,21 @@ class ShelterDashboardView {
             <h2>Our Pets</h2>
           </div>
           <div class="section-column">
-            <sl-avatar class="avatar-main" label="Our Pets">
-              <img
-                id="avatar-image"
-                slot="icon"
-                src="https://cdn.vox-cdn.com/thumbor/v9ksZRhgha_kZsrjZkR0iCD8DB8=/0x0:4189x2608/1200x800/filters:focal(1766x853:2436x1523)/cdn.vox-cdn.com/uploads/chorus_image/image/72548864/GettyImages_1401741294.0.jpg"
-              />
+            <sl-avatar
+              class="avatar-main"
+              label="Shelter"
+              image="${App.apiBase}/images/${this.user.profilePic}"
+            >
             </sl-avatar>
             <div class="shelter-info">
               <h2>${this.user.name}</h2>
-              <h3><img src="../images/location-pin.png" id="location-pin" alt="Location Pin" />${this.user.address}, ${this.user.state}</h3>
+              <h3>
+                <img
+                  src="../images/location-pin.png"
+                  id="location-pin"
+                  alt="Location Pin"
+                />${this.user.address}, ${this.user.state}
+              </h3>
               <p>${this.user.bio}</p>
               <sl-button>Edit Profile</sl-button>
             </div>
@@ -70,7 +78,11 @@ class ShelterDashboardView {
           <img id="second-background-img" src="../images/pawprint-white.png" />
           <h2 id="dashboard-pets-title">Our pets</h2>
           <div class="carousel-container">
-            <sl-avatar class="avatar-button" label="Add more">
+            <sl-avatar
+              class="avatar-button"
+              label="Add more"
+              @click=${() => gotoRoute("/new-pet")}
+            >
               <sl-icon slot="icon" name="plus"></sl-icon>
             </sl-avatar>
             <sl-carousel

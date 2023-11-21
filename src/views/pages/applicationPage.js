@@ -48,7 +48,7 @@ class ApplicationPageView {
       )}" title="Expression of Interest - Adoption"></paw-header>
       <div class="adoption-page">
         <div class="paw-main">
-          <img src="${this.pet.images[0]}" alt="${this.pet.name}"/>
+          <img src="${App.apiBase}/images/${this.pet.images[0]}" alt="${this.pet.name}"/>
         </div>
         <div class="adoption-overlay">
           <h1>Expression of Interest</h1>

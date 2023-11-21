@@ -5,6 +5,7 @@ import Auth from "../../services/Auth";
 import Utils from "../../Utils";
 import ApplicationsAPI from "../../services/ApplicationsAPI";
 import dayjs from "dayjs";
+import Toast from "../../Toast";
 
 class MyApplicationsView {
   async init() {
@@ -29,6 +30,19 @@ class MyApplicationsView {
         );
       }
     });
+  }
+
+  async handleDelete(appID) {
+    alert(appID);
+    try {
+      const response = await ApplicationsAPI.deleteApplicationById(appID);
+      console.log(response);
+      Toast.show("Application succesfully deleted");
+      this.init();
+    } catch (err) {
+      console.log(err);
+      Toast.show(err, "error");
+    }
   }
 
   render() {
@@ -64,8 +78,11 @@ class MyApplicationsView {
                 </div>
                 <div class="details-show">
                   <div class="left-content">
-                    <sl-avatar class="avatar-app" label="${app.pet.name}">
-                      <img slot="icon" src="${app.pet.images[0]}" />
+                    <sl-avatar
+                      class="avatar-app"
+                      label="${app.pet.name}"
+                      image="${`${App.apiBase}/images/${app.pet.images[0]}`}"
+                    >
                     </sl-avatar>
                     <div>
                       <strong>Applicant's message:</strong>
@@ -89,6 +106,8 @@ class MyApplicationsView {
                       : html` <sl-avatar
                             class="avatar-button"
                             label="${app.pet.name}"
+                            @click=${() =>
+                              this.handleDelete(app._id).bind(this)}
                           >
                             <sl-icon name="x" slot="icon"></sl-icon>
                           </sl-avatar>

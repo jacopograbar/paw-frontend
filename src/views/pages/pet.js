@@ -12,6 +12,7 @@ class PetView {
     console.log("Pet page for ID ", this.petID);
     this.pet = await PetAPI.getPetById(this.petID);
     console.log(this.pet);
+    console.log(Auth.currentUser.accessLevel);
     this.i = 0;
     this.render();
     Utils.pageIntroAnim();
@@ -23,19 +24,25 @@ class PetView {
     this.render();
   }
 
-  sendEOI(){
-    alert('sending...');
-  }
-
   render() {
     const template = html`
-      <paw-header user="${JSON.stringify(Auth.currentUser)}" title="Pet Page"></paw-header>
+      <paw-header
+        user="${JSON.stringify(Auth.currentUser)}"
+        title="Pet Page"
+      ></paw-header>
       <div class="pet-page-view layout-page">
-      <div class="page-animation"></div>
+        <div class="page-animation"></div>
         <!-- First Section -->
         <section class="pet-page-section layout-section">
-          <div class="section-column">
-            <sl-avatar class="avatar-button" label="My Shelter" @click=${()=> gotoRoute(`/shelter/${this.pet.shelter._id}`)}>
+          <div
+            class="section-column"
+            style="${Auth.currentUser.accessLevel == 2 && "visibility:hidden"}"
+          >
+            <sl-avatar
+              class="avatar-button"
+              label="My Shelter"
+              @click=${() => gotoRoute(`/shelter/${this.pet.shelter._id}`)}
+            >
               <img
                 id="avatar-image"
                 slot="icon"
@@ -46,8 +53,11 @@ class PetView {
           </div>
           <div class="section-column">
             <div class="img-gallery">
-              <sl-avatar class="avatar-main" label="${this.pet.name}">
-                <img slot="icon" src="${this.pet.images[this.i]}" />
+              <sl-avatar
+                class="avatar-main"
+                label="${this.pet.name}"
+                image="${App.apiBase}/images/${this.pet.images[this.i]}"
+              >
               </sl-avatar>
               <div class="gallery-row">
                 <sl-avatar
@@ -55,40 +65,43 @@ class PetView {
                   label="${this.pet.name}"
                   @click=${() => this.selectPetImg(0)}
                   id="${this.i === 0 && "selected"}"
+                  image="${App.apiBase}/images/${this.pet.images[0]}"
                 >
-                  <img slot="icon" src="${this.pet.images[0]}" />
                 </sl-avatar>
                 <sl-avatar
                   class="avatar-gallery second"
                   label="${this.pet.name}"
                   @click=${() => this.selectPetImg(1)}
                   id="${this.i === 1 && "selected"}"
+                  image="${App.apiBase}/images/${this.pet.images[1]}"
                 >
-                  <img slot="icon" src="${this.pet.images[1]}" />
                 </sl-avatar>
                 <sl-avatar
+                  style="${!this.pet.images[2] && "visibility:hidden"}"
                   class="avatar-gallery"
                   label="${this.pet.name}"
                   @click=${() => this.selectPetImg(2)}
                   id="${this.i === 2 && "selected"}"
+                  image="${App.apiBase}/images/${this.pet.images[2]}"
                 >
-                  <img slot="icon" src="${this.pet.images[2]}" />
                 </sl-avatar>
                 <sl-avatar
+                  style="${!this.pet.images[3] && "visibility:hidden"}"
                   class="avatar-gallery second"
                   label="${this.pet.name}"
                   @click=${() => this.selectPetImg(3)}
                   id="${this.i === 3 && "selected"}"
+                  image="${App.apiBase}/images/${this.pet.images[3]}"
                 >
-                  <img slot="icon" src="${this.pet.images[3]}" />
                 </sl-avatar>
                 <sl-avatar
+                  style="${!this.pet.images[4] && "visibility:hidden"}"
                   class="avatar-gallery fourth"
                   label="${this.pet.name}"
                   @click=${() => this.selectPetImg(4)}
                   id="${this.i === 4 && "selected"}"
+                  image="${App.apiBase}/images/${this.pet.images[4]}"
                 >
-                  <img slot="icon" src="${this.pet.images[4]}" />
                 </sl-avatar>
               </div>
             </div>
@@ -116,8 +129,15 @@ class PetView {
               </sl-avatar>
             </div>
           </div>
-          <div class="section-column">
-            <sl-avatar class="avatar-button" label="Adoption"  @click=${()=> gotoRoute(`/application/${this.pet._id}`)}>
+          <div
+            class="section-column"
+            style="${Auth.currentUser.accessLevel == 2 && "visibility:hidden"}"
+          >
+            <sl-avatar
+              class="avatar-button"
+              label="Adoption"
+              @click=${() => gotoRoute(`/application/${this.pet._id}`)}
+            >
               <sl-icon slot="icon" name="file-text"></sl-icon>
             </sl-avatar>
             <h2 class="pet-btn-title">Adoption</h2>

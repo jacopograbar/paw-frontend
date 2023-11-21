@@ -1042,7 +1042,7 @@ sl-details::part(content) {
 
 // ************************************ REVIEW APPLICATION *********************************** //
 #review {
-  padding: 0 10%;
+  padding: 150px 10% 10px;
 
   table {
     width: 100%;
@@ -1095,14 +1095,34 @@ sl-details::part(content) {
   .adoption-overlay {
     padding: 140px 20% 30px;
 
-    .input-group{
+    .input-group {
       margin-top: 1%;
     }
 
-    sl-avatar::part(base){
+    sl-avatar::part(base) {
       width: 100px;
       height: 100px;
       margin: 10px 10px 0;
     }
+  }
+}
+
+// ************************************ ADD PET *********************************** //
+#add-pet {
+  min-height: 1000px;
+  .paw-main {
+    img {
+      width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .input-group {
+    color: white;
+  }
+
+  #images {
+    margin: 20px 0;
   }
 }

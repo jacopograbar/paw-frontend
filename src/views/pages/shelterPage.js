@@ -38,8 +38,7 @@ class ShelterPageView {
         <!-- First Section -->
         <section class="shelter-page-section layout-section">
           <div class="first-column">
-            <sl-avatar class="avatar-main" label="${this.shelter.name}">
-              <img slot="icon" src="${this.shelter.profilePic}" />
+            <sl-avatar class="avatar-main" label="${this.shelter.name}" image="${App.apiBase}/images/${this.shelter.profilePic}">
             </sl-avatar>
             <h1>${this.shelter.name}</h1>
             <p id="shelter-address">

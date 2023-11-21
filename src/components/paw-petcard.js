@@ -132,7 +132,7 @@ customElements.define(
         </style>
         <div class="pet-card">
           <div class="card-image-wrapper">
-            <img src="${this.image}" alt="${this.name}" />
+            <img src="${App.apiBase}/images/${this.image}" alt="${this.name}" />
           </div>
           <div class="pet-card-body">
             <h2>${this.name}</h2>
