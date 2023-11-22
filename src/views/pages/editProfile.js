@@ -12,6 +12,7 @@ class EditProfileView {
     this.user = Auth.currentUser;
     this.accessLevel = this.user.accessLevel;
     this.render();
+    window.scrollTo(0, 0);
     Utils.pageIntroAnim();
   }
 

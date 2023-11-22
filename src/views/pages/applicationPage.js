@@ -1,6 +1,5 @@
 import App from "../../App";
 import { html, render } from "lit-html";
-import { gotoRoute, anchorRoute } from "../../Router";
 import Auth from "../../services/Auth";
 import Utils from "../../Utils";
 import PetAPI from "../../services/PetAPI";
@@ -12,6 +11,7 @@ class ApplicationPageView {
     this.petID = window.location.pathname.split("/")[2];
     this.pet = await PetAPI.getPetById(this.petID);
     this.render();
+    window.scrollTo(0, 0);
     Utils.pageIntroAnim();
   }
 
