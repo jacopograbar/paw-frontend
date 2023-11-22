@@ -15,8 +15,26 @@ class Utils {
     if (!pageContent) return;
     gsap.fromTo(
       pageContent,
-      { opacity: 1 },
+      { opacity: 0.5, zIndex: 15 },
       { opacity: 0, ease: "ease-in-out", zIndex: -1, duration: 2 }
+    );
+  }
+
+  slideAnimFromLeft() {
+    const pageContent = document.querySelector(".slide-left");
+    if (!pageContent) return;
+    gsap.from(
+      pageContent,
+      { x: "-100vw", ease: "linear", duration: 1}
+    );
+  }
+
+  slideAnimFromRight() {
+    const pageContent = document.querySelector(".slide-right");
+    if (!pageContent) return;
+    gsap.from(
+      pageContent,
+      { x: "100vw", ease: "linear", duration: 1}
     );
   }
 
@@ -68,7 +86,6 @@ class Utils {
 
     return string;
   }
-
 
   // Capitalise first letter of a string
   capitaliseFirstLetter(str) {

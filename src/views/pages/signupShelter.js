@@ -1,6 +1,6 @@
 import App from "../../App";
 import { html, render } from "lit-html";
-import { gotoRoute, anchorRoute } from "../../Router";
+import { anchorRoute } from "../../Router";
 import Auth from "../../services/Auth";
 import Utils from "../../Utils";
 
@@ -11,6 +11,7 @@ class SignupShelterView {
     Utils.pageIntroAnim();
   }
 
+  // Signup handler function
   async submitHandler(event) {
     event.preventDefault();
     const submitBtn = document.querySelector(".submit-btn");
@@ -26,15 +27,6 @@ class SignupShelterView {
     ]).then(() => {
       const form = document.querySelector(".signup-form");
       const formData = new FormData(form);
-
-      // logging data for testing
-      for (const [key, value] of formData) {
-        console.log(`${key}: ${value}`);
-      }
-
-      // getting arrays
-      console.log(formData.getAll("animals"));
-      // CAN GET JUST ONE VALUE WITH .GET
 
       // sign up using Auth
       Auth.signUp(formData, () => {
@@ -162,6 +154,8 @@ class SignupShelterView {
           </form>
         </div>
       </div>
+      <!-- Soft fade in animation -->
+      <div class="page-animation black"></div>
     `;
     render(template, App.rootEl);
   }

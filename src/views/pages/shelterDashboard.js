@@ -1,6 +1,6 @@
 import App from "../../App";
 import { html, render } from "lit-html";
-import { gotoRoute, anchorRoute } from "../../Router";
+import { gotoRoute } from "../../Router";
 import PetAPI from "../../services/PetAPI";
 import Auth from "../../services/Auth";
 import Utils from "../../Utils";
@@ -21,6 +21,7 @@ class ShelterDashboardView {
     await this.getApplications();
   }
 
+  // Fetch applications data
   async getApplications() {
     try {
       this.applications = await ApplicationsAPI.getApplications(
@@ -33,6 +34,7 @@ class ShelterDashboardView {
     }
   }
 
+  // Fetch pets data
   async getPets() {
     try {
       this.pets = await PetAPI.getPets();
@@ -42,12 +44,14 @@ class ShelterDashboardView {
     }
   }
 
+  // Handle scroll to selected section smoothly
   scrollToSection(sectionTag) {
     document
       .getElementById(sectionTag)
       .scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
+  // Resize carousel on window width change. Listener in init()
   resizeCarousel() {
     if (document.title == "Shelter Dashboard") this.render();
   }
@@ -222,6 +226,7 @@ class ShelterDashboardView {
           </div>
         </section>
       </div>
+      <div class="page-animation bordeaux"></div>
     `;
     render(template, App.rootEl);
   }

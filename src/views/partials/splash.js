@@ -3,10 +3,7 @@ import {html } from 'lit-html'
 const splash = html`
 
   <div class="app-splash">
-    <div class="inner">
-      <img class="app-logo" src="/images/logo.svg" />
-      <sl-spinner style="font-size: 2em;"></sl-spinner>
-    </div>
+      <sl-spinner style="font-size: 50px; --indicator-color: #f8b102; --track-color: white;"></sl-spinner>
   </div>
 `
 export default splash

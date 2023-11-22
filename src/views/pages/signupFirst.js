@@ -1,7 +1,6 @@
 import App from "../../App";
-import Auth from "../../services/Auth";
 import { html, render } from "lit-html";
-import { anchorRoute, gotoRoute } from "../../Router";
+import { anchorRoute } from "../../Router";
 import Utils from "../../Utils";
 
 class SignUpFirstView {
@@ -9,7 +8,8 @@ class SignUpFirstView {
     console.log("SignUpView.init");
     document.title = "Sign In";
     this.render();
-    Utils.pageIntroAnim();
+    Utils.slideAnimFromLeft();
+    Utils.slideAnimFromRight();
   }
 
   render() {
@@ -26,13 +26,13 @@ class SignUpFirstView {
           <h1>I want to...</h1>
           <div class="picker-container">
             <a href="/signup/shelter" @click=${anchorRoute}>
-              <div class="user-type-picker" id="shelter">
+              <div class="user-type-picker slide-left" id="shelter">
                 <h2>List</h2>
                 <img src="../images/pet-shelter-white.png" />
               </div>
             </a>
             <a href="/signup/seeker" @click=${anchorRoute}>
-              <div class="user-type-picker" id="seeker">
+              <div class="user-type-picker slide-right" id="seeker">
                 <h2>Adopt</h2>
                 <img src="../images/pawprint.png" />
               </div>

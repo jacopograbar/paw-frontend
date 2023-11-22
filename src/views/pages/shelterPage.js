@@ -1,6 +1,5 @@
 import App from "../../App";
 import { html, render } from "lit-html";
-import { gotoRoute, anchorRoute } from "../../Router";
 import Auth from "../../services/Auth";
 import UserAPI from "../../services/UserAPI";
 import PetAPI from "../../services/PetAPI";
@@ -20,6 +19,7 @@ class ShelterPageView {
     await this.getPets();
   }
 
+  // Fetch pets information
   async getPets() {
     try {
       this.pets = await PetAPI.getPets();
@@ -29,10 +29,12 @@ class ShelterPageView {
     }
   }
 
+  // Refreshes carousel element when the window width changes (listener in init())
   resizeCarousel() {
     if (document.title == "Shelter Page") this.render();
   }
 
+  // Apply filter for pet search
   async filterPets(match) {
     // Validation
     if (!match) return;
@@ -52,6 +54,7 @@ class ShelterPageView {
     this.render();
   }
 
+  // Clear selected styling for applied filters
   clearFilterButtons() {
     const buttons = document.querySelectorAll(".filter-button");
     buttons.forEach((button) => {
@@ -59,11 +62,13 @@ class ShelterPageView {
     });
   }
 
+  // Clear filters
   clearFilters() {
     this.getPets();
     this.clearFilterButtons();
   }
 
+  // Filter function handler
   handleFilter(e) {
     // unset all buttons
     this.clearFilterButtons();

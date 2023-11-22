@@ -103,7 +103,15 @@ customElements.define(
           }
         </style>
         <header class="app-header">
-          <a id="side-link" href="/" @click="${anchorRoute}">
+          <a
+            id="side-link"
+            href="${!Auth.currentUser.name
+              ? "/"
+              : Auth.currentUser.accessLevel == 2
+              ? "/dashboard/shelter"
+              : "/dashboard/seeker"}"
+            @click="${anchorRoute}"
+          >
             <nav class="app-top-nav">
               <img src="../images/paw_logo.png" />
             </nav>

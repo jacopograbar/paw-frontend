@@ -1,6 +1,5 @@
 import App from "../../App";
 import { html, render } from "lit-html";
-import { gotoRoute, anchorRoute } from "../../Router";
 import Auth from "../../services/Auth";
 import PetAPI from "../../services/PetAPI";
 import UserAPI from "../../services/UserAPI";
@@ -20,6 +19,7 @@ class SeekerDashboardView {
     await this.getShelters();
   }
 
+  // Fetch pets data
   async getPets() {
     try {
       this.pets = await PetAPI.getPets();
@@ -30,6 +30,7 @@ class SeekerDashboardView {
     }
   }
 
+  // Fetch shelter dats
   async getShelters() {
     try {
       this.shelters = await UserAPI.getUserListByAccessLevel(2);
@@ -39,6 +40,7 @@ class SeekerDashboardView {
     }
   }
 
+  // Apply filter for pet search
   async filterPets(match) {
     // Validation
     if (!match) return;
@@ -58,6 +60,7 @@ class SeekerDashboardView {
     this.render();
   }
 
+  // Clear selected styling for applied filters
   clearFilterButtons() {
     const buttons = document.querySelectorAll(".filter-button");
     buttons.forEach((button) => {
@@ -65,11 +68,13 @@ class SeekerDashboardView {
     });
   }
 
+  // Clear filters
   clearFilters() {
     this.getPets();
     this.clearFilterButtons();
   }
 
+  // Filter function handler
   handleFilter(e) {
     // unset all buttons
     this.clearFilterButtons();
@@ -84,16 +89,19 @@ class SeekerDashboardView {
     this.filterPets(match);
   }
 
+  // Handle smooth scroll to section
   scrollToSection(sectionTag) {
     document
       .getElementById(sectionTag)
       .scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
+  // Refreshes carousel element when the window width changes (listener in init())
   resizeCarousel() {
     if (document.title == "Seeker Dashboard") this.render();
   }
 
+  // Scroll to pet section and apply selected filter
   handleScrollToPet(petType) {
     // scroll to section
     this.scrollToSection("browse-pet-section");
@@ -282,6 +290,8 @@ class SeekerDashboardView {
           </div>
         </section>
       </div>
+      <!-- Soft fade in animation -->
+      <div class="page-animation blue"></div>
     `;
     render(template, App.rootEl);
   }

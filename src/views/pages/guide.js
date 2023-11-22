@@ -1,6 +1,6 @@
 import App from "../../App";
 import { html, render } from "lit-html";
-import { gotoRoute, anchorRoute } from "../../Router";
+import { gotoRoute } from "../../Router";
 import Auth from "../../services/Auth";
 import Utils from "../../Utils";
 import UserAPI from "../../services/UserAPI";
@@ -100,6 +100,7 @@ class GuideView {
           >
         </div>
       </div>
+      <div class="page-animation blue"></div>
     `;
     render(template, App.rootEl);
   }

@@ -10,13 +10,12 @@ class ApplicationPageView {
   async init() {
     document.title = "Expression Of Interest - Adoption";
     this.petID = window.location.pathname.split("/")[2];
-    console.log("Pet page for ID ", this.petID);
     this.pet = await PetAPI.getPetById(this.petID);
-    console.log(this.pet);
     this.render();
     Utils.pageIntroAnim();
   }
 
+  // Handle application submission
   async submitHandler(event) {
     event.preventDefault();
     const submitBtn = document.querySelector(".submit-btn");
@@ -28,11 +27,6 @@ class ApplicationPageView {
     ]).then(() => {
       const form = document.querySelector(".adoption-form");
       const formData = new FormData(form);
-
-      // logging data for testing
-      for (const [key, value] of formData) {
-        console.log(`${key}: ${value}`);
-      }
 
       // submit application
       ApplicationsAPI.submitApplication(formData, () => {
@@ -80,6 +74,7 @@ class ApplicationPageView {
           </form>
         </div>
       </div>
+      <div class="page-animation black"></div>
     `;
     render(template, App.rootEl);
   }

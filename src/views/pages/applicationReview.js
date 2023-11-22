@@ -1,6 +1,6 @@
 import App from "../../App";
 import { html, render } from "lit-html";
-import { gotoRoute, anchorRoute } from "../../Router";
+import { gotoRoute } from "../../Router";
 import Auth from "../../services/Auth";
 import Utils from "../../Utils";
 import Toast from "../../Toast";
@@ -10,13 +10,12 @@ class ApplicationReviewView {
   async init() {
     document.title = "Review Application";
     this.appID = window.location.pathname.split("/")[2];
-    console.log("Review application ID ", this.appID);
     this.application = await ApplicationsAPI.getApplicationById(this.appID);
-    console.log(this.application);
     this.render();
     Utils.pageIntroAnim();
   }
 
+  // Handle approve application
   async approve() {
     const button = document.querySelector("#approve-btn");
     button.setAttribute("loading", "");
@@ -33,6 +32,7 @@ class ApplicationReviewView {
     }
   }
 
+  // Handle reject application
   async reject() {
     const button = document.querySelector("#reject-btn");
     button.setAttribute("loading", "");
@@ -131,6 +131,7 @@ class ApplicationReviewView {
             </div>
         </div>
       </div>
+      <div class="page-animation black"></div>
     `;
     render(template, App.rootEl);
   }

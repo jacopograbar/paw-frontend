@@ -1,6 +1,6 @@
 import App from "../../App";
 import { html, render } from "lit-html";
-import { gotoRoute, anchorRoute } from "../../Router";
+import { gotoRoute } from "../../Router";
 import Auth from "../../services/Auth";
 import PetAPI from "../../services/PetAPI";
 import Utils from "../../Utils";
@@ -16,9 +16,9 @@ class PetView {
     Utils.pageIntroAnim();
   }
 
+  // Handles selecting index for image gallery
   selectPetImg(index) {
     this.i = index;
-    console.log(index);
     this.render();
   }
 

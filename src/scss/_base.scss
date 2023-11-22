@@ -1209,3 +1209,34 @@ sl-details::part(content) {
     bottom: -15%;
   }
 }
+
+// ***************************** Page Animation Fade **************************** //
+.page-animation {
+  position: absolute;
+  top: 0;
+  height: 100%;
+}
+
+.blue{
+  background-color: $paw-turquoise;
+}
+
+.bordeaux{
+  background-color: $paw-bordeaux;
+}
+
+.black{
+  background-color: black;
+}
+
+// splash
+.app-splash, .not-found{
+  height: 100vh;
+  width: 100vw;
+  @include flex-column(center, center);
+  background-color: $paw-turquoise;
+
+  h1, p{
+    color: $paw-yellow;
+  }
+}

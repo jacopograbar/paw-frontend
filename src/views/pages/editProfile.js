@@ -1,6 +1,6 @@
 import App from "../../App";
 import { html, render } from "lit-html";
-import { gotoRoute, anchorRoute } from "../../Router";
+import { gotoRoute } from "../../Router";
 import Auth from "../../services/Auth";
 import Utils from "../../Utils";
 import UserAPI from "../../services/UserAPI";
@@ -11,11 +11,11 @@ class EditProfileView {
     document.title = "Expression Of Interest - Adoption";
     this.user = Auth.currentUser;
     this.accessLevel = this.user.accessLevel;
-    console.log("Edit page for user ID ", this.user._id);
     this.render();
     Utils.pageIntroAnim();
   }
 
+  // Update profile handler
   async updateProfileSubmitHandler(e) {
     e.preventDefault();
     const form = document.querySelector(".adoption-form");
@@ -30,8 +30,9 @@ class EditProfileView {
       gotoRoute(`/dashboard/${this.accessLevel == 1 ? "seeker" : "shelter"}`);
     } catch (err) {
       Toast.show(err, "error");
+    } finally {
+      submitBtn.removeAttribute("loading");
     }
-    submitBtn.removeAttribute("loading");
   }
 
   render() {
@@ -46,7 +47,10 @@ class EditProfileView {
             ? html` <sl-spinner></sl-spinner> `
             : html`
                 <h1 id="edit-profile-title">Edit Profile Details</h1>
-                <form class="adoption-form" @submit=${this.updateProfileSubmitHandler.bind(this)}>
+                <form
+                  class="adoption-form"
+                  @submit=${this.updateProfileSubmitHandler.bind(this)}
+                >
                   <div class="input-group">
                     <sl-input
                       type="text"
@@ -68,8 +72,10 @@ class EditProfileView {
                   <div class="input-group">
                     <sl-select
                       name="animals"
-                      label="I am looking for.."
-                      placeholder="Select the animals you are looking for..."
+                      label="${this.accessLevel == 1
+                        ? "I am looking for... "
+                        : "Our animals are: "}"
+                      placeholder="Select one or more options"
                       multiple
                       clearable
                       value="${this.user.animals.map((animal) => `${animal} `)}"
@@ -120,7 +126,8 @@ class EditProfileView {
                     ${this.user.profilePic
                       ? html`
                           <sl-avatar
-                            image="${App.apiBase}/images/${this.user.profilePic}"
+                            image="${App.apiBase}/images/${this.user
+                              .profilePic}"
                           ></sl-avatar>
                           <input type="file" name="profilePic" />
                         `
@@ -138,6 +145,7 @@ class EditProfileView {
               `}
         </div>
       </div>
+      <div class="page-animation black"></div>
     `;
     render(template, App.rootEl);
   }

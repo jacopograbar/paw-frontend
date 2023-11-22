@@ -59,6 +59,8 @@ class SignInView {
           <p>Don't have an account? <a href="/signup" @click=${anchorRoute}>Sign Up</a></p>
         </div>
       </div>
+      <!-- Soft fade in animation -->
+      <div class="page-animation blue"></div>
     `;
     render(template, App.rootEl);
   }

@@ -1,6 +1,5 @@
 import App from "../../App";
 import { html, render } from "lit-html";
-import { gotoRoute, anchorRoute } from "../../Router";
 import Auth from "../../services/Auth";
 import Utils from "../../Utils";
 import ApplicationsAPI from "../../services/ApplicationsAPI";
@@ -16,6 +15,7 @@ class MyApplicationsView {
     await this.getApplications();
   }
 
+  // Fetch applications
   async getApplications() {
     try {
       this.applications = await ApplicationsAPI.getApplications(
@@ -28,6 +28,7 @@ class MyApplicationsView {
     }
   }
 
+  // Handle open details dropdown
   handleOpen() {
     const container = document.querySelector(".details-group");
 
@@ -41,6 +42,7 @@ class MyApplicationsView {
     });
   }
 
+  // Handle delete application function
   async handleDelete(appID) {
     alert(appID);
     try {
@@ -137,6 +139,7 @@ class MyApplicationsView {
               )}
         </div>
       </div>
+      <div class="page-animation blue"></div>
     `;
     render(template, App.rootEl);
   }

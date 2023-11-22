@@ -1,12 +1,10 @@
 import App from "./../../App";
 import { html, render } from "lit-html";
-import { gotoRoute, anchorRoute } from "./../../Router";
-import Auth from "../../services/Auth";
+import { gotoRoute } from "./../../Router";
 import Utils from "./../../Utils";
 
 class HomeView {
   init() {
-    console.log("HomeView.init");
     document.title = "Home";
     this.render();
     Utils.pageIntroAnim();
@@ -32,6 +30,8 @@ class HomeView {
           >
         </div>
       </div>
+      <!-- Soft fade in animation -->
+      <div class="page-animation blue"></div>
     `;
     render(template, App.rootEl);
   }

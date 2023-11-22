@@ -1,6 +1,6 @@
 import App from "../../App";
 import { html, render } from "lit-html";
-import { gotoRoute, anchorRoute } from "../../Router";
+import { gotoRoute } from "../../Router";
 import Auth from "../../services/Auth";
 import Utils from "../../Utils";
 import PetAPI from "../../services/PetAPI";
@@ -10,12 +10,12 @@ class NewPetView {
   init() {
     document.title = "Add New Pet";
     this.shelter = Auth.currentUser;
-    console.log("Add pet for shelter ID: ", this.shelter._id);
     this.render();
     Utils.pageIntroAnim();
     this.checkFileListLength();
   }
 
+  // Provide user with feedback when they try to upload more than 5 images.
   checkFileListLength() {
     const fileInput = document.getElementById("images");
 
@@ -24,16 +24,19 @@ class NewPetView {
 
       if (files.length > 5) {
         alert("A maximum of 5 images are allowed");
+        fileInput.value = "";
         return;
       }
 
       if (files.length < 2) {
         alert("A minimum of 2 images is required");
+        fileInput.value = "";
         return;
       }
     });
   }
 
+  // Handle creation of a new pet object
   async submitHandler(event) {
     event.preventDefault();
     const submitBtn = document.querySelector(".submit-btn");
@@ -255,6 +258,7 @@ class NewPetView {
           </form>
         </div>
       </div>
+      <div class="page-animation black"></div>
     `;
     render(template, App.rootEl);
   }

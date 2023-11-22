@@ -1,17 +1,18 @@
 import App from './../../App'
+import Auth from '../../services/Auth'
 import {html, render } from 'lit-html'
 
 class FourOFourView{
-  init(){
-    console.log('FourOFourView.init')    
+  init(){  
     document.title = '404 File not found'    
     this.render()
   }
 
   render(){
-    const template = html`    
-      <div class="calign">
-        <h1>Opps!</h1>
+    const template = html`  
+      <paw-header title="404" user="${JSON.stringify(Auth.currentUser)}"></paw-header>
+      <div class="not-found">
+        <h1>Oops!</h1>
         <p>Sorry, we couldn't find that.</p>
       </div>
     `
