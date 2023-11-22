@@ -55,9 +55,10 @@ customElements.define(
         <style>
           .pet-card {
             width: 23vw;
-            max-width: 350px;
+            max-width: 400px;
             height: 70vh;
             min-height: 520px;
+            max-height: 750px;
             background-color: #d0cfec;
             overflow: hidden;
             border-radius: 40px;

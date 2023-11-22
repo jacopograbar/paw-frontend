@@ -59,6 +59,8 @@ class NewPetView {
         gotoRoute("/dashboard/shelter");
       } catch (err) {
         Toast.show(err, "error");
+      } finally {
+        submitBtn.removeAttribute("loading");
       }
     });
   }

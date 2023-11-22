@@ -37,7 +37,11 @@ class ShelterDashboardView {
   // Fetch pets data
   async getPets() {
     try {
-      this.pets = await PetAPI.getPets();
+      let allpets = await PetAPI.getPets();
+      let filtered = allpets.filter(
+        (pet) => pet.shelter._id == Auth.currentUser._id
+      );
+      this.pets = filtered;
       this.render();
     } catch (err) {
       Toast.show(err, "error");

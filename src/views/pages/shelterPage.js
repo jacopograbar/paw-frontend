@@ -22,7 +22,9 @@ class ShelterPageView {
   // Fetch pets information
   async getPets() {
     try {
-      this.pets = await PetAPI.getPets();
+      let allpets = await PetAPI.getPets();
+      let filtered = allpets.filter((pet) => pet.shelter._id == this.shelterID);
+      this.pets = filtered;
       this.render();
     } catch (err) {
       Toast.show(err, "error");
@@ -41,7 +43,9 @@ class ShelterPageView {
 
     // get fresh copy of the haircuts
     try {
-      this.pets = await PetAPI.getPets();
+      let allpets = await PetAPI.getPets();
+      let filtered = allpets.filter((pet) => pet.shelter._id == this.shelterID);
+      this.pets = filtered;
     } catch (err) {
       console.log(err);
       return;

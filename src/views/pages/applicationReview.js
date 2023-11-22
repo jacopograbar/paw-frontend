@@ -12,6 +12,7 @@ class ApplicationReviewView {
     this.appID = window.location.pathname.split("/")[2];
     this.application = await ApplicationsAPI.getApplicationById(this.appID);
     this.render();
+    window.scrollTo(0, 0);
     Utils.pageIntroAnim();
   }
 

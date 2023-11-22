@@ -495,7 +495,7 @@ h3 {
     #second-background-img,
     #third-background-img {
       position: absolute;
-      z-index: 0;
+      z-index: 0 !important;
       opacity: 0.05;
       height: 110%;
     }
@@ -525,7 +525,7 @@ h3 {
         gap: 5%;
         padding-bottom: 10vh;
         color: white;
-        z-index: 1;
+        z-index: 5;
 
         h2 {
           font-size: 2em;
@@ -543,6 +543,7 @@ h3 {
       background-color: black;
       @include flex-column(flex-end, center);
       padding: 0;
+      z-index: 0;
 
       #dashboard-pets-title {
         color: white;
@@ -622,6 +623,11 @@ h3 {
     @include flex-column(flex-start, center);
     gap: 2%;
     text-align: center;
+    z-index: 0 !important;
+
+    h2, h3, p{
+      z-index: 0 !important;
+    }
 
     h3 {
       @include flex-row(center, center);
@@ -947,7 +953,7 @@ h3 {
       @include flex-row(space-around, center);
       sl-carousel {
         width: 100%;
-        height: 110%;
+        height: 90%;
       }
 
       sl-icon {
@@ -1215,6 +1221,7 @@ sl-details::part(content) {
   position: absolute;
   top: 0;
   height: 100%;
+  min-height: 100vh;
 }
 
 .blue{
