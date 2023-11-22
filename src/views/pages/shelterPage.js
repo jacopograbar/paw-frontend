@@ -11,11 +11,8 @@ class ShelterPageView {
   async init() {
     document.title = "Shelter Page";
     this.shelterID = window.location.pathname.split("/")[2];
-    console.log("Shelter page for ID ", this.shelterID);
     this.shelter = await UserAPI.getProfileById(this.shelterID);
     this.pets = null;
-    console.log(this.shelter);
-    console.log(this.pets);
     window.addEventListener("resize", this.resizeCarousel.bind(this));
     this.render();
     window.scrollTo(0, 0);
@@ -26,7 +23,6 @@ class ShelterPageView {
   async getPets() {
     try {
       this.pets = await PetAPI.getPets();
-      console.log(this.pets);
       this.render();
     } catch (err) {
       Toast.show(err, "error");
@@ -124,7 +120,7 @@ class ShelterPageView {
                         : "../images/dog-white.png"}"
                     />
                   </sl-avatar>
-                  <p>${animal}</p>
+                  <p>${Utils.capitaliseFirstLetter(animal)}</p>
                 </div>`
               )}
             </div>
@@ -181,6 +177,10 @@ class ShelterPageView {
                       style="font-size: 7vw; --stroke-width: 1vw;"
                     ></sl-spinner>
                   `
+                : this.pets.length === 0
+                ? html`<h1 class="no-content-message">
+                    There are currently no pets
+                  </h1>`
                 : html`
                     ${this.pets.map(
                       (pet) => html`

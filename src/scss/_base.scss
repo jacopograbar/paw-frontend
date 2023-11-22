@@ -164,7 +164,7 @@ a {
   }
 }
 
-#mobile-add-pet-bttn{
+#mobile-add-pet-bttn {
   display: none;
 }
 
@@ -185,6 +185,24 @@ h2 {
 
 h3 {
   font-weight: 400;
+}
+
+.no-content-message {
+  background-color: $paw-yellow;
+  padding: 2%;
+  border-radius: 20px;
+  max-width: 50vw;
+  text-align: center;
+  position: absolute;
+}
+
+.no-content-message-app {
+  background-color: $paw-yellow;
+  padding: 2%;
+  border-radius: 20px;
+  width: 80%;
+  text-align: center;
+  position: absolute;
 }
 
 // ************************************ Background PAWS Styling *********************************** //
@@ -242,7 +260,7 @@ h3 {
 
 // ************************************ LANDING PAGE *********************************** //
 
-.overlay{
+.overlay {
   display: none;
   @include overlay-style();
   width: 105%;
@@ -428,7 +446,6 @@ h3 {
     width: 30%;
     height: fit-content;
     z-index: 5;
-
 
     .signin-input {
       margin-bottom: 10px;
@@ -804,7 +821,7 @@ h3 {
             .gallery-row {
               width: 100%;
               min-width: 60vh;
-              @include flex-row(space-around, center);     
+              @include flex-row(space-around, center);
 
               .second {
                 top: -20px;
@@ -845,7 +862,7 @@ h3 {
       font-size: 2vw;
       width: 100%;
       @include flex-row(flex-start, center);
-      span{
+      span {
         max-width: 85%;
       }
     }
@@ -1145,5 +1162,50 @@ sl-details::part(content) {
 
   #images {
     margin: 20px 0;
+  }
+}
+
+// ************************************ GUIDE PAGE *********************************** //
+.guide-page {
+  height: fit-content;
+  min-height: 1000px;
+  padding: 220px 4% 100px;
+  background-color: $paw-turquoise;
+  color: white;
+  position: relative;
+  overflow: hidden;
+
+  h1 {
+    color: $paw-yellow;
+  }
+
+  h2 {
+    color: $paw-lilac;
+  }
+
+  #intro {
+    margin-bottom: 50px;
+  }
+
+  .guide-div {
+    padding-left: 10%;
+    width: 90%;
+  }
+
+  .guide-div-last {
+    padding-left: 10%;
+    width: 90%;
+    text-align: right;
+    margin-top: 50px;
+  }
+
+  #first-background-img {
+    position: absolute;
+    z-index: 0;
+    opacity: 0.05;
+    transform: rotate(-30deg);
+    height: 110%;
+    right: -20%;
+    bottom: -15%;
   }
 }

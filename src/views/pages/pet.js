@@ -9,10 +9,7 @@ class PetView {
   async init() {
     document.title = "Pet Page";
     this.petID = window.location.pathname.split("/")[2];
-    console.log("Pet page for ID ", this.petID);
     this.pet = await PetAPI.getPetById(this.petID);
-    console.log(this.pet);
-    console.log(Auth.currentUser.accessLevel);
     this.i = 0;
     this.render();
     window.scrollTo(0, 0);

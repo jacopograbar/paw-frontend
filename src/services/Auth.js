@@ -59,10 +59,14 @@ class Auth {
     // redirect to home
     Router.init();
 
-    if (this.currentUser.accessLevel == 1) {
-      gotoRoute("/dashboard/seeker");
+    if (this.currentUser.newUser) {
+      gotoRoute("/guide");
     } else {
-      gotoRoute("/dashboard/shelter");
+      if (this.currentUser.accessLevel == 1) {
+        gotoRoute("/dashboard/seeker");
+      } else {
+        gotoRoute("/dashboard/shelter");
+      }
     }
   }
 

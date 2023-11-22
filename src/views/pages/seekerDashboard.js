@@ -11,20 +11,28 @@ class SeekerDashboardView {
   async init() {
     document.title = "Seeker Dashboard";
     this.pets = null;
-    this.shelters = await UserAPI.getUserListByAccessLevel(2);
-    this.width = window.innerWidth;
-    console.log(this.shelters);
+    this.shelters = null;
     window.addEventListener("resize", this.resizeCarousel.bind(this));
     this.render();
     window.scrollTo(0, 0);
     Utils.pageIntroAnim();
     await this.getPets();
+    await this.getShelters();
   }
 
   async getPets() {
     try {
       this.pets = await PetAPI.getPets();
       console.log(this.pets);
+      this.render();
+    } catch (err) {
+      Toast.show(err, "error");
+    }
+  }
+
+  async getShelters() {
+    try {
+      this.shelters = await UserAPI.getUserListByAccessLevel(2);
       this.render();
     } catch (err) {
       Toast.show(err, "error");
@@ -85,7 +93,6 @@ class SeekerDashboardView {
   resizeCarousel() {
     if (document.title == "Seeker Dashboard") this.render();
   }
-
 
   handleScrollToPet(petType) {
     // scroll to section
@@ -196,9 +203,13 @@ class SeekerDashboardView {
               ${!this.pets
                 ? html`
                     <sl-spinner
-                      style="font-size: 7vw; --stroke-width: 1vw;"
+                      style="font-size: 7vw; position: absolute;"
                     ></sl-spinner>
                   `
+                : this.pets.length === 0
+                ? html`<h1 class="no-content-message">
+                    There are currently no pets
+                  </h1>`
                 : html`
                     ${this.pets.map(
                       (pet) => html`
@@ -239,12 +250,16 @@ class SeekerDashboardView {
                 : 1}"
               slides-per-move="1"
             >
-              ${this.shelters.length === 0
+              ${!this.shelters
                 ? html`
                     <sl-spinner
-                      style="font-size: 7vw; --stroke-width: 1vw;"
+                      style="font-size: 7vw; position: absolute;"
                     ></sl-spinner>
                   `
+                : this.shelters.length === 0
+                ? html`<h1 class="no-content-message">
+                    There are currently no shelters
+                  </h1>`
                 : html`
                     ${this.shelters.map(
                       (shelter) => html`

@@ -73,6 +73,7 @@ customElements.define(
           .header-link {
             color: #f8b102;
             text-decoration: none;
+            cursor: pointer;
           }
 
           p {
@@ -91,7 +92,7 @@ customElements.define(
               top: -50px;
             }
 
-            p{
+            p {
               color: transparent;
             }
 
@@ -118,24 +119,35 @@ customElements.define(
           ${this.user &&
           this.user.accessLevel == 1 &&
           this.pathName != "my-applications"
-            ? html` <a class="header-link" href="/my-applications"
+            ? html` <a
+                  class="header-link"
+                  @click=${() => gotoRoute("/my-applications")}
                   >My Applications</a
                 ><br />`
             : html``}
           ${this.user && this.pathName != "edit-profile"
-            ? html`<a class="header-link" href="/edit-profile">Edit Profile</a
+            ? html`<a
+                  class="header-link"
+                  @click=${() => gotoRoute("/edit-profile")}
+                  >Edit Profile</a
                 ><br />`
             : html``}
           ${this.user &&
           this.user.accessLevel == 1 &&
           this.pathName != "dashboard"
-            ? html`<a class="header-link" href="/dashboard/seeker">Dashboard</a
+            ? html`<a
+                  class="header-link"
+                  @click=${() => gotoRoute("/dashboard/seeker")}
+                  >Dashboard</a
                 ><br />`
             : html``}
           ${this.user &&
           this.user.accessLevel == 2 &&
           this.pathName != "dashboard"
-            ? html`<a class="header-link" href="/dashboard/shelter">Dashboard</a
+            ? html`<a
+                  class="header-link"
+                  @click=${() => gotoRoute("/dashboard/shelter")}
+                  >Dashboard</a
                 ><br />`
             : html``}
           ${this.user

@@ -5,20 +5,41 @@ import PetAPI from "../../services/PetAPI";
 import Auth from "../../services/Auth";
 import Utils from "../../Utils";
 import ApplicationsAPI from "../../services/ApplicationsAPI";
+import Toast from "../../Toast";
 
 class ShelterDashboardView {
   async init() {
     document.title = "Shelter Dashboard";
     this.user = Auth.currentUser;
-    console.log(this.user);
-    this.pets = await PetAPI.getPets();
-    console.log(this.pets);
-    this.applications = await ApplicationsAPI.getApplications(2, this.user._id);
-    console.log(this.applications);
+    this.pets = null;
+    this.applications = null;
     window.addEventListener("resize", this.resizeCarousel.bind(this));
     this.render();
     window.scrollTo(0, 0);
     Utils.pageIntroAnim();
+    await this.getPets();
+    await this.getApplications();
+  }
+
+  async getApplications() {
+    try {
+      this.applications = await ApplicationsAPI.getApplications(
+        2,
+        this.user._id
+      );
+      this.render();
+    } catch (err) {
+      Toast.show(err, "error");
+    }
+  }
+
+  async getPets() {
+    try {
+      this.pets = await PetAPI.getPets();
+      this.render();
+    } catch (err) {
+      Toast.show(err, "error");
+    }
   }
 
   scrollToSection(sectionTag) {
@@ -122,12 +143,16 @@ class ShelterDashboardView {
                 : 1}"
               slides-per-move="1"
             >
-              ${this.pets.length === 0
+              ${!this.pets
                 ? html`
                     <sl-spinner
-                      style="font-size: 7vw; --stroke-width: 1vw;"
+                      style="position: absolute; font-size: 7vw;"
                     ></sl-spinner>
                   `
+                : this.pets.length === 0
+                ? html`<h1 class="no-content-message">
+                    There are currently no pets
+                  </h1>`
                 : html`
                     ${this.pets.map(
                       (pet) => html`
@@ -165,12 +190,16 @@ class ShelterDashboardView {
                 : 1}"
               slides-per-move="1"
             >
-              ${this.applications.length === 0
+              ${!this.applications
                 ? html`
                     <sl-spinner
-                      style="font-size: 7vw; --stroke-width: 1vw;"
+                      style="font-size: 7vw; position: absolute;"
                     ></sl-spinner>
                   `
+                : this.applications.length === 0
+                ? html`<h1 class="no-content-message">
+                    There are currently no applications
+                  </h1>`
                 : html`
                     ${this.applications.map(
                       (application) => html`
