@@ -1,5 +1,3 @@
-import App from './App'
-import {html, render } from 'lit-html'
 import { gsap } from 'gsap'
 
 export default class Toast {

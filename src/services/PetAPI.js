@@ -1,8 +1,4 @@
 import App from "../App";
-import Router, { gotoRoute } from "../Router";
-import splash from "../views/partials/splash";
-import { html, render } from "lit-html";
-import Toast from "../Toast";
 
 class PetAPI {
   async getPets() {
