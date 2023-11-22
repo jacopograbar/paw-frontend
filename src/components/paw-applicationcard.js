@@ -166,10 +166,10 @@ customElements.define(
           </div>
           <div class="card-image pet">
           <img src="${
-              this.pet.images[0]
-                ? `${App.apiBase}/images/${this.pet.images[0]}`
-                : `${App.apiBase}/images/pet-default.png`
-            }" alt="${this.pet.name}" />
+            this.pet.images[0]
+              ? `${App.apiBase}/images/${this.pet.images[0]}`
+              : `${App.apiBase}/images/pet-default.png`
+          }" alt="${this.pet.name}" />
           </div>
           <div class="card-body">
             <h2>${this.status == 2 ? "Pending" : ""} ${
@@ -177,9 +177,12 @@ customElements.define(
       } ${this.status == 3 ? "Approved" : ""} Application</h2>
             <p>${this.applicant.name} x ${this.pet.name}</p>
             <p>Lodged on ${dayjs(this.date).format("DD/MM/YYYY")}</p>
+
             <sl-button @click=${this.redirectToApplicationPage.bind(
               this
-            )}>Review</sl-button>
+            )}>            ${
+        this.status == 2 ? "Review" : "Details"
+      }</sl-button>
           </div>
           </div>
         </div>

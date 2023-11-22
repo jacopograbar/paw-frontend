@@ -60,8 +60,8 @@ class MyApplicationsView {
                 <div class="summary" slot="summary">
                   <p><strong>${app.pet.name}</strong></p>
                   <p>${dayjs(app.createdAt).format("DD/MM/YYYY")}</p>
-                  <p>${app.adopter.name}</p>
-                  <p>${app.shelter.name}</p>
+                  <p id="adopter-name">${app.adopter.name}</p>
+                  <p id="shelter-name">${app.shelter.name}</p>
                   <p
                     style="color:${app.status == 1
                       ? "red"

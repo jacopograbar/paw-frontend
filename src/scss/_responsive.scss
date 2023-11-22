@@ -209,8 +209,74 @@
       }
     }
   }
+  // *********************** MY APPLICATIONS ************************ //
+  .applications-screen {
+    padding-top: 200px;
+
+    #adopter-name {
+      display: none;
+    }
+
+    .avatar-app {
+      --size: 140px;
+      min-width: 145px;
+    }
+
+    .details-show {
+      height: fit-content;
+      .left-content {
+        height: fit-content;
+        padding: 10px 0;
+      }
+    }
+
+    sl-details::part(content) {
+      height: fit-content;
+    }
+  }
 
   // ***********************  FORMS  ***********************  //
+}
+
+@media (max-width: 820px) {
+  .applications-screen {
+    .avatar-app {
+      --size: 100px;
+      min-width: 105px;
+    }
+
+    .details-show,
+    .summary {
+      p,
+      a {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .applications-screen {
+    .avatar-app {
+      display: none;
+    }
+
+    .details-show {
+      justify-content: center;
+      gap: 20px;
+      .left-content {
+        max-width: 70%;
+      }
+
+      .right-content {
+        width: 30%;
+      }
+      .avatar-button {
+        --size: 50px;
+        margin-bottom: 10px;
+      }
+    }
+  }
 }
 
 // ******************************* MOBILE () ********************************* //
@@ -252,7 +318,7 @@
       }
     }
   }
-  #signup-second-page {
+  #signup-second-page, #add-pet {
     height: 1200px;
     .signup-overlay {
       padding-top: 150px;
@@ -505,5 +571,68 @@
     }
   }
 
+  // *********************** MY APPLICATIONS ************************ //
+  .applications-screen {
+    .avatar-app {
+      display: block;
+    }
+
+    #shelter-name {
+      display: none;
+    }
+
+    .summary {
+      width: 85%;
+    }
+
+    .details-show {
+      .left-content {
+        display: none;
+      }
+
+      .avatar-button {
+        --size: 50px;
+        margin-bottom: 10px;
+      }
+    }
+  }
+
   // ***********************  FORMS  ***********************  //
+
+  .adoption-form {
+    margin-bottom: -100px;
+  }
+
+  #edit-profile-title {
+    width: 90vw;
+    font-size: 30px;
+    text-align: center;
+  }
+
+  #edit-page {
+    min-height: 1100px;
+  }
+
+  #review {
+    .mobile-hide {
+      display: none;
+    }
+
+    .application-submit-area{
+      text-align: center;
+      padding:20px 0;
+    }
+  }
+
+  #add-pet{
+    height: 1300px;
+    .signup-overlay{
+      height: 100%;
+      .signup-form {
+      height: 88%;
+      }
+    }
+
+
+  }
 }

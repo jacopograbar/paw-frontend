@@ -61,7 +61,11 @@ class ApplicationReviewView {
     }"/>
         </div>
         <div class="adoption-overlay" id="review">
-          <h1>Review Application</h1>
+        ${
+          this.application.status == 2
+            ? html`<h1>Review Application</h1>`
+            : html` <h1>Application Details</h1>`
+        }
           <table>
             <tr>
               <th>Applicant details</th>
@@ -71,8 +75,8 @@ class ApplicationReviewView {
             <tr>
               <td>${this.application.adopter.name}</td>
               <td>${this.application.adopter.email} </td>
-              <td>${this.application.adopter.address}</td>
-              <td>${this.application.adopter.state}</td>
+              <td class="mobile-hide">${this.application.adopter.address}</td>
+              <td class="mobile-hide">${this.application.adopter.state}</td>
             </tr>
             </table>
             <table>
@@ -85,7 +89,9 @@ class ApplicationReviewView {
               <td>${this.application.pet.breed} ${
       this.application.pet.petType
     }</td>
-              <td>${this.application.pet.gender == "M" ? "Male" : "Female"}</td>
+              <td class="mobile-hide">${
+                this.application.pet.gender == "M" ? "Male" : "Female"
+              }</td>
               <td>${this.application.pet.age} ${
       this.application.pet.age == 1 ? "year" : "years"
     } old</td>
@@ -102,16 +108,25 @@ class ApplicationReviewView {
             </tr>
           </table>
               <div class="application-submit-area">
-                <sl-button  variant="primary" id="approve-btn" @click=${this.approve.bind(
-                  this
-                )}
-                  >Approve</sl-button
-                >
-                <sl-button variant="primary" id="reject-btn" @click=${this.reject.bind(
-                  this
-                )}
-                  >Reject</sl-button
-                >
+                ${
+                  this.application.status == 2
+                    ? html` <sl-button
+                          variant="primary"
+                          id="approve-btn"
+                          @click=${this.approve.bind(this)}
+                          >Approve</sl-button
+                        >
+                        <sl-button
+                          variant="primary"
+                          id="reject-btn"
+                          @click=${this.reject.bind(this)}
+                          >Reject</sl-button
+                        >`
+                    : this.application.status == 1
+                    ? html`<h3>This application was rejected.</h3>`
+                    : html`<h3>This application was approved.</h3>`
+                }
+
               </div>
             </div>
         </div>

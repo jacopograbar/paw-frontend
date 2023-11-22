@@ -45,7 +45,7 @@ class EditProfileView {
           ${this.user == null
             ? html` <sl-spinner></sl-spinner> `
             : html`
-                <h1>Edit Profile Details</h1>
+                <h1 id="edit-profile-title">Edit Profile Details</h1>
                 <form class="adoption-form" @submit=${this.updateProfileSubmitHandler.bind(this)}>
                   <div class="input-group">
                     <sl-input
